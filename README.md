@@ -1,3 +1,5 @@
+# Disclaimer: Initial Commit Starter Code Was Provided By Github User : https://github.com/Ferrington
+
 # bug-wars-client
 
 This template should help get you started developing with Vue 3 in Vite.
