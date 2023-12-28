@@ -1,8 +1,8 @@
-import axios from "axios";
+// import axios from "axios";
 
 
-export default {
-	getCustomers() {
-		return axios.get("/customers");
-	},
-};
+// export default {
+// 	getCustomers() {
+// 		return axios.get("/customers");
+// 	},
+// };

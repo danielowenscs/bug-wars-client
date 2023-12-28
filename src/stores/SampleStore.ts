@@ -12,7 +12,7 @@ export const useSampleStore = defineStore("customer", {
         }
     },
 	actions: {
-		setCustomers(customerList) {
+		setCustomers(customerList: string[]) {
 			this.customers = customerList;
 		},
 	},
