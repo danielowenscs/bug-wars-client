@@ -6,6 +6,7 @@
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/userId/scripts">Script Editor</RouterLink>
       </nav>
     </div>
   </header>
