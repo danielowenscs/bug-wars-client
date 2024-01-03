@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import ScriptEditorViewVue from '@/views/ScriptEditorView.vue';
+import UnderConstruction from "@/views/UnderConstruction.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,6 +23,11 @@ const router = createRouter({
       path: '/userId/scripts',
       name: 'scripts',
       component: ScriptEditorViewVue,
+    },
+    {
+      path: '/underconstruction',
+      name: 'underConstruction',
+      component: UnderConstruction,
     },
   ],
 });
