@@ -1,35 +1,34 @@
 <template>
   <div>
+   
     <button @click="toggleNewEditor">Create a New Script</button>
-    <textarea id="scriptEditorBox" v-if="showNewEditor" v-model="editorScript"></textarea>
-    <button id="saveButton" v-if="showNewEditor" @click="saveEditorScript">Save Script</button>
-    <button id="cancelButton" v-if="showNewEditor" @click="cancel">Cancel</button>
+    <form @submit.prevent="saveEditorScript" v-if="showNewEditor">
+        <input type="text" id="scriptTitle" placeholder="Enter your script title here." v-model="newScript.scriptTitle" />
+        <textarea id="scriptEditorBox" placeholder="Enter your new script code here." v-model="newScript.body"></textarea>
+        <button type="submit" id="saveButton" >Save Script</button>
+        <button id="cancelButton" @click="toggleNewEditor">Cancel</button>
+    </form>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { useEditorStore } from '../stores/ScriptStore';
+import { ref, reactive } from 'vue';
 
-const showNewEditor = ref(false);
-const editorStore = useEditorStore();
-const editorScript = ref('');
+let newScript = reactive({scriptTitle:'', body:''});
+let showNewEditor = ref(false);
+
 
 const toggleNewEditor = () => {
-  showNewEditor.value = !showNewEditor.value;
+    showNewEditor.value = !showNewEditor.value;
+    if (!showNewEditor.value) {
+        newScript.scriptTitle = '';
+        newScript.body = '';
+  }
 };
 
 const saveEditorScript = () => {
-  editorStore.updateEditorScript(editorScript.value);
-  toggleNewEditor();
+    console.log(newScript);
 };
-const cancel = () => {
-  editorStore.resetEditorScript();
-  toggleNewEditor();
-};
-
-//TODO: how to push from console.log with api call to save to database with pinia?
-//need to add error handling for if a user is not logged in
 
 </script>
 
@@ -42,7 +41,19 @@ textarea {
   border: 2px solid #ccc;
   border-radius: 4px;
   background-color: #f8f8f8;
-  font-size: 16px;
+  font-size: 14px;
+  resize: none;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 14px;
   resize: none;
 }
 

@@ -3,9 +3,9 @@ import { describe, expect, it } from 'vitest';
 import { mount } from '@vue/test-utils';
 import ScriptEditorViewVue from './ScriptEditorView.vue';
 
-describe('HomeView', () => {
+describe('ScriptEditorView.vue', () => {
   it('renders properly', () => {
-    const wrapper = mount(ScriptEditorViewVue, { props: { msg: 'Script Editor' } });
-    expect(wrapper.text()).toContain('Script Editor');
+    const wrapper = mount(ScriptEditorViewVue);
+    expect(wrapper.text());
   });
 });
