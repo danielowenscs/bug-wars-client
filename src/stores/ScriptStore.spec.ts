@@ -1,5 +1,12 @@
-import { test} from 'vitest'
+import { test,describe,beforeEach} from 'vitest'
 import { useScriptStore } from './ScriptStore'
+import { createPinia, setActivePinia } from 'pinia';
+
+describe('ScriptStore', () => {
+    beforeEach(() => {
+      setActivePinia(createPinia());
+    });
+
 
 test('should set all scripts', ({ expect }) => {
  const store = useScriptStore()
@@ -19,4 +26,4 @@ test('should set all scripts', ({ expect }) => {
  store.setAllScripts(newScripts)
 
  expect(store.scripts).toEqual(newScripts)
-})
+})})

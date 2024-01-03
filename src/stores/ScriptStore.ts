@@ -22,6 +22,7 @@ export const useScriptStore = defineStore("script", {
 	actions: {
 		setAllScripts(scripts: any[]) {
 			this.scripts = scripts;
+            
 		},
 	},
 });

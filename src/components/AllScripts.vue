@@ -1,11 +1,12 @@
 <template>
   <div v-for="script in scripts" :key="script.scriptId" class="script-list">
-    <router-link class="script-name" :to="'/underconstruction'">{{ script.name }}</router-link>
+    <RouterLink class="script-name" :to="'/underconstruction'">{{ script.name }}</RouterLink>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import { RouterLink } from 'vue-router';
 import { useScriptStore } from '@/stores/ScriptStore';
 
 const scriptStore = useScriptStore();
