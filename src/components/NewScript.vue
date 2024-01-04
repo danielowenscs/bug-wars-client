@@ -19,6 +19,7 @@
 
 <script lang="ts" setup>
 import { ref, reactive } from 'vue';
+import scriptService from '../services/scriptService';
 
 let newScript = reactive({ scriptTitle: '', body: '' });
 let showNewEditor = ref(false);
@@ -32,7 +33,10 @@ const toggleNewEditor = () => {
 };
 
 const saveEditorScript = () => {
-  console.log(newScript);
+  scriptService.createNewScript(newScript).then((response) => {
+    console.log(response);
+  });
+
   toggleNewEditor();
 };
 </script>
