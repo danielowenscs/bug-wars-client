@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue';
-</script>
-
-
-
 <template>
   <div class="homepage">
     <div class="logo">
@@ -19,7 +13,7 @@ import TheWelcome from '../components/TheWelcome.vue';
       <nav class="menu-buttons">
         <button @click="$router.push('/')">Play Game</button>
         <button @click="$router.push('/')">How to Play</button>
-        <button @click="$router.push('/')">Script Editor</button>
+        <button @click="$router.push('/userid/scripts')">Scripts</button>
         <button @click="$router.push('/')">Credits</button>
       </nav>
     </div>
@@ -31,7 +25,7 @@ import TheWelcome from '../components/TheWelcome.vue';
     </div>
   </div>
 </template>
-
+<script setup lang="ts"></script>
 <style scoped>
 .homepage {
   line-height: 1.5;

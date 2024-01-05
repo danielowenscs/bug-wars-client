@@ -1,35 +1,40 @@
 <template>
-  <div>
-   
-    <button @click="toggleNewEditor">Create a New Script</button>
-    <form @submit.prevent="saveEditorScript" v-if="showNewEditor">
-        <input type="text" id="scriptTitle" placeholder="Enter your script title here." v-model="newScript.scriptTitle" />
-        <textarea id="scriptEditorBox" placeholder="Enter your new script code here." v-model="newScript.body"></textarea>
-        <button type="submit" id="saveButton" >Save Script</button>
-        <button id="cancelButton" @click="toggleNewEditor">Cancel</button>
-    </form>
-  </div>
+  <button @click="toggleNewEditor">Create a New Script</button>
+  <form @submit.prevent="saveEditorScript" v-if="showNewEditor">
+    <input
+      type="text"
+      id="scriptTitle"
+      placeholder="Enter your script title here."
+      v-model="newScript.scriptTitle"
+    />
+    <textarea
+      id="scriptEditorBox"
+      placeholder="Enter your new script code here."
+      v-model="newScript.body"
+    ></textarea>
+    <button type="submit" id="saveButton">Save Script</button>
+    <button id="cancelButton" @click="toggleNewEditor">Cancel</button>
+  </form>
 </template>
 
 <script lang="ts" setup>
 import { ref, reactive } from 'vue';
 
-let newScript = reactive({scriptTitle:'', body:''});
+let newScript = reactive({ scriptTitle: '', body: '' });
 let showNewEditor = ref(false);
 
-
 const toggleNewEditor = () => {
-    showNewEditor.value = !showNewEditor.value;
-    if (!showNewEditor.value) {
-        newScript.scriptTitle = '';
-        newScript.body = '';
+  showNewEditor.value = !showNewEditor.value;
+  if (!showNewEditor.value) {
+    newScript.scriptTitle = '';
+    newScript.body = '';
   }
 };
 
 const saveEditorScript = () => {
-    console.log(newScript);
+  console.log(newScript);
+  toggleNewEditor();
 };
-
 </script>
 
 <style scoped>
@@ -58,6 +63,6 @@ input {
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 </style>
