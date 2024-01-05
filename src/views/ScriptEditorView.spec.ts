@@ -15,12 +15,15 @@ import ScriptEditorViewVue from './ScriptEditorView.vue';
 import { createPinia } from 'pinia';
 import { createApp } from 'vue';
 
-vi.mock('vue-router', () => ({
+vi.mock('vue-router', async () => {
+  const actual = await vi.importActual("vue-router")
+  return {
+    ...actual,
   resolve: vi.fn(),
   RouterLink: {
       template: '<div><slot></slot></div>',
     }, 
- }));
+ }});
 
 describe('ScriptEditorView.vue', () => {
  it('renders properly', async () => {

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import ScriptEditorViewVue from '@/views/ScriptEditorView.vue';
+import ScriptDetailView from '@/views/ScriptDetailView.vue';
 import UnderConstruction from "@/views/UnderConstruction.vue";
 
 const router = createRouter({
@@ -24,7 +25,14 @@ const router = createRouter({
       path: '/userId/scripts',
       name: 'scripts',
       component: ScriptEditorViewVue,
+      
     },
+    {
+      path: '/scripts/:id',
+      name: 'script-detail',
+      component: ScriptDetailView,
+    },
+ 
     {
       path: '/underconstruction',
       name: 'underConstruction',

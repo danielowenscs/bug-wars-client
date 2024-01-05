@@ -8,6 +8,7 @@ describe('ScriptStore', () => {
     });
 
 
+
 test('should set all scripts', ({ expect }) => {
  const store = useScriptStore()
  const newScripts = [
@@ -26,4 +27,17 @@ test('should set all scripts', ({ expect }) => {
  store.setAllScripts(newScripts)
 
  expect(store.scripts).toEqual(newScripts)
-})})
+})
+test('should set a single script', ({ expect }) => {
+  const store = useScriptStore();
+  const newScript = {
+      scriptId: 5,
+      name: 'Script Five',
+      body: 'Testing a Fifth Script',
+  };
+
+  store.setScript(newScript);
+
+  expect(store.script).toEqual(newScript);
+});
+})
