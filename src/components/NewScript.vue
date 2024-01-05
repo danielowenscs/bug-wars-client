@@ -5,12 +5,12 @@
       type="text"
       id="scriptTitle"
       placeholder="Enter your script title here."
-      v-model="newScript.scriptTitle"
+      v-model="newScript.scriptName"
     />
     <textarea
       id="scriptEditorBox"
       placeholder="Enter your new script code here."
-      v-model="newScript.body"
+      v-model="newScript.scriptBody"
     ></textarea>
     <button type="submit" id="saveButton">Save Script</button>
     <button id="cancelButton" @click="toggleNewEditor">Cancel</button>
@@ -21,14 +21,14 @@
 import { ref, reactive } from 'vue';
 import scriptService from '../services/scriptService';
 
-let newScript = reactive({ scriptTitle: '', body: '' });
+let newScript = reactive({ scriptName: '', scriptBody: '' });
 let showNewEditor = ref(false);
 
 const toggleNewEditor = () => {
   showNewEditor.value = !showNewEditor.value;
   if (!showNewEditor.value) {
-    newScript.scriptTitle = '';
-    newScript.body = '';
+    newScript.scriptName = '';
+    newScript.scriptBody = '';
   }
 };
 

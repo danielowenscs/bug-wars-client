@@ -8,13 +8,19 @@ export const useScriptStore = defineStore("script", {
                 scriptId: 1,
                 name: 'Script One',
                 body: 'Testing a Script',
-                ownerId: 1
+                user: {
+                  username: "test_user",
+                  email: "test_user@gmail.com"
+              }
               },
               {
                 scriptId: 2,
                 name: 'Script Two',
                 body: 'Testing a Second Script',
-                ownerId: 1
+                user: {
+                  username: "test_user",
+                  email: "test_user@gmail.com"
+              }
               },] as any[],
       script: {},
       

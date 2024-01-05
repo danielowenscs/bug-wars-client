@@ -4,11 +4,9 @@ import axios from "axios";
 
 export default{
     async createNewScript(script: any){
-       return axios.post('/api/scripts')
+        console.log(script);
+       return axios.post('/api/scripts',script)
         .catch(error => {
             console.error(error);})}
-
-
-
 
 }
