@@ -25,12 +25,14 @@ const router = createRouter({
       path: '/userId/scripts',
       name: 'scripts',
       component: ScriptEditorViewVue,
+      
     },
     {
-      path: '/scriptdetails/:id',
+      path: '/scripts/:id',
       name: 'script-detail',
       component: ScriptDetailView,
     },
+ 
     {
       path: '/underconstruction',
       name: 'underConstruction',
