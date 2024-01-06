@@ -5,7 +5,7 @@ import { shallowMount } from '@vue/test-utils';
 
 
 describe('NewScript.vue', () => {
-  it('toggle new editor', () => {
+  it('renders properly', () => {
     const wrapper = shallowMount(NewScript);
     expect(wrapper.findComponent(NewScript).exists()).toBe(true);
   });

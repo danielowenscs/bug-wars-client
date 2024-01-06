@@ -13,7 +13,6 @@ describe('ScriptDetail', () => {
    scriptId: 1,
    name: 'Script One',
    body: 'Testing a Script',
-   ownerId: 1,
  })
 
  const wrapper = mount(ScriptDetail, {
@@ -24,10 +23,9 @@ describe('ScriptDetail', () => {
 
  await wrapper.vm.$nextTick() // Wait for Vue to update the DOM
  const scriptDetails = wrapper.findAll('div')
- expect(scriptDetails.length).toBe(5)
+ expect(scriptDetails.length).toBe(4)
  expect(scriptDetails[1].text()).toBe('Script ID: 1')
  expect(scriptDetails[2].text()).toBe('Title: Script One')
  expect(scriptDetails[3].text()).toBe('Body: Testing a Script')
- expect(scriptDetails[4].text()).toBe('Owner: 1')
  })
 })

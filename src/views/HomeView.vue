@@ -19,12 +19,13 @@
     </div>
     <div class="login">
       <nav class="login-buttons">
-        <button @click="$router.push('/')">Login</button>
+        <button @click="$router.push('/login')">Login</button>
         <button @click="$router.push('/')">Register</button>
       </nav>
     </div>
   </div>
 </template>
+
 <script setup lang="ts"></script>
 <style scoped>
 .homepage {
