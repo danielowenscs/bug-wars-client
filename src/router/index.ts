@@ -36,7 +36,7 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     },
     {
-      path: '/userId/scripts',
+      path: '/scripts',
       name: 'scripts',
       component: ScriptEditorViewVue,
       meta: {

@@ -43,7 +43,7 @@ const login = () => {
 
       authStore.setUser(response.data.user);
       console.log(response.data);
-      router.push('/userid/scripts');
+      router.push('/scripts');
     })
     .catch((error) => {
       const response = error.response;

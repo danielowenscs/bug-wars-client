@@ -13,7 +13,7 @@
       <nav class="menu-buttons">
         <button @click="$router.push('/')">Play Game</button>
         <button @click="$router.push('/')">How to Play</button>
-        <button @click="$router.push('/userid/scripts')">Scripts</button>
+        <button @click="$router.push('/scripts')">Scripts</button>
         <button @click="$router.push('/')">Credits</button>
       </nav>
     </div>
