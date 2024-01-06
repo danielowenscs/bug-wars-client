@@ -12,16 +12,8 @@ import { useScriptStore } from '@/stores/ScriptStore';
 import { reactive, computed, onMounted } from 'vue';
 const scriptStore = useScriptStore();
 
-let script = reactive({
-  scriptId: null,
-  name: '',
-  body: '',
-});
-
-onMounted(() => {
-  script.scriptId = scriptStore.script.scriptId;
-  script.name = scriptStore.script.name;
-  script.body = scriptStore.script.body;
+const script = computed(() => {
+  return scriptStore.script;
 });
 </script>
 
