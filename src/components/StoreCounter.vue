@@ -15,8 +15,8 @@ const { count } = storeToRefs(counterStore);
 </script>
 
 <style scoped>
-.counter {
+/* .counter {
   border: 1px solid black;
   padding: 10px;
-}
+} */
 </style>

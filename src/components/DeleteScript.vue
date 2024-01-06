@@ -17,7 +17,7 @@ const router = useRouter();
 let script: any;
 
 const handleDelete = () => {
-    const scriptId : string = script.scriptId.toString().trim();
+    const scriptId : number = script.script_id;
     scriptService.deleteScriptById(scriptId).then((response) => {
     console.log(response);
   });
