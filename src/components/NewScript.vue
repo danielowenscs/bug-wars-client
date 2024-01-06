@@ -3,9 +3,9 @@
   <form @submit.prevent="saveEditorScript" v-if="showNewEditor">
     <input
       type="text"
-      id="scriptTitle"
+      id="scriptName"
       placeholder="Enter your script title here."
-      v-model="newScript.scriptTitle"
+      v-model="newScript.scriptName"
     />
     <textarea
       id="scriptEditorBox"
@@ -20,13 +20,13 @@
 <script lang="ts" setup>
 import { ref, reactive } from 'vue';
 
-let newScript = reactive({ scriptTitle: '', body: '' });
+let newScript = reactive({ scriptName: '', body: '' });
 let showNewEditor = ref(false);
 
 const toggleNewEditor = () => {
   showNewEditor.value = !showNewEditor.value;
   if (!showNewEditor.value) {
-    newScript.scriptTitle = '';
+    newScript.scriptName = '';
     newScript.body = '';
   }
 };
