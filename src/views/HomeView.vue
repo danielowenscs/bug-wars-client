@@ -28,7 +28,7 @@
 
 <script setup lang="ts"></script>
 <style scoped>
-.homepage {
+/* .homepage {
   line-height: 1.5;
   height: 100vh;
   background-color: #026161;
@@ -85,7 +85,7 @@ button {
 }
 
 .dot {
-  /* Placeholder circle for logo to remove later */
+
   height: 150px;
   width: 150px;
   background-color: #bbb;
@@ -174,5 +174,5 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
-}
+} */
 </style>

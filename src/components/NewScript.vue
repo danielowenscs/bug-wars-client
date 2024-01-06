@@ -33,7 +33,12 @@ const toggleNewEditor = () => {
 };
 
 const saveEditorScript = () => {
-  scriptService.createNewScript(newScript).then((response) => {
+  console.log(newScript);
+  const created_script = {
+      script_name: newScript.scriptName,
+      script_body: newScript.scriptBody
+  }
+  scriptService.createNewScript(created_script).then((response) => {
     console.log(response);
   });
 
@@ -42,7 +47,7 @@ const saveEditorScript = () => {
 </script>
 
 <style scoped>
-textarea {
+/* textarea {
   width: 100%;
   height: 150px;
   padding: 12px 20px;
@@ -68,5 +73,5 @@ input {
 
 button {
   cursor: pointer;
-}
+} */
 </style>

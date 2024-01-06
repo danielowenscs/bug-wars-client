@@ -20,7 +20,7 @@ import ComposableCounter from '@/components/ComposableCounter.vue';
 import StoreCounter from '@/components/StoreCounter.vue';
 </script>
 
-<style>
+<style scoped>
 .counters {
   display: flex;
   gap: 20px;

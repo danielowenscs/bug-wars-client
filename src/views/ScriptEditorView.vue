@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="logo">
-      <span class="dot">LOGO</span>
+      <span class="dot"></span>
       <!-- Placeholder for logo to be replaced later -->
     </div>
 
@@ -23,8 +23,8 @@ import NewScriptVue from '../components/NewScript.vue';
 import AllScripts from '@/components/AllScripts.vue';
 </script>
 
-<style>
-.page {
+<style scoped>
+/* .page {
   line-height: 1.5;
   height: 100vh;
   background-color: #026161;
@@ -60,7 +60,6 @@ button {
   text-align: center;
 }
 .dot {
-  /* Placeholder circle for logo to remove later */
   height: 150px;
   width: 150px;
   background-color: #bbb;
@@ -97,5 +96,5 @@ button {
     place-items: flex-start;
     flex-wrap: wrap;
   }
-}
+} */
 </style>

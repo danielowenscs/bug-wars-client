@@ -19,6 +19,7 @@
 <script lang="ts" setup>
 import { reactive, defineEmits, onMounted } from 'vue';
 import { useScriptStore } from '@/stores/ScriptStore';
+import scriptService from '../services/scriptService';
 const scriptStore = useScriptStore();
 const emits = defineEmits(['cancelEdit']);
 const script = reactive({
@@ -27,7 +28,7 @@ const script = reactive({
 });
 
 onMounted(() => {
-  script.name = scriptStore.script.name;
+  script.name = scriptStore.script.script_name;
   script.body = scriptStore.script.body;
   console.log(script.name);
 });
@@ -38,6 +39,17 @@ const cancelEdit = () => {
 };
 
 const saveEditorScript = () => {
-  console.log('edited');
+  const updated_script = {
+      script_name: script.name,
+      script_body: script.body
+  }
+let scriptId = scriptStore.script.script_id.toString();
+
+console.log('script id', scriptId);
+
+  scriptService.updateScript(updated_script, scriptId).then((response) => {
+    console.log(response);
+  });
 };
 </script>
+updateScript
