@@ -6,12 +6,10 @@
     class="script-list"
   >
     <div>
-      <h1>
+      <h1 class="script-name">
         {{ script.script_name }}
       </h1>
     </div>
-
-    
   </div>
 </template>
 
@@ -22,7 +20,7 @@ import { useScriptStore } from '@/stores/ScriptStore';
 
 const scriptStore = useScriptStore();
 const router = useRouter();
-onMounted(() => {
+onMounted(async () => {
   scriptStore.init();
 });
 const scripts = computed(() => {
