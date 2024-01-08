@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import ComposableCounter from '@/components/ComposableCounter.vue';
-import StoreCounter from '@/components/StoreCounter.vue';
-</script>
-
 <template>
   <div class="about">
     <h1>This is an about page</h1>
@@ -20,8 +15,12 @@ import StoreCounter from '@/components/StoreCounter.vue';
     </div>
   </div>
 </template>
+<script setup lang="ts">
+import ComposableCounter from '@/components/ComposableCounter.vue';
+import StoreCounter from '@/components/StoreCounter.vue';
+</script>
 
-<style>
+<style scoped>
 .counters {
   display: flex;
   gap: 20px;
