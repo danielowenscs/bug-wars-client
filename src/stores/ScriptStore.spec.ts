@@ -24,7 +24,7 @@ test('should set all scripts', ({ expect }) => {
    },
  ]
 
- store.setAllScripts(newScripts)
+ store.setScripts(newScripts);
 
  expect(store.scripts).toEqual(newScripts)
 })
