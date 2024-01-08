@@ -65,7 +65,7 @@ describe('AllScripts', () => {
    const pinia = createPinia()
    const store = useScriptStore(pinia)
  
-   store.setAllScripts([
+   store.setScripts([
     {
       scriptId: 1,
       name: 'Script One',
