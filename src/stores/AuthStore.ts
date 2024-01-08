@@ -1,10 +1,26 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 
+const currentToken = localStorage.getItem('token');
+const currentUser = localStorage.getItem('user');
+if (currentToken != null) {
+	
+	axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
+}
+// if (currentUser != null) {
+// 	try {
+// 		this.user = JSON.parse(currentUser);
+// 	} catch (error) {
+// 		this.user = {};
+		
+// 	}
+	
+// }
+
 export const useAuthStore = defineStore("auth", {
 	state: () => ({
-		token: '',
-		user: {},
+		token: currentToken || '',
+		user: currentUser || {},
 	}),
 	getters: {
 		// Add your getters here
@@ -43,7 +59,8 @@ export const useAuthStore = defineStore("auth", {
 			localStorage.removeItem('user');
 			this.token = '';
 			this.user = {};
-			delete axios.defaults.headers.common['Authorization'];
+		
+			axios.defaults.headers.common = {};
 		},
 	},
 });

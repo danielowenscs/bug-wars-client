@@ -28,9 +28,9 @@ const invalidCredentials = ref(false);
 const router = useRouter();
 
 const authStore = useAuthStore();
-onMounted(() => {
-  authStore.init();
-});
+// onMounted(() => {
+//   authStore.init();
+// });
 
 const login = () => {
   // Handle form submission here

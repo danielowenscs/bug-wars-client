@@ -5,6 +5,7 @@
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/scripts">Script Editor</RouterLink>
+        <LogoutButton />
       </nav>
     </div>
   </header>
@@ -13,4 +14,5 @@
 
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
+import LogoutButton from './components/LogoutButton.vue';
 </script>
