@@ -35,9 +35,9 @@ const toggleNewEditor = () => {
 const saveEditorScript = () => {
   console.log(newScript);
   const created_script = {
-      script_name: newScript.scriptName,
-      script_body: newScript.scriptBody
-  }
+    script_name: newScript.scriptName,
+    script_body: newScript.scriptBody,
+  };
   scriptService.createNewScript(created_script).then((response) => {
     console.log(response);
   });

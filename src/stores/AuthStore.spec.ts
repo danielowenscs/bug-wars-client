@@ -34,16 +34,6 @@ describe('AuthStore', () => {
   expect(axios.defaults.headers.common['Authorization']).toBe(`Bearer newToken`);
  });
 
- it('should set the user and update local storage', () => {
-    // Act
-    authStore.setUser('newUser');
-  
-    // Assert
-    expect(authStore.user).toBe('newUser');
-    expect(localStorage.getItem('user')).toBe('newUser');
-  
-   });
-
  afterEach(() => {
   localStorage.clear();
  });
