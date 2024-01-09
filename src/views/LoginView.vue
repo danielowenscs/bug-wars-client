@@ -30,17 +30,15 @@ const router = useRouter();
 const authStore = useAuthStore();
 
 const login = () => {
-  // Handle form submission here
-
   authService
     .login(user)
     .then((response) => {
-      console.log(`Username: ${user.username}, Password: ${user.password}`);
-      authStore.setAuthToken(response.data.token);
-
-      authStore.setUser(response.data.user);
-      console.log(response.data);
-      router.push('/scripts');
+      if (response.status === 200) {
+        console.log(`Username: ${user.username}, Password: ${user.password}`);
+        console.log(response);
+        authStore.setAuthToken(response.data.token);
+        router.push('/scripts');
+      }
     })
     .catch((error) => {
       const response = error.response;

@@ -3,90 +3,102 @@ import { mount } from '@vue/test-utils';
 import LoginViewVue from '@/views/LoginView.vue';
 import { createPinia } from 'pinia';
 import { createApp } from 'vue';
+import { useAuthStore } from '@/stores/AuthStore';
 import axios from 'axios';
-import authService from '@/services/authService';
+import AuthService from '@/services/authService';
+import { useRouter } from 'vue-router';
 
+let wrapper;
 // Mocking dependencies
-
-
-
 describe('LoginView.vue', () => {
-  // Test for rendering
-  it('renders properly', async () => {
-    const { mockAxiosPost } = vi.hoisted(() => {
-        return { mockAxiosPost: vi.fn() };
-      });
-    const pinia = createPinia();
-    const app = createApp(LoginViewVue);
-    app.use(pinia);
+  const pinia = createPinia();
+  const app = createApp(LoginViewVue);
+  app.use(pinia);
+  const authStore = useAuthStore(pinia);
+  
 
-    beforeEach(async()=>{
-
-      
-        vi.mock('axios', async () => {
-            const actual = await vi.importActual('axios');
-            return {
-              ...actual,
-              default: {
-                post: mockAxiosPost,
-              },
-            };
-          });
-         
-        vi.mock('vue-router', async () => {
-            const actual = await vi.importActual('vue-router');
-            return {
-              ...actual,
-              resolve: vi.fn(),
-              RouterLink: {
-                template: '<div><slot></slot></div>',
-              },
-            };
-          });
-    })
-
-    const mockRouter = {
-      push: vi.fn(),
-      resolve: vi.fn().mockImplementation((to) => ({ href: to })),
+  vi.mock('@/services/authService', async () => {
+    const actual = await vi.importActual('@/services/authService');
+    return {
+      ...actual,
+      login: vi.fn().mockImplementation((user) => {
+        console.log('authService.login was called with user:', user);
+        return Promise.resolve({ status: 200, data: { token: 'testToken' } });
+      }),
     };
+   });
 
-    // Using spy for the router push method
-    const mockRouterPush = vi.fn();
-
-    const wrapper = mount(LoginViewVue, {
-      global: {
-        mocks: {
-            
-          $router: {push:mockRouterPush,mockRouter,},resolve: vi.fn().mockImplementation((to) => ({ href: to })),
-        },
-      },
+  vi.mock('vue-router', async () => {
+    const actual = await vi.importActual('vue-router');
+    return {
+      ...actual,
+      useRouter: vi.fn().mockReturnValue({
+        push: vi.fn(),
+      }),
+    };
+  });
+  beforeEach(() => {
+    vi.mock('@/services/authService', async () => {
+      const actualAuth = await vi.importActual('@/services/authService');
+      return {
+        ...actualAuth,
+        login: vi.fn().mockResolvedValue({ status: 200, data: { token: 'testToken' } }),
+      };
+     });
+    vi.mock('axios', async () => {
+     const actual = await vi.importActual('axios');
+     return{
+       ...actual,
+       post: vi.fn().mockResolvedValue({ data: {token: "testToken"},status: 200 }),
+     }
+      
     });
+   });
+   it('renders properly', async () => {
+    wrapper = mount(LoginViewVue);
+    expect(wrapper.findComponent(LoginViewVue).exists()).toBe(true);
+    expect(wrapper.text()).toContain('Login');
+  })
 
-    expect(wrapper.text()).toContain('Login'); // Check if 'Login' text is rendered
-        // Simulate user input
-        // const usernameInput = wrapper.find('input[type="text"]'); // Adjust selector based on your input element
-        // const passwordInput = wrapper.find('input[type="password"]'); // Adjust selector based on your input element
-        // await usernameInput.setValue('testuser');
-        // await passwordInput.setValue('password');
-        
+    it('logs in user with correct authentication and pushes them to scripteditor', async () => {
+      wrapper = mount(LoginViewVue, {
+        global: { plugins: [pinia] },
+      });
+      const postMock = vi.spyOn(axios,'post');
+      const authMock = vi.spyOn(AuthService,'login');
+
+      // Simulate user input
+        const usernameInput = wrapper.find('input[type="text"]'); 
+        const passwordInput = wrapper.find('input[type="password"]'); 
+        await usernameInput.setValue('testuser');
+        await passwordInput.setValue('helloworld');
+       
     
         // // Simulate form submission
-        // const loginForm = wrapper.find('form'); // Adjust selector based on your form element
+        // const loginForm = wrapper.find('form'); 
 
-        // const spy = vi.spyOn(loginForm, 'trigger')
-
-        // const routerSpy = vi.spyOn(mockRouter,'push');
-
-        // await loginForm.trigger('submit.prevent');
-        // // Check if the router was called (assuming a successful login redirects the user)
-        // expect(spy).toHaveBeenCalledOnce()
-        // expect(routerSpy).toHaveBeenCalled();
-        // Further assertions can be added here...
-      });
-    
-      // Other tests...
+        const submitButton = wrapper.find('button');
+        const spy = vi.spyOn(submitButton, 'trigger');
       
-  });
+        await submitButton.trigger('submit.prevent');
+        console.log()
+        expect(postMock).toHaveBeenCalledWith('api/auth/login', {
+          username: 'testuser',
+          password: 'helloworld',
+        });
+        expect.soft(authMock).toHaveBeenCalledWith({
+          username: 'testuser',
+          password: 'helloworld',
+        });
+        expect(spy).toHaveBeenCalledOnce();
+        // expect.soft(authStore.token).toEqual('testToken');
+        // expect.soft(localStorage.getItem('token')).toEqual('testToken');
+        // expect.soft(useRouter().push).toHaveBeenCalledWith('/scripts');
+
+    })
+
+})
+
   
 
 

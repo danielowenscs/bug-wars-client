@@ -3,26 +3,29 @@
   <form @submit.prevent="saveEditorScript" v-if="showNewEditor">
     <input
       type="text"
-      id="scriptTitle"
+      id="script-title"
       placeholder="Enter your script title here."
       v-model="newScript.scriptName"
     />
     <textarea
-      id="scriptEditorBox"
+      id="script-editor-box"
       placeholder="Enter your new script code here."
       v-model="newScript.scriptBody"
     ></textarea>
-    <button type="submit" id="saveButton">Save Script</button>
-    <button id="cancelButton" @click="toggleNewEditor">Cancel</button>
+    <button type="submit" id="save-button">Save Script</button>
+    <button id="cancel-button" @click="toggleNewEditor">Cancel</button>
   </form>
 </template>
 
 <script lang="ts" setup>
 import { ref, reactive } from 'vue';
 import scriptService from '../services/scriptService';
+import { useToast } from 'vue-toastification';
 
 let newScript = reactive({ scriptName: '', scriptBody: '' });
 let showNewEditor = ref(false);
+
+const toast = useToast();
 
 const toggleNewEditor = () => {
   showNewEditor.value = !showNewEditor.value;
@@ -39,10 +42,11 @@ const saveEditorScript = () => {
     script_body: newScript.scriptBody,
   };
   scriptService.createNewScript(created_script).then((response) => {
-    console.log(response);
+    if (response.status == 201) {
+      toast.success('Successful Save');
+    }
+    toggleNewEditor();
   });
-
-  toggleNewEditor();
 };
 </script>
 

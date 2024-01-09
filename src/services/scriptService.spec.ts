@@ -1,5 +1,6 @@
 import { vi, describe, expect, it, beforeEach, afterEach } from 'vitest';
 import ScriptService from './scriptService';
+import axios from 'axios';
 
 describe('ScriptService', () => {
   const { mockAxiosPost } = vi.hoisted(() => {
