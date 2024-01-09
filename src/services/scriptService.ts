@@ -1,13 +1,22 @@
 import axios from "axios";
+import { useToast } from "vue-toastification";
 
-
-
+const toast = useToast();
 export default{
     async createNewScript(script: any){
         console.log(script);
        return axios.post('/api/scripts',script)
         .catch(error => {
-            console.error(error);})},
+            console.error(error);
+            if(error.response.status==409){
+                toast.error("Script with that name already exists");
+            }else{
+                toast.error("Error Saving Script, Try again");
+            }
+    }).finally(() => {
+         
+    }) 
+    },
 
     async getAllScripts(){
         return axios.get('/api/scripts')

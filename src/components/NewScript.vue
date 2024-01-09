@@ -20,9 +20,12 @@
 <script lang="ts" setup>
 import { ref, reactive } from 'vue';
 import scriptService from '../services/scriptService';
+import { useToast } from "vue-toastification";
 
 let newScript = reactive({ scriptName: '', scriptBody: '' });
 let showNewEditor = ref(false);
+
+const toast = useToast();
 
 const toggleNewEditor = () => {
   showNewEditor.value = !showNewEditor.value;
@@ -39,7 +42,9 @@ const saveEditorScript = () => {
       script_body: newScript.scriptBody
   }
   scriptService.createNewScript(created_script).then((response) => {
-    console.log(response);
+    if(response.status==201){
+      toast.success("Successful Save");
+    }
   });
 
   toggleNewEditor();
