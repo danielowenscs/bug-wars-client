@@ -16,67 +16,23 @@ vi.mock('vue-router', async () => {
 
    });
 
-// describe('AllScripts', () => {
-//  it('renders scripts', async () => {
-//    const pinia = createPinia()
-//    const store = useScriptStore(pinia)
-
-//    store.setAllScripts([
-//     {
-//       scriptId: 1,
-//       name: 'Script One',
-//       body: 'Testing a Script',
-//       ownerId: 1
-//     },
-//     {
-//       scriptId: 2,
-//       name: 'Script Two',
-//       body: 'Testing a Second Script',
-//       ownerId: 1
-//     }
-//    ])
-
-//    const mockRouter = {
-//     push: vi.fn(),
-//     resolve: vi.fn().mockImplementation((to) => ({ href: to })),
-//   }
- 
-//   const wrapper = mount(AllScripts, {
-//     global: {
-//       plugins: [pinia],
-//       mocks: {
-//         $router: mockRouter,
-//       },
-//     },
-//   })
-  
-//    await wrapper.vm.$nextTick() // Wait for Vue to update the DOM
-//    const scriptNameElements = wrapper.findAll('.script-name');
-//    expect(wrapper.findAll('.script-name').length).toBe(2)
-//    expect(scriptNameElements[0].text()).toBe('Script One');
-//    expect(scriptNameElements[1].text()).toBe('Script Two');
-//    await wrapper.findAll('.script-name')[0].trigger('click');
-//   expect(mockRouter.push).toHaveBeenCalledWith({ name: 'script-detail', params: { id: 1 } })
-
-//  })
-// })
 describe('AllScripts', () => {
   it('renders scripts', async () => {
    const pinia = createPinia()
    const store = useScriptStore(pinia)
  
-   store.setAllScripts([
+   store.setScripts([
     {
-      scriptId: 1,
-      name: 'Script One',
+      script_id: 1,
+      script_name: 'Script One',
       body: 'Testing a Script',
       ownerId: 1
     },
     {
-      scriptId: 2,
-      name: 'Script Two',
+      script_id: 2,
+      script_name: 'Script Two',
       body: 'Testing a Second Script',
-      ownerId: 1
+      owner_id: 1
     }
    ])
  
@@ -95,7 +51,12 @@ describe('AllScripts', () => {
   })
   
    await wrapper.vm.$nextTick() // Wait for Vue to update the DOM
+   await new Promise(resolve => setTimeout(resolve, 500));
    const scriptNameElements = wrapper.findAll('.script-name');
+   console.log(wrapper.html());
+
+   console.log(wrapper.findAll('.script-name'))
+   
    expect(wrapper.findAll('.script-name').length).toBe(2)
    expect(scriptNameElements[0].text()).toBe('Script One');
    expect(scriptNameElements[1].text()).toBe('Script Two');

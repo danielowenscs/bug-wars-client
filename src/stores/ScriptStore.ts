@@ -18,6 +18,9 @@ export const useScriptStore = defineStore("script", {
         console.error('Error fetching scripts:', error);
       });
     },
+    setScripts(scripts: any){
+      this.scripts = scripts;
+    },
     setScript(script: any) {
       this.script = script;
     },

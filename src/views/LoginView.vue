@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive } from 'vue';
 import { useAuthStore } from '@/stores/AuthStore';
 import authService from '@/services/authService';
 import { useRouter } from 'vue-router';
@@ -28,22 +28,17 @@ const invalidCredentials = ref(false);
 const router = useRouter();
 
 const authStore = useAuthStore();
-onMounted(() => {
-  authStore.init();
-});
 
 const login = () => {
-  // Handle form submission here
-
   authService
     .login(user)
     .then((response) => {
-      console.log(`Username: ${user.username}, Password: ${user.password}`);
-      authStore.setAuthToken(response.data.token);
-
-      authStore.setUser(response.data.user);
-      console.log(response.data);
-      router.push('/scripts');
+      if (response.status === 200) {
+        console.log(`Username: ${user.username}, Password: ${user.password}`);
+        console.log(response);
+        authStore.setAuthToken(response.data.token);
+        router.push('/scripts');
+      }
     })
     .catch((error) => {
       const response = error.response;
