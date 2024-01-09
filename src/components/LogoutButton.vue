@@ -1,5 +1,5 @@
 <template>
-  <button type="button" @click="logout">LOGOUT</button>
+  <button class="logout-button" type="button" @click="logout">LOGOUT</button>
 </template>
 
 <script setup lang="ts">
@@ -10,7 +10,7 @@ const router = useRouter();
 
 const logout = () => {
   authStore.logout();
-  console.log('LOgged out');
+  console.log('Logged out');
   router.push('/');
 };
 </script>

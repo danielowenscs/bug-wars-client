@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive } from 'vue';
 import { useAuthStore } from '@/stores/AuthStore';
 import authService from '@/services/authService';
 import { useRouter } from 'vue-router';
@@ -28,9 +28,6 @@ const invalidCredentials = ref(false);
 const router = useRouter();
 
 const authStore = useAuthStore();
-// onMounted(() => {
-//   authStore.init();
-// });
 
 const login = () => {
   // Handle form submission here
