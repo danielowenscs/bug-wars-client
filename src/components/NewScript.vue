@@ -41,12 +41,23 @@ const saveEditorScript = () => {
     script_name: newScript.scriptName,
     script_body: newScript.scriptBody,
   };
-  scriptService.createNewScript(created_script).then((response) => {
-    if (response.status == 201) {
-      toast.success('Successful Save');
-    }
-    toggleNewEditor();
-  });
+  scriptService
+    .createNewScript(created_script)
+    .then((response) => {
+      console.log(response);
+      if (response.status == 201) {
+        toast.success('Successful Save');
+        console.log('DATA: ' + response.data);
+        toggleNewEditor();
+      }
+    })
+    .catch((error) => {
+      if (error.response && error.response.status == 409) {
+        toast.error('Script with that name already exists');
+      } else {
+        toast.error('Error Saving Script, Try again');
+      }
+    });
 };
 </script>
 

@@ -20,8 +20,12 @@ describe('ScriptService', () => {
   });
 
   it('should create a new script', async () => {
-    const script = {};
-    const response = {};
+    const script = {script_name: 'test script', body: 'script body'};
+    const response = {  data: {script_name: "test script",body:'script body'},
+    status: 201,
+    statusText: '',
+    headers: {},
+    config: {} as any,};
     mockAxiosPost.mockResolvedValue(response);
 
     const result = await ScriptService.createNewScript(script);

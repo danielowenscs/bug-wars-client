@@ -20,8 +20,8 @@ beforeEach(async () => {
  });
 });
 
-it('should log in a user', async () => {
- const user = {};
+it('login should log in a user', async () => {
+ const user = {username: 'testuser',password:'password'};
  const response = {};
  mockAxiosPost.mockResolvedValue(response);
 
