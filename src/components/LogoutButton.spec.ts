@@ -25,8 +25,6 @@ describe('LogoutButton.vue', () => {
 
  beforeEach(async()=>{
    authStore.setAuthToken('testToken');
-   
-   
  })
 
  it('renders properly', async () => {
@@ -44,8 +42,8 @@ describe('LogoutButton.vue', () => {
    
    await logoutButton.trigger('click');
    expect(spy).toHaveBeenCalledOnce()
+   
    expect(authStore.token).toEqual('');
-  
    expect(localStorage.getItem('token')).toBeNull();
 
  });

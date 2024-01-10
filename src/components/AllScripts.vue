@@ -7,7 +7,7 @@
   >
     <div>
       <h1 class="script-name">
-        {{ script.script_name }}
+        {{ script.name }}
       </h1>
     </div>
   </div>
@@ -20,15 +20,14 @@ import { useScriptStore } from '@/stores/ScriptStore';
 
 const scriptStore = useScriptStore();
 const router = useRouter();
+
 onMounted(async () => {
   scriptStore.init();
 });
 const scripts = computed(() => {
-  console.log(scripts);
   return scriptStore.scripts;
 });
 const navigateToPage = (script: any) => {
-  console.log(script);
   router.push({ name: 'script-detail', params: { id: script.script_id } });
   scriptStore.setScript(script);
 };
