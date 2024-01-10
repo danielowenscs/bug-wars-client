@@ -24,13 +24,13 @@ describe('AllScripts', () => {
    store.setScripts([
     {
       script_id: 1,
-      script_name: 'Script One',
+      name: 'Script One',
       body: 'Testing a Script',
       ownerId: 1
     },
     {
       script_id: 2,
-      script_name: 'Script Two',
+      name: 'Script Two',
       body: 'Testing a Second Script',
       owner_id: 1
     }
