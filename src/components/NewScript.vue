@@ -34,7 +34,7 @@ const toggleNewEditor = () => {
 
 const saveEditorScript = async () => {
   scriptService
-    .createNewScript(newScript)
+    .createNewScript(created_script)
     .then((response) => {
       console.log(response);
       if (response.status == 201) {
