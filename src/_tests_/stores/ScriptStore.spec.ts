@@ -1,5 +1,5 @@
 import { test,describe,beforeEach} from 'vitest'
-import { useScriptStore } from './ScriptStore'
+import { useScriptStore } from '../../stores/ScriptStore'
 import { createPinia, setActivePinia } from 'pinia';
 
 describe('ScriptStore', () => {
