@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { mount } from '@vue/test-utils';
-import UnderConstruction from './UnderConstruction.vue';
+import UnderConstruction from '@/views/UnderConstruction.vue';
 
 describe('UnderConstruction.vue', () => {
  it('renders correctly', () => {

@@ -28,5 +28,10 @@ export const useScriptStore = defineStore("script", {
     setScript(script: any) {
       this.script = script;
     },
+    async deleteScript(id: number){
+      return this.scripts.filter((script: { scriptId: number; }) => {
+        return script.scriptId !== id;
+      });
+    }
   },
 });

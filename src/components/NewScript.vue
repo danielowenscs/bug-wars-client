@@ -5,12 +5,12 @@
       type="text"
       id="script-title"
       placeholder="Enter your script title here."
-      v-model="newScript.scriptName"
+      v-model="newScript.name"
     />
     <textarea
       id="script-editor-box"
       placeholder="Enter your new script code here."
-      v-model="newScript.scriptBody"
+      v-model="newScript.body"
     ></textarea>
     <button type="submit" id="save-button">Save Script</button>
     <button id="cancel-button" @click="toggleNewEditor">Cancel</button>
@@ -22,7 +22,7 @@ import { ref, reactive } from 'vue';
 import scriptService from '../services/scriptService';
 import { useToast } from 'vue-toastification';
 
-let newScript = reactive({ scriptName: '', scriptBody: '' });
+let newScript = reactive({ name: '', body: '' });
 let showNewEditor = ref(false);
 
 const toast = useToast();
@@ -30,19 +30,14 @@ const toast = useToast();
 const toggleNewEditor = () => {
   showNewEditor.value = !showNewEditor.value;
   if (!showNewEditor.value) {
-    newScript.scriptName = '';
-    newScript.scriptBody = '';
+    newScript.name = '';
+    newScript.body = '';
   }
 };
 
 const saveEditorScript = () => {
-  console.log(newScript);
-  const created_script = {
-    script_name: newScript.scriptName,
-    script_body: newScript.scriptBody,
-  };
   scriptService
-    .createNewScript(created_script)
+    .createNewScript(newScript)
     .then((response) => {
       console.log(response);
       if (response.status == 201) {

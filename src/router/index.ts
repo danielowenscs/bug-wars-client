@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import RegisterView from '../views/RegisterView.vue';
-import ScriptEditorViewVue from '@/views/ScriptEditorView.vue';
+import AllScriptsViewVue from '@/views/AllScriptsView.vue';
 import { useAuthStore } from '@/stores/AuthStore';
 import ScriptDetailView from '@/views/ScriptDetailView.vue';
 import UnderConstruction from "@/views/UnderConstruction.vue";
@@ -47,7 +47,7 @@ const router = createRouter({
     {
       path: '/scripts',
       name: 'scripts',
-      component: ScriptEditorViewVue,
+      component: AllScriptsViewVue,
       meta: {
         requiresAuth: true
       }
