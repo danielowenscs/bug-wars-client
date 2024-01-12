@@ -1,5 +1,5 @@
 import axios from 'axios';
-import authService from './authService';
+import authService from '../../services/authService';
 import { vi, test, describe, expect, it, beforeEach, afterEach } from 'vitest';
 
 

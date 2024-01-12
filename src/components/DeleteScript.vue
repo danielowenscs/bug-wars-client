@@ -12,23 +12,21 @@ import { useScriptStore } from '@/stores/ScriptStore';
 import scriptService from '../services/scriptService';
 
 const emits = defineEmits(['cancelDelete']);
+const scriptStore = useScriptStore();
 
 const router = useRouter();
 let script: any;
 
-const handleDelete = () => {
+const handleDelete = async () => {
   const scriptId: number = script.scriptId;
-  scriptService.deleteScriptById(scriptId).then((response) => {
-    console.log(response);
-  });
+  scriptService.deleteScriptById(scriptId);
+  await scriptStore.deleteScript(scriptId);
   router.push({ name: 'scripts' });
 };
 
 const cancelDelete = () => {
   emits('cancelDelete');
 };
-
-const scriptStore = useScriptStore();
 
 onMounted(() => {
   script = scriptStore.script;

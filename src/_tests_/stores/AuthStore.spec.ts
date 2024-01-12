@@ -1,7 +1,7 @@
 import {it,expect,describe,beforeEach,afterEach } from 'vitest'
 
 import { createPinia, setActivePinia } from 'pinia';
-import { useAuthStore } from './AuthStore';
+import { useAuthStore } from '@/stores/AuthStore';
 import axios from 'axios';
 
 describe('AuthStore', () => {

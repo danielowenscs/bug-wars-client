@@ -1,7 +1,7 @@
 <template>
   <div
     v-for="script in scripts"
-    :key="script.script_id"
+    :key="script.scriptId"
     @click="navigateToPage(script)"
     class="script-list"
   >
@@ -28,7 +28,7 @@ const scripts = computed(() => {
   return scriptStore.scripts;
 });
 const navigateToPage = (script: any) => {
-  router.push({ name: 'script-detail', params: { id: script.script_id } });
+  router.push({ name: 'script-detail', params: { id: script.scriptId } });
   scriptStore.setScript(script);
 };
 </script>

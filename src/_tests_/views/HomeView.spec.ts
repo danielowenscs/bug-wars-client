@@ -11,7 +11,7 @@
 // });
 import { mount } from '@vue/test-utils';
 import { describe, expect, it,vi } from 'vitest';
-import HomeView from './HomeView.vue';
+import HomeView from '@/views/HomeView.vue';
 
 describe('HomeView', () => {
  it('renders properly', () => {
