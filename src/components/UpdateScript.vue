@@ -45,11 +45,6 @@ const saveEditorScript = () => {
   }
 let scriptId = scriptStore.script.script_id.toString();
 
-console.log('script id', scriptId);
-
-  scriptService.updateScript(updated_script, scriptId).then((response) => {
-    console.log(response);
-  });
 };
 </script>
 updateScript

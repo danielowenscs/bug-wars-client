@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 import LoginViewVue from '@/views/LoginView.vue';
 import { createPinia,setActivePinia } from 'pinia';
@@ -7,7 +7,7 @@ import { type AxiosResponse } from 'axios';
 
 import { useRouter } from 'vue-router';
 import authService from '@/services/authService';
-import { afterEach } from 'node:test';
+
 
 let wrapper;
 vi.mock('@/services/authService');
