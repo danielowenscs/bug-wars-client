@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <h1>Are you sure you want to delete this script</h1>
-        <button @click="handleDelete">Yes</button>
-        <button @click="cancelDelete">No</button>
-    </div>
+  <div>
+    <h1>Are you sure you want to delete this script</h1>
+    <button @click="handleDelete">Yes</button>
+    <button @click="cancelDelete">No</button>
+  </div>
 </template>
 <script lang="ts" setup>
 import { onMounted, defineEmits } from 'vue';
@@ -17,19 +17,18 @@ const router = useRouter();
 let script: any;
 
 const handleDelete = () => {
-    const scriptId : number = script.script_id;
-    scriptService.deleteScriptById(scriptId).then((response) => {
+  const scriptId: number = script.scriptId;
+  scriptService.deleteScriptById(scriptId).then((response) => {
     console.log(response);
   });
-    router.push({ name: 'scripts' });
-}
+  router.push({ name: 'scripts' });
+};
 
 const cancelDelete = () => {
-    emits('cancelDelete');
-}
+  emits('cancelDelete');
+};
 
 const scriptStore = useScriptStore();
-
 
 onMounted(() => {
   script = scriptStore.script;

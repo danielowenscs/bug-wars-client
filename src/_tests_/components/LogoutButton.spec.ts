@@ -1,6 +1,6 @@
   import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
-import LogoutButton from './LogoutButton.vue';
+import LogoutButton from '@/components/LogoutButton.vue';
 import { createPinia } from 'pinia';
 import { createApp } from 'vue';
 import { useAuthStore } from '@/stores/AuthStore';
