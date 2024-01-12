@@ -11,13 +11,17 @@
         <label for="password">Password: 
             <input type="password" id="password" minlength="6" maxlength="40" v-model="newUser.password" required />
         </label>
+        <label for="passwordDuplicate">Re-enter Password: 
+            <input type="password" id="passwordDuplicate" minlength="6" maxlength="40" v-model="passwordDuplicate" required />
+        </label>
         <button type="submit">Register</button>
     </form>
+    <span v-if="!passwordMatch"  >Passwords must be matching</span>
 </div>
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { ref, reactive } from 'vue';
 import authService from '@/services/authService';
 import { useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
@@ -28,13 +32,21 @@ const newUser = reactive({
   password: '',
 });
 
+const passwordDuplicate = ref("");
+let passwordMatch = ref(true);
+
 const router = useRouter();
 const toast = useToast();
 
 const register = () => {
+    if(newUser.password !== passwordDuplicate.value) {
+        passwordMatch.value = false;
+        return
+    }
     authService
         .register(newUser)
         .then((response) => {
+            passwordMatch.value = true;
             if (response.status === 201) {
                 toast.success('Successfully created account');
                 router.push('/login');
