@@ -20,7 +20,7 @@
     <div class="login">
       <nav class="login-buttons">
         <button @click="$router.push('/login')">Login</button>
-        <button @click="$router.push('/')">Register</button>
+        <button @click="$router.push('/register')">Register</button>
       </nav>
     </div>
   </div>

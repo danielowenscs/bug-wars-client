@@ -1,7 +1,7 @@
 <template>
-  <div class="login-form">
+  <div class="login-page">
     <h2>Login</h2>
-    <form @submit.prevent="login">
+    <form @submit.prevent="login" class="login-form">
       <label for="username">Username:</label>
       <input type="text" id="username" v-model="user.username" required />
 
@@ -49,5 +49,17 @@ const login = () => {
 </script>
 
 <style scoped>
-/* Add your styles here */
+.login-page {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}
+.login-form {
+    display: inline-grid;
+}
+
+input {
+    display: block;
+    margin-bottom: 20px;
+}
 </style>
