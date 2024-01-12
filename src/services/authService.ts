@@ -11,4 +11,8 @@ export default{
     }
       },
 
+    register(newUser: any) {
+      return axios.post('api/auth/register', newUser)
+    }
+
 }

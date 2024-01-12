@@ -41,7 +41,11 @@ const toggleNewEditor = () => {
   }
 };
 
+<<<<<<< HEAD
 const saveEditorScript = async () => {
+=======
+const saveEditorScript = () => {
+>>>>>>> dev
   scriptService
     .createNewScript(newScript)
     .then((response) => {
