@@ -24,6 +24,7 @@ import { useToast } from 'vue-toastification';
 import { useScriptStore } from '@/stores/ScriptStore';
 
 let newScript = reactive({ name: '', body: '' });
+
 let showNewEditor = ref(false);
 
 const scriptStore = useScriptStore();
@@ -41,11 +42,7 @@ const toggleNewEditor = () => {
   }
 };
 
-<<<<<<< HEAD
 const saveEditorScript = async () => {
-=======
-const saveEditorScript = () => {
->>>>>>> dev
   scriptService
     .createNewScript(newScript)
     .then((response) => {
