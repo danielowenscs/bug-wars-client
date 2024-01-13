@@ -1,13 +1,8 @@
 import axios from "axios";
-import { useToast } from "vue-toastification";
 
-const toast = useToast();
 export default{
     async createNewScript(script: any){
         return axios.post('/api/scripts', script)
-        // .catch(error => {
-        //     return Promise.reject(error);
-        // });
     },
 
     async getAllScripts(){

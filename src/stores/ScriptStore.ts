@@ -27,6 +27,16 @@ export const useScriptStore = defineStore("script", {
     },
     setScript(script: any) {
       this.script = script;
+      sessionStorage.setItem('script', JSON.stringify(this.script));
     },
+    async addNewScript(script: Object){
+      this.scripts.push(script);
+    },
+    async deleteScript(id: number){
+      return this.scripts.filter((script: Object) => {
+        return (script as { scriptId: number; }).scriptId !== id;
+      });
+     }
+     
   },
 });

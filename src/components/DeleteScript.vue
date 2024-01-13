@@ -6,7 +6,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { onMounted, defineEmits } from 'vue';
+import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useScriptStore } from '@/stores/ScriptStore';
 import scriptService from '../services/scriptService';
@@ -14,11 +14,14 @@ import scriptService from '../services/scriptService';
 const emits = defineEmits(['cancelDelete']);
 const scriptStore = useScriptStore();
 
+const script = computed(() => {
+  return scriptStore.script;
+});
+
 const router = useRouter();
-let script: any;
 
 const handleDelete = async () => {
-  const scriptId: number = script.scriptId;
+  const scriptId: number = script.value.scriptId;
   scriptService.deleteScriptById(scriptId);
   await scriptStore.deleteScript(scriptId);
   router.push({ name: 'scripts' });
@@ -27,9 +30,4 @@ const handleDelete = async () => {
 const cancelDelete = () => {
   emits('cancelDelete');
 };
-
-onMounted(() => {
-  script = scriptStore.script;
-  console.log(script.scriptId);
-});
 </script>

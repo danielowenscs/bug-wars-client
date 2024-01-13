@@ -17,33 +17,30 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, defineEmits, onMounted } from 'vue';
+import { reactive, defineEmits } from 'vue';
 import { useScriptStore } from '@/stores/ScriptStore';
 import scriptService from '../services/scriptService';
 const scriptStore = useScriptStore();
 const emits = defineEmits(['cancelEdit']);
 const script = reactive({
-  name: '',
-  body: '',
-});
-
-onMounted(() => {
-  script.name = scriptStore.script.name;
-  script.body = scriptStore.script.body;
-  console.log(script.name);
+  name: scriptStore.script.name,
+  body: scriptStore.script.body,
 });
 
 const cancelEdit = () => {
-  console.log('here');
   emits('cancelEdit');
 };
 
 const saveEditorScript = () => {
-  const updatedScript = {
-    name: script.name,
-    body: script.body,
-  };
   let scriptId = scriptStore.script.scriptId.toString();
+  scriptService.updateScript(script, scriptId).then((response) => {
+    if (response.status == 201) {
+      scriptStore.addNewScript(response.data);
+      console.log('DATA: ' + response.data);
+      scriptStore.setScript(response.data);
+      cancelEdit();
+    }
+  });
 };
 </script>
 updateScript
