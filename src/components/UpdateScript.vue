@@ -28,28 +28,22 @@ const script = reactive({
 });
 
 onMounted(() => {
-  script.name = scriptStore.script.script_name;
+  script.name = scriptStore.script.name;
   script.body = scriptStore.script.body;
   console.log(script.name);
 });
 
 const cancelEdit = () => {
-  console.log('here')
+  console.log('here');
   emits('cancelEdit');
 };
 
 const saveEditorScript = () => {
-  const updated_script = {
-      script_name: script.name,
-      script_body: script.body
-  }
-let scriptId = scriptStore.script.script_id.toString();
-
-console.log('script id', scriptId);
-
-  scriptService.updateScript(updated_script, scriptId).then((response) => {
-    console.log(response);
-  });
+  const updatedScript = {
+    name: script.name,
+    body: script.body,
+  };
+  let scriptId = scriptStore.script.scriptId.toString();
 };
 </script>
 updateScript

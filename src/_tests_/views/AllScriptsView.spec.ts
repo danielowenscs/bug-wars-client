@@ -1,7 +1,7 @@
 
 import { describe, expect, it,vi } from 'vitest';
 import { mount } from '@vue/test-utils';
-import ScriptEditorViewVue from './ScriptEditorView.vue';
+import AllScriptsViewVue from '@/views/AllScriptsView.vue'
 import { createPinia } from 'pinia';
 import { createApp } from 'vue';
 
@@ -15,10 +15,10 @@ vi.mock('vue-router', async () => {
     }, 
  }});
 
-describe('ScriptEditorView.vue', () => {
+describe('AllScriptsView.vue', () => {
  it('renders properly', async () => {
    const pinia = createPinia();
-   const app = createApp(ScriptEditorViewVue);
+   const app = createApp(AllScriptsViewVue);
    app.use(pinia);
    
    const mockRouter = {
@@ -26,7 +26,7 @@ describe('ScriptEditorView.vue', () => {
     resolve: vi.fn().mockImplementation((to) => ({ href: to })),
   }
 
-   const wrapper = mount(ScriptEditorViewVue,{
+   const wrapper = mount(AllScriptsViewVue,{
     global: {
      
       mocks: {

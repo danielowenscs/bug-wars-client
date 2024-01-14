@@ -1,5 +1,5 @@
 import { mount} from '@vue/test-utils'
-import AllScripts from './AllScripts.vue'
+import AllScripts from '@/components/AllScripts'
 import { useScriptStore } from '@/stores/ScriptStore'
 import { createPinia } from 'pinia'
 import { describe,it,expect,vi } from 'vitest'
@@ -23,16 +23,16 @@ describe('AllScripts', () => {
  
    store.setScripts([
     {
-      script_id: 1,
+      scriptId: 1,
       name: 'Script One',
       body: 'Testing a Script',
       ownerId: 1
     },
     {
-      script_id: 2,
+      scriptId: 2,
       name: 'Script Two',
       body: 'Testing a Second Script',
-      owner_id: 1
+      ownerId: 1
     }
    ])
  

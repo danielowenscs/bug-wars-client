@@ -10,10 +10,14 @@ export const useScriptStore = defineStore("script", {
   },
   actions: {
     init() {
-      console.log('here')
       scriptService.getAllScripts().then(response => {
         this.scripts = response.data;
         console.log('made it here')
+        this.scripts.forEach(e => {
+          console.log(e);
+          
+        });
+
       }).catch(error => {
         console.error('Error fetching scripts:', error);
       });
@@ -24,5 +28,10 @@ export const useScriptStore = defineStore("script", {
     setScript(script: any) {
       this.script = script;
     },
+    async deleteScript(id: number){
+      return this.scripts.filter((script: { scriptId: number; }) => {
+        return script.scriptId !== id;
+      });
+    }
   },
 });

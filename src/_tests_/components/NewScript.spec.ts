@@ -1,6 +1,6 @@
 import { describe, expect, it,vi,beforeEach,afterEach } from 'vitest';
 // import { useToast } from 'vue-toastification';
-import NewScript from './NewScript.vue';
+import NewScript from '@/components/NewScript.vue';
 import { mount } from '@vue/test-utils';
 import {type AxiosResponse} from 'axios';
 import scriptService from '@/services/scriptService';

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import ScriptDetail from './ScriptDetail.vue'
+import ScriptDetail from '@/components/ScriptDetail.vue'
 import { useScriptStore } from '@/stores/ScriptStore'
 import { createPinia } from 'pinia'
 import { describe, it, expect, vi } from 'vitest'

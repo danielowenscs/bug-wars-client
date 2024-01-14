@@ -1,4 +1,4 @@
-import { useSampleStore } from './SampleStore';
+import { useSampleStore } from '../../stores/SampleStore';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { createPinia, setActivePinia } from 'pinia';
 
