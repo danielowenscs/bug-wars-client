@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, defineEmits } from 'vue';
+import { reactive } from 'vue';
 import { useScriptStore } from '@/stores/ScriptStore';
 import scriptService from '../services/scriptService';
 const scriptStore = useScriptStore();
