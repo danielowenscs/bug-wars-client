@@ -1,7 +1,7 @@
 <template>
-  <div class="login-form">
+  <div class="login-page">
     <h2>Login</h2>
-    <form @submit.prevent="login">
+    <form @submit.prevent="login" class="login-form">
       <label for="username">Username:</label>
       <input type="text" id="username" v-model="user.username" required />
 
@@ -10,10 +10,11 @@
 
       <button type="submit">Login</button>
     </form>
+    <span class="error-message" v-show="invalidLogin">{{ errorMessage }}</span>
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref, reactive } from 'vue';
 import { useAuthStore } from '@/stores/AuthStore';
 import authService from '@/services/authService';
@@ -23,11 +24,12 @@ const user = reactive({
   username: '',
   password: '',
 });
-const invalidCredentials = ref(false);
+const invalidLogin = ref(false);
 
 const router = useRouter();
 
 const authStore = useAuthStore();
+let errorMessage = ref('');
 
 const login = () => {
   authService
@@ -40,14 +42,37 @@ const login = () => {
         router.push('/scripts');
       }
     })
-    .catch((error) => {
-      const response = error.response;
-      console.log(response);
-      invalidCredentials.value = true;
+    .catch((e) => {
+      if (e.response.status === 401) {
+        invalidLogin.value = true;
+        errorMessage.value = 'Incorrect Username or Password.';
+      } else {
+        invalidLogin.value = true;
+        errorMessage.value = 'Cannot login. Please try again later.';
+      }
     });
 };
 </script>
 
 <style scoped>
-/* Add your styles here */
+.login-page {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}
+.login-form {
+  display: inline-grid;
+}
+
+input {
+  display: block;
+  margin-bottom: 20px;
+}
+.error-message {
+  display: block;
+  color: red;
+  max-width: 50%;
+  margin: auto;
+  margin-top: 1rem;
+}
 </style>
