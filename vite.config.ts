@@ -7,7 +7,11 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   base: '/bug-wars-client',
   plugins: [
-    vue(),
+    vue({
+      script: {
+        defineModel: true
+      }
+    }),
   ],
   resolve: {
     alias: {

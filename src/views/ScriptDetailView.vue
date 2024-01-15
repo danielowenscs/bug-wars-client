@@ -1,13 +1,9 @@
 <template>
-  <div>
+  <div class="detail-page">
     <ScriptDetail />
-    <button @click="editScript">Edit Script</button>
-    <div v-if="showEdit">
-      <UpdateScript  @cancelEdit="cancelEdit"/>
-    </div>
-    <button @click="deleteScript">Delete Script</button>
-    <div v-if="showDelete">
-      <DeleteScript  @cancelDelete="cancelDelete"/>
+    <UpdateScript @toggleButtons="editorShowing = !editorShowing" />
+    <div v-if="!editorShowing">
+      <DeleteScript />
     </div>
   </div>
 </template>
@@ -18,32 +14,23 @@ import ScriptDetail from '@/components/ScriptDetail.vue';
 import UpdateScript from '@/components/UpdateScript.vue';
 import DeleteScript from '@/components/DeleteScript.vue';
 
-let showEdit = ref(false);
-let showDelete = ref(false);
+let editorShowing = ref(false);
 
-const editScript = () => {
-    console.log('handle edit');
-    showEdit.value = true;
-  }
+// const deleteScript = () => {
+//   console.log('handle delete');
+//   showDelete.value = true;
+// };
 
-  const cancelEdit = () => {
-    console.log('hello')
-    showEdit.value = false;
-}
-
-const deleteScript = () => {
-    console.log('handle delete');
-    showDelete.value = true;
-  }
-
-  const cancelDelete = () => {
-    console.log('hello')
-    showDelete.value = false;
-}
-  
+// const cancelDelete = () => {
+//   console.log('hello');
+//   showDelete.value = false;
+// };
 </script>
 
-<style scoped></style>
-
-
-
+<style scoped>
+.detail-page {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}
+</style>
