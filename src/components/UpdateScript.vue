@@ -29,13 +29,16 @@ const script = reactive({
 
 let showEdit = ref(false);
 
-const toggleButtons = () => {
-  emits('toggleButtons');
-};
-
 const toggleEditor = () => {
   console.log('handle edit');
-  showEdit.value = !showEdit.value;
+  if (showEdit.value == false) {
+    showEdit.value = true;
+  } else if (showEdit.value == true) {
+    showEdit.value = false;
+    script.name = scriptStore.script.name;
+    script.body = scriptStore.script.body;
+  }
+
   emits('toggleButtons');
 };
 

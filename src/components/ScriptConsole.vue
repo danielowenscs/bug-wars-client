@@ -21,7 +21,6 @@ defineProps(['action']);
 const emits = defineEmits(['toggleEditor']);
 const name = defineModel('name');
 const body = defineModel('body');
-
 const toggleEditor = () => {
   emits('toggleEditor');
 };

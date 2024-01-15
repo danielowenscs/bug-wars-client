@@ -1,20 +1,5 @@
 <template>
-  <button @click="toggleNewEditor">Create a New Script</button>
-  <!-- <form @submit.prevent="saveEditorScript" v-if="showEditor">
-    <input
-      type="text"
-      id="script-title"
-      placeholder="Enter your script title here."
-      v-model="newScript.name"
-    />
-    <textarea
-      id="script-editor-box"
-      placeholder="Enter your new script code here."
-      v-model="newScript.body"
-    ></textarea>
-    <button type="submit" id="save-button">Save Script</button>
-    <button id="cancel-button" @click="toggleNewEditor">Cancel</button>
-  </form> -->
+  <button v-show="!showEditor" @click="toggleNewEditor">Create a New Script</button>
   <ScriptConsole
     v-if="showEditor"
     @toggle-editor="toggleNewEditor"
@@ -38,8 +23,10 @@ const scriptStore = useScriptStore();
 const toast = useToast();
 
 const toggleNewEditor = () => {
-  showEditor.value = !showEditor.value;
-  if (!showEditor.value) {
+  if (showEditor.value == false) {
+    showEditor.value = true;
+  } else if (showEditor.value == true) {
+    showEditor.value = false;
     newScript.name = '';
     newScript.body = '';
   }
