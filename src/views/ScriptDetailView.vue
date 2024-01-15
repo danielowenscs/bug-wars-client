@@ -15,16 +15,6 @@ import UpdateScript from '@/components/UpdateScript.vue';
 import DeleteScript from '@/components/DeleteScript.vue';
 
 let editorShowing = ref(false);
-
-// const deleteScript = () => {
-//   console.log('handle delete');
-//   showDelete.value = true;
-// };
-
-// const cancelDelete = () => {
-//   console.log('hello');
-//   showDelete.value = false;
-// };
 </script>
 
 <style scoped>

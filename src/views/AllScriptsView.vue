@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="allscript-page">
     <div class="logo">
       <span class="dot"></span>
       <!-- Placeholder for logo to be replaced later -->
@@ -24,11 +24,13 @@ import AllScripts from '@/components/AllScripts.vue';
 </script>
 
 <style scoped>
-/* .page {
-  line-height: 1.5;
+.allscript-page {
   height: 100vh;
-  background-color: #026161;
+  margin: auto;
+  width: 100%;
+  text-align: center;
 }
+/*
 .title {
   margin: auto;
   text-align: center;
