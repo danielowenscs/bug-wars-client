@@ -1,46 +1,68 @@
 <template>
-  <form @submit.prevent="saveEditorScript">
-    <input
-      type="text"
-      id="scriptTitle"
-      placeholder="Enter your script title here."
-      v-model="script.name"
-    />
-    <textarea
-      id="scriptEditorBox"
-      placeholder="Enter your new script code here."
-      v-model="script.body"
-    ></textarea>
-    <button type="submit" id="saveButton">Save Script</button>
-    <div @click="cancelEdit">Discard Changes</div>
-  </form>
+  <button v-show="!showEdit" @click="toggleEditor">Edit Script</button>
+
+  <ScriptConsole
+    v-if="showEdit"
+    @toggle-editor="toggleEditor"
+    :action="saveEditorScript"
+    v-model:name="script.name"
+    v-model:body="script.body"
+  >
+  </ScriptConsole>
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import { useScriptStore } from '@/stores/ScriptStore';
-import scriptService from '../services/scriptService';
+// import { updateScript } from '@/components/ScriptConsole';
+import scriptService from '@/services/scriptService';
+import { useToast } from 'vue-toastification';
+import ScriptConsole from '@/components/ScriptConsole.vue';
 const scriptStore = useScriptStore();
-const emits = defineEmits(['cancelEdit']);
+const emits = defineEmits(['toggleButtons']);
+const toast = useToast();
+// const emits = defineEmits(['cancelEdit']);
 const script = reactive({
   name: scriptStore.script.name,
   body: scriptStore.script.body,
 });
 
-const cancelEdit = () => {
-  emits('cancelEdit');
+let showEdit = ref(false);
+
+const toggleButtons = () => {
+  emits('toggleButtons');
 };
 
+const toggleEditor = () => {
+  console.log('handle edit');
+  showEdit.value = !showEdit.value;
+  emits('toggleButtons');
+};
+
+// const cancelEdit = () => {
+//   emits('cancelEdit');
+// };
+
 const saveEditorScript = () => {
-  let scriptId = scriptStore.script.scriptId.toString();
-  scriptService.updateScript(script, scriptId).then((response) => {
-    if (response.status == 201) {
-      scriptStore.addNewScript(response.data);
-      console.log('DATA: ' + response.data);
-      scriptStore.setScript(response.data);
-      cancelEdit();
-    }
-  });
+  const scriptId = scriptStore.script.scriptId.toString();
+  scriptService
+    .updateScript(script, scriptId)
+    .then((response) => {
+      if (response.status == 201) {
+        scriptStore.addNewScript(response.data);
+        console.log('DATA: ' + response.data);
+        scriptStore.setScript(response.data);
+        toast.success('Successful Update');
+        toggleEditor();
+      }
+    })
+    .catch((error) => {
+      if (error.response && error.response.status == 409) {
+        toast.error('Script with that name already exists');
+      } else {
+        toast.error('Error Updating Script. Try again');
+      }
+    });
 };
 </script>
 updateScript

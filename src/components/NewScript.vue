@@ -1,6 +1,6 @@
 <template>
   <button @click="toggleNewEditor">Create a New Script</button>
-  <form @submit.prevent="saveEditorScript" v-if="showNewEditor">
+  <!-- <form @submit.prevent="saveEditorScript" v-if="showEditor">
     <input
       type="text"
       id="script-title"
@@ -14,29 +14,32 @@
     ></textarea>
     <button type="submit" id="save-button">Save Script</button>
     <button id="cancel-button" @click="toggleNewEditor">Cancel</button>
-  </form>
+  </form> -->
+  <ScriptConsole
+    v-if="showEditor"
+    @toggle-editor="toggleNewEditor"
+    :action="saveEditorScript"
+    v-model:name="newScript.name"
+    v-model:body="newScript.body"
+  ></ScriptConsole>
 </template>
 
 <script lang="ts" setup>
 import { ref, reactive, computed } from 'vue';
-import scriptService from '../services/scriptService';
-import { useToast } from 'vue-toastification';
+import scriptService from '@/services/scriptService';
 import { useScriptStore } from '@/stores/ScriptStore';
+// import { createScript } from '@/components/ScriptConsole';
+import { useToast } from 'vue-toastification';
+import ScriptConsole from '@/components/ScriptConsole.vue';
 
 let newScript = reactive({ name: '', body: '' });
-
-let showNewEditor = ref(false);
-
+let showEditor = ref(false);
 const scriptStore = useScriptStore();
-const scripts = computed(() => {
-  return scriptStore.scripts;
-});
-
 const toast = useToast();
 
 const toggleNewEditor = () => {
-  showNewEditor.value = !showNewEditor.value;
-  if (!showNewEditor.value) {
+  showEditor.value = !showEditor.value;
+  if (!showEditor.value) {
     newScript.name = '';
     newScript.body = '';
   }
