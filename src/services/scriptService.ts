@@ -14,19 +14,11 @@ export default{
 
     async updateScript(script: any, scriptId: string){
         console.log(scriptId);
-        return axios.put(`/api/scripts/${scriptId}`, script)
-        .catch(error => {
-            console.error(error); 
-            return Promise.reject(error);
-        })},
+        return axios.put(`/api/scripts/${scriptId}`, script);},
     
     async deleteScriptById(scriptId: number) {
         console.log(`Deleting script with ID: ${scriptId}`);
-        return axios.delete(`/api/scripts/${scriptId}`)
-            .catch(error => {
-                console.error(error);
-                return Promise.reject(error);
-            });
+        return axios.delete(`/api/scripts/${scriptId}`);
     }
 
 }

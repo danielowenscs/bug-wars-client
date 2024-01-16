@@ -1,10 +1,6 @@
 <template>
-<<<<<<< HEAD
   <button @click="toggleDelete">Delete Script</button>
   <div v-if="showDelete">
-=======
-  <div>
->>>>>>> 9396666 (changed script property  names to camelcase. started moving files in separate test folders.)
     <h1>Are you sure you want to delete this script</h1>
     <button @click="handleDelete">Yes</button>
     <button @click="cancelDelete">No</button>
@@ -38,9 +34,19 @@ const cancelDelete = () => {
 
 const handleDelete = async () => {
   const scriptId: number = script.value.scriptId;
-  scriptService.deleteScriptById(scriptId);
-  await scriptStore.deleteScript(scriptId);
-  router.push({ name: 'scripts' });
-  toast.success("Script Deleted");
+  scriptService
+    .deleteScriptById(scriptId)
+    .then((response) => {
+      if (response.status == 200) {
+        scriptStore.deleteScript(scriptId);
+        router.push({ name: 'scripts' });
+        toast.success('Script Deleted');
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      router.push({ name: 'scripts' });
+      toast.error('Script not deleted. Try again');
+    });
 };
 </script>

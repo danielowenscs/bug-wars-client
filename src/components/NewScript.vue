@@ -13,7 +13,6 @@
 import { ref, reactive, computed } from 'vue';
 import scriptService from '@/services/scriptService';
 import { useScriptStore } from '@/stores/ScriptStore';
-// import { createScript } from '@/components/ScriptConsole';
 import { useToast } from 'vue-toastification';
 import ScriptConsole from '@/components/ScriptConsole.vue';
 
