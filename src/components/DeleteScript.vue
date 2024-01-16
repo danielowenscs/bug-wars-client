@@ -1,12 +1,15 @@
 <template>
   <button @click="toggleDelete">Delete Script</button>
   <div v-if="showDelete">
+  <button @click="toggleDelete">Delete Script</button>
+  <div v-if="showDelete">
     <h1>Are you sure you want to delete this script</h1>
     <button @click="handleDelete">Yes</button>
     <button @click="cancelDelete">No</button>
   </div>
 </template>
 <script lang="ts" setup>
+import { computed, ref } from 'vue';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';

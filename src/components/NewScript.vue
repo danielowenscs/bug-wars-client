@@ -7,6 +7,14 @@
     v-model:name="newScript.name"
     v-model:body="newScript.body"
   ></ScriptConsole>
+  <button v-show="!showEditor" @click="toggleNewEditor">Create a New Script</button>
+  <ScriptConsole
+    v-if="showEditor"
+    @toggle-editor="toggleNewEditor"
+    :action="saveEditorScript"
+    v-model:name="newScript.name"
+    v-model:body="newScript.body"
+  ></ScriptConsole>
 </template>
 
 <script lang="ts" setup>
@@ -22,6 +30,10 @@ const scriptStore = useScriptStore();
 const toast = useToast();
 
 const toggleNewEditor = () => {
+  if (showEditor.value == false) {
+    showEditor.value = true;
+  } else if (showEditor.value == true) {
+    showEditor.value = false;
   if (showEditor.value == false) {
     showEditor.value = true;
   } else if (showEditor.value == true) {

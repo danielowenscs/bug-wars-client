@@ -41,6 +41,10 @@ const toggleEditor = () => {
   emits('toggleButtons');
 };
 
+// const cancelEdit = () => {
+//   emits('cancelEdit');
+// };
+
 const saveEditorScript = () => {
   const scriptId = scriptStore.script.scriptId.toString();
   scriptService
