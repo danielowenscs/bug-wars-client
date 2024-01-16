@@ -4,3 +4,8 @@ export type SampleUserType = {
   email: string;
   age: number;
 };
+
+export type ScriptRequest = {
+  name: String,
+  body: String
+}

@@ -4,8 +4,8 @@ import scriptService from '../services/scriptService';
 export const useScriptStore = defineStore("script", {
   state: () => {
     return {
-      scripts: [],
-      script: {},
+      scripts: [] as Object[],
+      script: JSON.parse(sessionStorage.getItem('script')) || {},
     };
   },
   actions: {
@@ -27,11 +27,16 @@ export const useScriptStore = defineStore("script", {
     },
     setScript(script: any) {
       this.script = script;
+      sessionStorage.setItem('script', JSON.stringify(this.script));
+    },
+    async addNewScript(script: Object){
+      this.scripts.push(script);
     },
     async deleteScript(id: number){
-      return this.scripts.filter((script: { scriptId: number; }) => {
-        return script.scriptId !== id;
+      return this.scripts.filter((script: Object) => {
+        return (script as { scriptId: number; }).scriptId !== id;
       });
-    }
+     }
+     
   },
 });

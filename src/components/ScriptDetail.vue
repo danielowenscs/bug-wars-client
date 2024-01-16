@@ -9,10 +9,13 @@
 
 <script setup lang="ts">
 import { useScriptStore } from '@/stores/ScriptStore';
-import { reactive, computed, onMounted } from 'vue';
+import { computed, onUnmounted } from 'vue';
 const scriptStore = useScriptStore();
 const script = computed(() => {
   return scriptStore.script;
+});
+onUnmounted(() => {
+  scriptStore.setScript({});
 });
 </script>
 

@@ -1,38 +1,32 @@
 <template>
-  <button @click="toggleNewEditor">Create a New Script</button>
-  <form @submit.prevent="saveEditorScript" v-if="showNewEditor">
-    <input
-      type="text"
-      id="script-title"
-      placeholder="Enter your script title here."
-      v-model="newScript.name"
-    />
-    <textarea
-      id="script-editor-box"
-      placeholder="Enter your new script code here."
-      v-model="newScript.body"
-    ></textarea>
-    <button type="submit" id="save-button">Save Script</button>
-    <button id="cancel-button" @click="toggleNewEditor">Cancel</button>
-  </form>
+  <button v-show="!showEditor" @click="toggleNewEditor">Create a New Script</button>
+  <ScriptConsole
+    v-if="showEditor"
+    @toggle-editor="toggleNewEditor"
+    :action="saveEditorScript"
+    v-model:name="newScript.name"
+    v-model:body="newScript.body"
+  ></ScriptConsole>
 </template>
 
 <script lang="ts" setup>
 import { ref, reactive, computed } from 'vue';
-import scriptService from '../services/scriptService';
-import { useToast } from 'vue-toastification';
+import scriptService from '@/services/scriptService';
 import { useScriptStore } from '@/stores/ScriptStore';
+// import { createScript } from '@/components/ScriptConsole';
+import { useToast } from 'vue-toastification';
+import ScriptConsole from '@/components/ScriptConsole.vue';
 
 let newScript = reactive({ name: '', body: '' });
-let showNewEditor = ref(false);
-
+let showEditor = ref(false);
 const scriptStore = useScriptStore();
-
 const toast = useToast();
 
 const toggleNewEditor = () => {
-  showNewEditor.value = !showNewEditor.value;
-  if (!showNewEditor.value) {
+  if (showEditor.value == false) {
+    showEditor.value = true;
+  } else if (showEditor.value == true) {
+    showEditor.value = false;
     newScript.name = '';
     newScript.body = '';
   }
@@ -44,6 +38,7 @@ const saveEditorScript = async () => {
     .then((response) => {
       console.log(response);
       if (response.status == 201) {
+        scriptStore.addNewScript(response.data);
         toast.success('Successful Save');
         console.log('DATA: ' + response.data);
         toggleNewEditor();
