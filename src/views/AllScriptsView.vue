@@ -25,7 +25,7 @@ import AllScripts from '@/components/AllScripts.vue';
 
 <style scoped>
 .allscript-page {
-  height: 100vh;
+  height: 90vh;
   margin: auto;
   width: 100%;
   text-align: center;
