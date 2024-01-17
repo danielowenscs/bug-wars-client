@@ -9,11 +9,13 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useToast } from 'vue-toastification';
 import { useScriptStore } from '@/stores/ScriptStore';
 import scriptService from '../services/scriptService';
 
 const scriptStore = useScriptStore();
 let showDelete = ref(false);
+const toast = useToast();
 
 const script = computed(() => {
   return scriptStore.script;
@@ -32,8 +34,19 @@ const cancelDelete = () => {
 
 const handleDelete = async () => {
   const scriptId: number = script.value.scriptId;
-  scriptService.deleteScriptById(scriptId);
-  await scriptStore.deleteScript(scriptId);
-  router.push({ name: 'scripts' });
+  scriptService
+    .deleteScriptById(scriptId)
+    .then((response) => {
+      if (response.status == 200) {
+        scriptStore.deleteScript(scriptId);
+        router.push({ name: 'scripts' });
+        toast.success('Script Deleted');
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      router.push({ name: 'scripts' });
+      toast.error('Script not deleted. Try again');
+    });
 };
 </script>

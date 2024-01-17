@@ -6,14 +6,13 @@
     :action="saveEditorScript"
     v-model:name="newScript.name"
     v-model:body="newScript.body"
-  ></ScriptConsole>
+  />
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, computed } from 'vue';
+import { ref, reactive } from 'vue';
 import scriptService from '@/services/scriptService';
 import { useScriptStore } from '@/stores/ScriptStore';
-// import { createScript } from '@/components/ScriptConsole';
 import { useToast } from 'vue-toastification';
 import ScriptConsole from '@/components/ScriptConsole.vue';
 
@@ -32,7 +31,7 @@ const toggleNewEditor = () => {
   }
 };
 
-const saveEditorScript = async () => {
+const saveEditorScript = () => {
   scriptService
     .createNewScript(newScript)
     .then((response) => {
@@ -40,7 +39,6 @@ const saveEditorScript = async () => {
       if (response.status == 201) {
         scriptStore.addNewScript(response.data);
         toast.success('Successful Save');
-        console.log('DATA: ' + response.data);
         toggleNewEditor();
       }
     })

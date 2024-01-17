@@ -14,14 +14,13 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
 import { useScriptStore } from '@/stores/ScriptStore';
-// import { updateScript } from '@/components/ScriptConsole';
 import scriptService from '@/services/scriptService';
 import { useToast } from 'vue-toastification';
 import ScriptConsole from '@/components/ScriptConsole.vue';
 const scriptStore = useScriptStore();
 const emits = defineEmits(['toggleButtons']);
 const toast = useToast();
-// const emits = defineEmits(['cancelEdit']);
+
 const script = reactive({
   name: scriptStore.script.name,
   body: scriptStore.script.body,
@@ -41,10 +40,6 @@ const toggleEditor = () => {
 
   emits('toggleButtons');
 };
-
-// const cancelEdit = () => {
-//   emits('cancelEdit');
-// };
 
 const saveEditorScript = () => {
   const scriptId = scriptStore.script.scriptId.toString();
@@ -68,4 +63,3 @@ const saveEditorScript = () => {
     });
 };
 </script>
-updateScript
