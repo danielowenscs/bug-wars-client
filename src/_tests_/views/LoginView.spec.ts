@@ -1,16 +1,20 @@
-import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, afterEach, describe, expect, it, vi} from 'vitest';
 import { mount } from '@vue/test-utils';
 import LoginViewVue from '@/views/LoginView.vue';
 import { createPinia,setActivePinia } from 'pinia';
 import { useAuthStore } from '@/stores/AuthStore';
 import { type AxiosResponse } from 'axios';
-
 import { useRouter } from 'vue-router';
 import authService from '@/services/authService';
 
 
 let wrapper;
 vi.mock('@/services/authService');
+
+
+describe('LoginView.vue', () => {
+const pinia = createPinia();
+
 vi.mock('vue-router', async () => {
   const actual = await vi.importActual('vue-router');
   return {
@@ -21,14 +25,13 @@ vi.mock('vue-router', async () => {
   };
 });
 
-describe('LoginView.vue', () => {
-const pinia = createPinia();
 
- beforeEach(() => {
+
+ beforeEach(async() => {
   setActivePinia(pinia);
  });
  afterEach(()=>{
-  vi.resetAllMocks();
+  
   localStorage.clear();
 
  })
@@ -39,8 +42,8 @@ const pinia = createPinia();
    expect(wrapper.text()).toContain('Login');
  })
 
- it('logs in user with correct authentication and pushes them to scripteditor', async () => {
-   wrapper = mount(LoginViewVue, {
+ it('logs in user with correct authentication & pushes user to AllScriptsView', async () => {
+   const wrapper = mount(LoginViewVue, {
      global: { plugins: [pinia] },
    });
 

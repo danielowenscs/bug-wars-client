@@ -43,7 +43,7 @@ const login = () => {
       }
     })
     .catch((e) => {
-      if (e.response.status === 401) {
+      if (e.status === 401) {
         invalidLogin.value = true;
         errorMessage.value = 'Incorrect Username or Password.';
       } else {
