@@ -67,4 +67,3 @@ const saveEditorScript = () => {
     });
 };
 </script>
-updateScript
