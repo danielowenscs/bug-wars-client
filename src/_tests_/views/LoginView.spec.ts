@@ -75,7 +75,45 @@ vi.mock('vue-router', async () => {
    expect(localStorage.getItem('token')).toEqual(mockResponse.data.token);
    expect(authStore.token).toStrictEqual(mockResponse.data.token);
    expect(useRouter().push).toHaveBeenCalledWith('/scripts');
+   
  })
+
+ it('displays correct message for 401 error when username & password do not match', async () => {
+  const wrapper = mount(LoginViewVue, {
+    global: { plugins: [pinia] },
+  });
+  const mockResponse: AxiosResponse<any, any> = {
+   data: {},
+   status: 401,
+   statusText: '',
+   headers: {},
+   config: {} as any,
+ };
+
+ const authStore = useAuthStore(pinia);
+  
+  vi.mocked(authService.login).mockRejectedValue(mockResponse)
+
+  const usernameInput = wrapper.find('input[type="text"]'); 
+  const passwordInput = wrapper.find('input[type="password"]'); 
+  
+  await usernameInput.setValue('testuser');
+  await passwordInput.setValue('hello');
+
+  const submitButton = wrapper.find('button');
+  const spy = vi.spyOn(submitButton, 'trigger');
+  await submitButton.trigger('submit.prevent');
+  
+  expect(spy).toHaveBeenCalledOnce();
+  expect(localStorage.getItem('token')).toBeUndefined;
+  expect(authStore.token).toBeUndefined;
+
+  await wrapper.vm.$nextTick();
+  const errorMessage = wrapper.find('.error-message')
+  expect(errorMessage.text()).toEqual('Incorrect Username or Password.')
+  
+})
+
 })
 
 
