@@ -6,19 +6,11 @@
     :action="saveEditorScript"
     v-model:name="newScript.name"
     v-model:body="newScript.body"
-  ></ScriptConsole>
-  <button v-show="!showEditor" @click="toggleNewEditor">Create a New Script</button>
-  <ScriptConsole
-    v-if="showEditor"
-    @toggle-editor="toggleNewEditor"
-    :action="saveEditorScript"
-    v-model:name="newScript.name"
-    v-model:body="newScript.body"
-  ></ScriptConsole>
+  />
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, computed } from 'vue';
+import { ref, reactive } from 'vue';
 import scriptService from '@/services/scriptService';
 import { useScriptStore } from '@/stores/ScriptStore';
 import { useToast } from 'vue-toastification';
@@ -34,16 +26,12 @@ const toggleNewEditor = () => {
     showEditor.value = true;
   } else if (showEditor.value == true) {
     showEditor.value = false;
-  if (showEditor.value == false) {
-    showEditor.value = true;
-  } else if (showEditor.value == true) {
-    showEditor.value = false;
     newScript.name = '';
     newScript.body = '';
   }
 };
 
-const saveEditorScript = async () => {
+const saveEditorScript = () => {
   scriptService
     .createNewScript(newScript)
     .then((response) => {
@@ -51,7 +39,6 @@ const saveEditorScript = async () => {
       if (response.status == 201) {
         scriptStore.addNewScript(response.data);
         toast.success('Successful Save');
-        console.log('DATA: ' + response.data);
         toggleNewEditor();
       }
     })
