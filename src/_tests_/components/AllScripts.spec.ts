@@ -1,5 +1,5 @@
 import { mount} from '@vue/test-utils'
-import AllScripts from '@/components/AllScripts'
+import AllScripts from '@/components/AllScripts.vue'
 import { useScriptStore } from '@/stores/ScriptStore'
 import { createPinia } from 'pinia'
 import { describe,it,expect,vi } from 'vitest'
@@ -17,7 +17,7 @@ vi.mock('vue-router', async () => {
    });
 
 describe('AllScripts', () => {
-  it('renders scripts', async () => {
+  it('renders scripts and routes user with correct Script ID', async () => {
    const pinia = createPinia()
    const store = useScriptStore(pinia)
  
@@ -53,15 +53,13 @@ describe('AllScripts', () => {
    await wrapper.vm.$nextTick() // Wait for Vue to update the DOM
    await new Promise(resolve => setTimeout(resolve, 500));
    const scriptNameElements = wrapper.findAll('.script-name');
-   console.log(wrapper.html());
-
+   
    console.log(wrapper.findAll('.script-name'))
    
    expect(wrapper.findAll('.script-name').length).toBe(2)
    expect(scriptNameElements[0].text()).toBe('Script One');
    expect(scriptNameElements[1].text()).toBe('Script Two');
-  //  await wrapper.findAll('.script-name')[0].trigger('click');
-  // expect(mockRouter.push).toHaveBeenCalledWith({ name: 'script-detail', params: { id: 1 } })
+  
   // After triggering the click event
 await wrapper.findAll('.script-name')[0].trigger('click');
 
