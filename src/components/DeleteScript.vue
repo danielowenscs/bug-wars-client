@@ -1,8 +1,8 @@
 <template>
-  <button @click="toggleDelete">Delete Script</button>
+  <button id="toggle-button" @click="toggleDelete">Delete Script</button>
   <div v-if="showDelete">
     <h1>Are you sure you want to delete this script</h1>
-    <button @click="handleDelete">Yes</button>
+    <button id="yes-button" @click="handleDelete">Yes</button>
     <button @click="cancelDelete">No</button>
   </div>
 </template>
