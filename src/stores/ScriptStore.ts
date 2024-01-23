@@ -28,10 +28,15 @@ export const useScriptStore = defineStore("script", {
     async addNewScript(script: Object){
       this.scripts.push(script);
     },
-    async deleteScript(id: number){
-      return this.scripts.filter((script: Object) => {
-        return (script as { scriptId: number; }).scriptId !== id;
-      });
+    deleteScript(id: number){
+
+      for(let i = 0; i<this.scripts.length;i++){
+        if (this.scripts[i].scriptId === id){
+          this.scripts.splice(i,1);
+          return this.scripts;
+        } 
+      }
+      return this.scripts;
      }
      
   },
