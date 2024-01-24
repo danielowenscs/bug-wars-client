@@ -3,8 +3,9 @@
     <h2>Create an Account</h2>
     <form @submit.prevent="register" class="register-form">
       <label for="username"
-        >Username:
-        <input
+      >Username: 
+      </label>
+      <input
           type="text"
           id="username"
           minlength="3"
@@ -12,14 +13,14 @@
           v-model="newUser.username"
           required
         />
-      </label>
       <label for="email"
         >Email Address:
-        <input type="email" id="email" maxlength="50" v-model="newUser.email" required />
       </label>
+      <input type="email" id="email" maxlength="50" v-model="newUser.email" required />
       <label for="password"
         >Password:
-        <input
+      </label>
+      <input
           type="password"
           id="password"
           minlength="6"
@@ -27,10 +28,11 @@
           v-model="newUser.password"
           required
         />
-      </label>
+
       <label for="passwordDuplicate"
         >Re-enter Password:
-        <input
+      </label>
+      <input
           type="password"
           id="passwordDuplicate"
           minlength="6"
@@ -38,10 +40,11 @@
           v-model="passwordDuplicate"
           required
         />
-      </label>
+        <span v-if="!passwordMatch">Passwords must be matching</span>
       <button type="submit">Register</button>
     </form>
-    <span v-if="!passwordMatch">Passwords must be matching</span>
+    
+    <a href="/bug-wars-client/login" class="login-link">Already have an account? Login here</a>
   </div>
 </template>
 
@@ -87,20 +90,41 @@ const register = () => {
 
 <style scoped>
 .register-page {
+  display: grid;
+  grid-template-areas: 
+  "register-form" 
+  "login-link";
+  justify-content: center;
   margin: auto;
   width: 100%;
   text-align: center;
 }
+
 .register-form {
+  grid-area: "register-form";
   display: inline-grid;
+  padding-top: 5px;
+}
+
+span {
+  padding: 10px;
+  color: red;
 }
 
 input {
-  display: block;
+  margin-bottom: 10px;
 }
 
-label {
-  display: block;
-  margin-bottom: 20px;
+button {
+  width: 50vw;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
+
+.login-link {
+  grid-area: "login-link";
+  font-size: 15px;
+}
+
 </style>

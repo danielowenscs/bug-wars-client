@@ -11,6 +11,7 @@
       <button type="submit">Login</button>
     </form>
     <span class="error-message" v-show="invalidLogin">{{ errorMessage }}</span>
+    <a href="/bug-wars-client/register" class="register-link">Create an account</a>
   </div>
 </template>
 
@@ -57,23 +58,45 @@ const login = () => {
 
 <style scoped>
 .login-page {
+  display: grid;
+  grid-template-areas: 
+  "login-form" 
+  "register-link";
+  justify-content: center;
   margin: auto;
   width: 100%;
   text-align: center;
 }
+
 .login-form {
+  grid-area: "login-form";
   display: inline-grid;
+  padding-top: 5px;
 }
 
 input {
-  display: block;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
+
 .error-message {
   display: block;
   color: red;
   max-width: 50%;
   margin: auto;
   margin-top: 1rem;
+  padding-bottom: 10px;
 }
+
+button {
+  width: 50vw;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.register-link {
+  grid-area: "register-link";
+  font-size: 15px;
+}
+
 </style>
