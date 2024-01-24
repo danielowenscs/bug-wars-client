@@ -1,16 +1,16 @@
 <template>
   <div class="lobby-page">
     <h3>Lobby</h3>
-    <!-- Map Gallery -->
+
     <MapCarousel @fetchMapIndex="fetchMapIndex" />
-    <!-- Player/Script Dropdowns -->
+
     <div style="border: 1px black solid">DROP DOWN MENUS</div>
-    <!-- View Scripts Button -->
+
     <div class="button-section">
       <button @click="$router.push('/scripts')" style="background-color: green">
         View Scripts
       </button>
-      <!-- Play Button -->
+
       <button style="background-color: red">Play</button>
     </div>
   </div>
