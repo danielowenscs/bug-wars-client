@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
+import LobbyView from '../views/LobbyView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import AllScriptsViewVue from '@/views/AllScriptsView.vue';
 import { useAuthStore } from '@/stores/AuthStore';
@@ -36,6 +37,14 @@ const router = createRouter({
       }
     },
     {
+      path: '/lobby',
+      name: 'lobby',
+      component:LobbyView,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
@@ -49,7 +58,7 @@ const router = createRouter({
       name: 'scripts',
       component: AllScriptsViewVue,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
       
     },

@@ -5,6 +5,7 @@
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/scripts">Script Editor</RouterLink>
+        <RouterLink to="/lobby">Lobby</RouterLink>
         <LogoutButton />
       </nav>
     </div>
