@@ -33,17 +33,15 @@ describe('UpdateScript.vue', () => {
     const store = useScriptStore(pinia)
     store.setScript(mockScript);
 
-
-    
      wrapper = mount(UpdateScript);
      const createButton = wrapper.find('button');
-     const mockScriptRequest = {name: 'Test Script', body:'Goodbye world!'}
-     const expectedSuccessStatus = 200;
+     const mockScriptRequest = {name: 'Test2Script2', body:'Goodbye world!'}
+    
      const mockResponse: AxiosResponse<any, any> = {
       status: 200, 
       data:{
         script_id: 1, 
-        name:'Test Script',body:'Goodbye world!'}, 
+        name:'Test2Script2',body:'Goodbye world!'}, 
         statusText:'',
     headers: {},
     config: {} as any,}
@@ -60,7 +58,7 @@ describe('UpdateScript.vue', () => {
   const scriptBodyTextarea = scriptConsoleWrapper.find('#script-editor-box');
   const submitButton = scriptConsoleWrapper.find('#save-button');
   
-    
+  scriptNameInput.setValue(mockScriptRequest.name);
     scriptBodyTextarea.setValue(mockScriptRequest.body);
   
     await wrapper.vm.$nextTick();
@@ -71,17 +69,7 @@ describe('UpdateScript.vue', () => {
     await wrapper.vm.$nextTick();
     expect(scriptService.updateScript).toHaveBeenCalledWith(mockScriptRequest, mockScript.scriptId.toString());
    
-
-
-
-
    });
 
-
-
-
-
-
-
-
 })
+
