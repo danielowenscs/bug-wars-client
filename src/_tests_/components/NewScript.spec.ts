@@ -28,6 +28,7 @@ describe('NewScript.vue', () => {
   });
 
   it('saves editor script', async () => {
+    
     const wrapper = mount(NewScript)
     const createButton = wrapper.find('button');
     const mockScriptRequest = {name: 'Test Script', body:'Hello world!'}
@@ -52,17 +53,22 @@ describe('NewScript.vue', () => {
   const scriptBodyTextarea = scriptConsoleWrapper.find('#script-editor-box');
   const submitButton = scriptConsoleWrapper.find('#save-button');
   
-    await scriptNameInput.setValue('Test Script');
-    await scriptBodyTextarea.setValue('Hello world!');
+    scriptNameInput.setValue('Test Scrape');
+    scriptBodyTextarea.setValue('Hello world!');
     await wrapper.vm.$nextTick();
   
     await submitButton.trigger('submit.prevent');
     expect(scriptService.createNewScript).toHaveBeenCalledOnce();
-   
     // expect(scriptService.createNewScript).toHaveBeenCalledWith(mockScriptRequest);
+    // const response = await scriptService.createNewScript(mockScriptRequest);
+    
+   
+  
+    
+    // expect(response.status).toStrictEqual(expectedSuccessStatus);
 
-    // expect(mockResponse.status).toStrictEqual(expectedSuccessStatus);
-    // expect(wrapper.vm.showNewEditor).toBe(false);
+    
+    
   });
 
   });
