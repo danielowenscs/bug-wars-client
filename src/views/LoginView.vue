@@ -40,7 +40,7 @@ const login = () => {
         console.log(`Username: ${user.username}, Password: ${user.password}`);
         console.log(response);
         authStore.setAuthToken(response.data.token);
-        router.push('/scripts');
+        router.push('/lobby');
       }
     })
     .catch((e) => {
@@ -59,9 +59,9 @@ const login = () => {
 <style scoped>
 .login-page {
   display: grid;
-  grid-template-areas: 
-  "login-form" 
-  "register-link";
+  grid-template-areas:
+    'login-form'
+    'register-link';
   justify-content: center;
   margin: auto;
   width: 100%;
@@ -69,7 +69,7 @@ const login = () => {
 }
 
 .login-form {
-  grid-area: "login-form";
+  grid-area: 'login-form';
   display: inline-grid;
   padding-top: 5px;
 }
@@ -95,8 +95,7 @@ button {
 }
 
 .register-link {
-  grid-area: "register-link";
+  grid-area: 'register-link';
   font-size: 15px;
 }
-
 </style>
