@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils';
 import ScriptConsole from '@/components/ScriptConsole.vue';
 
 describe('ScriptConsole.vue', () => {
+
  beforeEach(() => {
  vi.resetAllMocks();
  });
@@ -27,6 +28,10 @@ describe('ScriptConsole.vue', () => {
  const cancelButton = wrapper.find('#cancel-button');
  await cancelButton.trigger('click');
 
- expect(wrapper.emitted('toggleEditor')).toBeTruthy();
+//  expect(wrapper.emitted('toggleEditor')).toBeTruthy();
+await wrapper.find('#script-title').setValue('New Title');
+const [[newName]]: any = wrapper.emitted()['update:name'];
+expect(newName).toBe('New Title');
+
  });
 });

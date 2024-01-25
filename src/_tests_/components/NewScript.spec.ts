@@ -7,6 +7,7 @@ import { mount } from '@vue/test-utils';
 import {type AxiosResponse} from 'axios';
 import scriptService from '@/services/scriptService';
 
+
 let wrapper;
 vi.mock('@/services/scriptService');
 const props = {
@@ -46,29 +47,33 @@ describe('NewScript.vue', () => {
     await createButton.trigger('click');
     await wrapper.vm.$nextTick();
     // Find the ScriptConsole component
- const scriptConsoleWrapper = wrapper.findComponent(ScriptConsole);
+ const scriptConsoleWrapper = wrapper.getComponent(ScriptConsole);
 
  // Find the inputs within the ScriptConsole component
-  const scriptNameInput = scriptConsoleWrapper.find('#script-title');
+  const scriptNameInput = scriptConsoleWrapper.find('input');
   const scriptBodyTextarea = scriptConsoleWrapper.find('#script-editor-box');
   const submitButton = scriptConsoleWrapper.find('#save-button');
   
-    scriptNameInput.setValue('Test Scrape');
-    scriptBodyTextarea.setValue('Hello world!');
+    scriptNameInput.setValue(props.name);
+    scriptBodyTextarea.setValue(props.body);
+  
     await wrapper.vm.$nextTick();
-  
-    await submitButton.trigger('submit.prevent');
-    expect(scriptService.createNewScript).toHaveBeenCalledOnce();
-    // expect(scriptService.createNewScript).toHaveBeenCalledWith(mockScriptRequest);
-    // const response = await scriptService.createNewScript(mockScriptRequest);
     
-   
+    // const [[newName]]: any = scriptConsoleWrapper.emitted()['update:name'];
+    // const [[newBody]]: any = scriptConsoleWrapper.emitted()['update:body'];
+    // const mockScriptRequest = {name: newName, body:newBody};
+    console.log("MOCK REQUEST: " + mockScriptRequest);
   
+   submitButton.trigger('submit.prevent');
+    console.log("SENT: " + mockScriptRequest);
+    // expect(scriptService.createNewScript).toHaveBeenCalledOnce();
+    await wrapper.vm.$nextTick();
+    expect(scriptService.createNewScript).toHaveBeenCalledWith(mockScriptRequest);
+    const response = await scriptService.createNewScript(mockScriptRequest);
     
-    // expect(response.status).toStrictEqual(expectedSuccessStatus);
+    expect(response.status).toStrictEqual(expectedSuccessStatus);
 
-    
-    
+
   });
 
   });

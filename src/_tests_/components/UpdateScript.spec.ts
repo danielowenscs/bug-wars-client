@@ -9,10 +9,12 @@ import scriptService from '@/services/scriptService';
 
 let wrapper;
 vi.mock('@/services/scriptService');
-const props = {
+const pinia = createPinia()
+const mockScript = {
+  scriptId: 1,
   name: 'Test Script',
   body: "Hello world!",
-  modelValue: false
+  modelValue: true
  }
 
 describe('UpdateScript.vue', () => {
@@ -21,9 +23,65 @@ describe('UpdateScript.vue', () => {
   vi.resetAllMocks();
    });
    it('renders properly', () => {
-    const pinia = createPinia()
+    
    const store = useScriptStore(pinia)
     wrapper = mount(UpdateScript);
     expect(wrapper.findComponent(UpdateScript).exists()).toBe(true);
   });
+
+  it('saves updated scripts', async () => {
+    const store = useScriptStore(pinia)
+    store.setScript(mockScript);
+
+
+    
+     wrapper = mount(UpdateScript);
+     const createButton = wrapper.find('button');
+     const mockScriptRequest = {name: 'Test Script', body:'Goodbye world!'}
+     const expectedSuccessStatus = 200;
+     const mockResponse: AxiosResponse<any, any> = {
+      status: 200, 
+      data:{
+        script_id: 1, 
+        name:'Test Script',body:'Goodbye world!'}, 
+        statusText:'',
+    headers: {},
+    config: {} as any,}
+
+    vi.mocked(scriptService.updateScript).mockResolvedValue(mockResponse);
+    await createButton.trigger('click');
+    await wrapper.vm.$nextTick();
+
+    // Find the ScriptConsole component
+ const scriptConsoleWrapper = wrapper.getComponent(ScriptConsole);
+
+ // Find the inputs within the ScriptConsole component
+  const scriptNameInput = scriptConsoleWrapper.find('input');
+  const scriptBodyTextarea = scriptConsoleWrapper.find('#script-editor-box');
+  const submitButton = scriptConsoleWrapper.find('#save-button');
+  
+    
+    scriptBodyTextarea.setValue(mockScriptRequest.body);
+  
+    await wrapper.vm.$nextTick();
+
+    submitButton.trigger('submit.prevent');
+    
+    expect(scriptService.updateScript).toHaveBeenCalledOnce();
+    await wrapper.vm.$nextTick();
+    expect(scriptService.updateScript).toHaveBeenCalledWith(mockScriptRequest, mockScript.scriptId.toString());
+   
+
+
+
+
+   });
+
+
+
+
+
+
+
+
 })
