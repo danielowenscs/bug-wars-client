@@ -4,7 +4,7 @@
 
     <MapCarousel @fetchMapIndex="fetchMapIndex" />
 
-    <div style="border: 1px black solid">DROP DOWN MENUS</div>
+    <PlayerScriptSelector />
 
     <div class="button-section">
       <button @click="$router.push('/scripts')" style="background-color: green">
@@ -18,6 +18,7 @@
 
 <script setup lang="ts">
 import MapCarousel from '@/components/MapCarousel.vue';
+import PlayerScriptSelector from '@/components/PlayerScriptSelector.vue';
 import { ref } from 'vue';
 
 const currentMapIndex = ref(0);
