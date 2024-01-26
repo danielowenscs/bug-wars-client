@@ -48,7 +48,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref, reactive } from 'vue';
 import authService from '@/services/authService';
 import { useRouter } from 'vue-router';
