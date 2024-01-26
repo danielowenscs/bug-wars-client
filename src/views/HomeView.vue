@@ -1,26 +1,13 @@
 <template>
   <div class="homepage">
-    <div class="logo">
-      <span class="dot">LOGO</span>
-      <!-- Placeholder for logo to be replaced later -->
-    </div>
-
     <div class="title">
       <h1>BUG WARS</h1>
     </div>
-
     <div class="wrapper">
       <nav class="menu-buttons">
-        <button @click="$router.push('/')">Play Game</button>
-        <button @click="$router.push('/')">How to Play</button>
-        <button @click="$router.push('/scripts')">Scripts</button>
-        <button @click="$router.push('/')">Credits</button>
-      </nav>
-    </div>
-    <div class="login">
-      <nav class="login-buttons">
         <button @click="$router.push('/login')">Login</button>
-        <button @click="$router.push('/register')">Register</button>
+        <button @click="$router.push('/lobby')">Play Game</button>
+        <button @click="$router.push('/about')">About Us</button>
       </nav>
     </div>
   </div>
@@ -28,18 +15,22 @@
 
 <script setup lang="ts"></script>
 <style scoped>
-/* .homepage {
-  line-height: 1.5;
-  height: 100vh;
-  background-color: #026161;
-}
 
 .title {
   margin: auto;
   text-align: center;
-  color: white;
 }
 
+button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 15px auto;
+  padding: 25px;
+  width: 50vw;
+}
+
+/*
 .wrapper {
   margin-left: 10%;
   margin-right: 10%;
@@ -75,13 +66,6 @@ button {
   grid-template-rows: 1fr;
   grid-column-gap: 10vw;
   grid-row-gap: 0px;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-  padding: 5%;
-  text-align: center;
 }
 
 .dot {
