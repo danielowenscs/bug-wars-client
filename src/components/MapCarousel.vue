@@ -1,8 +1,11 @@
 <template>
-  <Carousel @slide-end="emitMapIndex" id="map-carousel" :wrap-around="true">
+  <Carousel @slide-end="setCurrentMap" id="map-carousel" :wrap-around="true">
     <Slide v-for="(map, index) in maps" :key="index">
       <div class="carousel__item">
-        <span class="map">{{ map }}</span>
+        <span class="map"
+          >{{ map.name }}
+          <pre id="map-body">{{ map.body }}</pre>
+        </span>
       </div>
     </Slide>
 
@@ -15,11 +18,20 @@
 <script setup lang="ts">
 import { Carousel, Navigation, Slide, Pagination } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
-const emit = defineEmits(['fetchMapIndex']);
-const maps = ["Willy Wonka's Doghouse", 'Crusader Saloon', 'Fiery Dragon Lair'];
+import { useGameMapStore } from '@/stores/GameMapStore';
+import { computed } from 'vue';
 
-const emitMapIndex = (data: { currentSlideIndex: any }) => {
-  emit('fetchMapIndex', data.currentSlideIndex);
+const mapStore = useGameMapStore();
+
+const maps = computed(() => {
+  mapStore.init();
+  return mapStore.maps;
+});
+
+const setCurrentMap = (data: { currentSlideIndex: any }) => {
+  mapStore.setCurrentMap(maps.value[data.currentSlideIndex]);
+
+  console.log(`CURRENT MAP: ${mapStore.currentMap.name}\n${mapStore.currentMap.body}`);
 };
 </script>
 
@@ -43,6 +55,12 @@ const emitMapIndex = (data: { currentSlideIndex: any }) => {
   width: 80%;
   background-color: green;
   padding-top: 3rem;
+}
+#map-body {
+  margin-top: 0px;
+  font-size: 14px;
+  resize: both;
+  overflow: auto;
 }
 
 .carousel__slide {

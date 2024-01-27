@@ -2,7 +2,7 @@
   <div class="lobby-page">
     <h3>Lobby</h3>
 
-    <MapCarousel @fetchMapIndex="fetchMapIndex" />
+    <MapCarousel />
 
     <PlayerScriptSelector />
 
@@ -19,14 +19,6 @@
 <script setup lang="ts">
 import MapCarousel from '@/components/MapCarousel.vue';
 import PlayerScriptSelector from '@/components/PlayerScriptSelector.vue';
-import { ref } from 'vue';
-
-const currentMapIndex = ref(0);
-
-const fetchMapIndex = (emittedIndex: any) => {
-  currentMapIndex.value = emittedIndex;
-  console.log(currentMapIndex.value);
-};
 </script>
 
 <style scoped>
