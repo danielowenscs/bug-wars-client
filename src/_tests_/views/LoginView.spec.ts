@@ -42,7 +42,7 @@ vi.mock('vue-router', async () => {
    expect(wrapper.text()).toContain('Login');
  })
 
- it('logs in user with correct authentication & pushes user to AllScriptsView', async () => {
+ it('logs in user with correct authentication & pushes user to Lobby', async () => {
    const wrapper = mount(LoginViewVue, {
      global: { plugins: [pinia] },
    });
@@ -74,7 +74,7 @@ vi.mock('vue-router', async () => {
    expect(spy).toHaveBeenCalledOnce();
    expect(localStorage.getItem('token')).toEqual(mockResponse.data.token);
    expect(authStore.token).toStrictEqual(mockResponse.data.token);
-   expect(useRouter().push).toHaveBeenCalledWith('/scripts');
+   expect(useRouter().push).toHaveBeenCalledWith('/lobby');
    
  })
 

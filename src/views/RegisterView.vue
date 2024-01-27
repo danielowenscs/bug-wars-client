@@ -45,6 +45,7 @@ import { ref, reactive } from 'vue';
 import authService from '@/services/authService';
 import { useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
+import { useAuthStore } from '@/stores/AuthStore';
 
 const newUser = reactive({
   username: '',
@@ -57,6 +58,7 @@ let passwordMatch = ref(true);
 
 const router = useRouter();
 const toast = useToast();
+const authStore = useAuthStore();
 
 const register = () => {
   if (newUser.password !== passwordDuplicate.value) {
@@ -69,7 +71,8 @@ const register = () => {
       passwordMatch.value = true;
       if (response.status === 201) {
         toast.success('Successfully created account');
-        router.push('/login');
+        // router.push('/login');
+        login();
       }
     })
     .catch((error) => {
@@ -77,6 +80,15 @@ const register = () => {
       console.log(response);
       toast.error('Error creating account');
     });
+};
+
+const login = () => {
+  authService.login({ username: newUser.username, password: newUser.password }).then((response) => {
+    if (response.status === 200) {
+      authStore.setAuthToken(response.data.token);
+      router.push('/lobby');
+    }
+  });
 };
 </script>
 
