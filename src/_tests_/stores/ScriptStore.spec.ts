@@ -1,7 +1,6 @@
-import { test,describe,beforeEach,vi} from 'vitest'
+import { test,describe,beforeEach,afterEach,vi} from 'vitest'
 import { useScriptStore } from '../../stores/ScriptStore'
 import { createPinia, setActivePinia } from 'pinia';
-import { afterEach } from 'node:test';
 
 describe('ScriptStore', () => {
     beforeEach(() => {
