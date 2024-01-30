@@ -6,6 +6,14 @@ export type SampleUserType = {
 };
 
 export type ScriptRequest = {
-  name: String,
+  name: String;
   body: String
+}
+
+export type GameMap = {
+  id: Number;
+  name: String;
+  height: Number;
+  width: Number;
+  body: String;
 }
