@@ -42,7 +42,7 @@ vi.mock('vue-router', async () => {
    expect(wrapper.text()).toContain('Login');
  })
 
- it('logs in user with correct authentication & pushes user to AllScriptsView', async () => {
+ it('logs in user with correct authentication & pushes user to Lobby', async () => {
    const wrapper = mount(LoginViewVue, {
      global: { plugins: [pinia] },
    });

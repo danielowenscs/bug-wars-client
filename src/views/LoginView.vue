@@ -37,8 +37,6 @@ const login = () => {
     .login(user)
     .then((response) => {
       if (response.status === 200) {
-        console.log(`Username: ${user.username}, Password: ${user.password}`);
-        console.log(response);
         authStore.setAuthToken(response.data.token);
         router.push('/lobby');
       }
