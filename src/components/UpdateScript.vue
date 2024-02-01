@@ -29,7 +29,6 @@ const script = reactive({
 let showEdit = ref(false);
 
 const toggleEditor = () => {
-  console.log('handle edit');
   if (showEdit.value == false) {
     showEdit.value = true;
   } else if (showEdit.value == true) {
@@ -46,7 +45,7 @@ const saveEditorScript = () => {
   scriptService
     .updateScript(script, scriptId)
     .then((response) => {
-      if (response.status == 201) {
+      if (response.status == 202) {
         scriptStore.addNewScript(response.data);
         console.log('DATA: ' + response.data);
         scriptStore.setScript(response.data);

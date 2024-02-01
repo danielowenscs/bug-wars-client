@@ -1,5 +1,5 @@
 <template>
-  <Carousel @slide-end="setCurrentMap" id="map-carousel" :wrap-around="true">
+  <Carousel @slide-start="setCurrentMap" id="map-carousel" :wrap-around="true">
     <Slide v-for="(map, index) in maps" :key="index">
       <div class="carousel__item">
         <span class="map"
@@ -9,9 +9,7 @@
       </div>
     </Slide>
 
-    <template #addons="{ slidesCount }">
-      <Navigation v-if="slidesCount > 1" /> <Pagination />
-    </template>
+    <template #addons> <Navigation /> <Pagination /> </template>
   </Carousel>
 </template>
 
@@ -19,12 +17,11 @@
 import { Carousel, Navigation, Slide, Pagination } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
 import { useGameMapStore } from '@/stores/GameMapStore';
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 
 const mapStore = useGameMapStore();
 
 const maps = computed(() => {
-  mapStore.init();
   return mapStore.maps;
 });
 
@@ -33,6 +30,10 @@ const setCurrentMap = (data: { currentSlideIndex: any }) => {
 
   console.log(`CURRENT MAP: ${mapStore.currentMap.name}\n${mapStore.currentMap.body}`);
 };
+
+onMounted(() => {
+  mapStore.init();
+});
 </script>
 
 <style scoped>

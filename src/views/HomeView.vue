@@ -5,7 +5,7 @@
     </div>
     <div class="wrapper">
       <nav class="menu-buttons">
-        <button @click="$router.push('/login')">Login</button>
+        <button id="login-button" @click="$router.push('/login')">Login</button>
         <button @click="$router.push('/lobby')">Play Game</button>
         <button @click="$router.push('/about')">About Us</button>
       </nav>
@@ -15,7 +15,6 @@
 
 <script setup lang="ts"></script>
 <style scoped>
-
 .title {
   margin: auto;
   text-align: center;
