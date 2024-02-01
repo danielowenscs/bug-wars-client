@@ -23,7 +23,7 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
-
+// All on one page then info it
 let currentMember = ref(0);
 let memberNames = ["Daniel Owens", "Ethan Reynolds", "Maichelle Reynolds", "Jeff Winograd", "Parker Ignagni", "Andrew Balderas", "Maconnell Balderas"];
 let memberImages = ["joeDirt.jpg", "johnConner.jpg", "ellenRipley.jpg", "johnConner.jpg", "joeDirt.jpg", "Andrew.png", "johnConner.jpg"];
