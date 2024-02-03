@@ -1,9 +1,9 @@
 name: Build Vue
 on:
   push:
-    branches: [main]
+    branches: [deploy-test]
   pull_request:
-    branches: [main]
+    branches: [deploy-test]
 permissions:
   id-token: write
   pages: write
