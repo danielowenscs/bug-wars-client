@@ -6,7 +6,7 @@ export const useGameMapStore = defineStore("gameMap", {
     state: () => {
       return {
         maps: [] as GameMap[],
-        currentMap: JSON.parse(sessionStorage.getItem('gameMap')) as GameMap || {} as GameMap,
+        currentMap: JSON.parse(sessionStorage.getItem('gameMap') || '{}') as GameMap,
 
       };
     },

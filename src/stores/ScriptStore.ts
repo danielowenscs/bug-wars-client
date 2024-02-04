@@ -1,11 +1,11 @@
 import { defineStore } from "pinia";
 import scriptService from '../services/scriptService';
-
+import type { Script } from "@/types";
 export const useScriptStore = defineStore("script", {
   state: () => {
     return {
-      scripts: [] as Object[],
-      script: JSON.parse(sessionStorage.getItem('script')) || {},
+      scripts: [] as Script[],
+      script: JSON.parse(sessionStorage.getItem('script') || '{}') as Script,
     };
   },
   actions: {
@@ -25,7 +25,7 @@ export const useScriptStore = defineStore("script", {
       this.script = script;
       sessionStorage.setItem('script', JSON.stringify(this.script));
     },
-    async addNewScript(script: Object){
+    async addNewScript(script: Script){
       this.scripts.push(script);
     },
     deleteScript(id: number){

@@ -21,10 +21,13 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+
 defineProps(['action']);
 const emits = defineEmits(['toggleEditor']);
-const name = defineModel('name');
-const body = defineModel('body');
+const name = ref('');
+const body = ref('');
+
 const toggleEditor = () => {
   emits('toggleEditor');
 };

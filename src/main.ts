@@ -15,6 +15,6 @@ app.use(Toast);
 app.use(router);
 // TODO: Setup axios on backend ~Daniel
 //baseURL for deployment. Uncomment before committing.
-axios.defaults.baseURL = import.meta.env.VITE_REMOTE_API || "https://bug-wars-backend.onrender.com/api/v1"
+axios.defaults.baseURL = import.meta.env.VITE_REMOTE_API || "https://bug-wars-server-fhs0.onrender.com"
 
 app.mount('#app');

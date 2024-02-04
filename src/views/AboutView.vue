@@ -8,13 +8,13 @@
     <p class="description">{{ memberDescription[currentMember] }}</p>
     <div class="icons">
       <a @click="copyURL">
-        <img class="icon" src="../gmailLogo.png" />
+        <img class="icon" src="/src/assets/imgs/gmailLogo.png" />
       </a>
       <a :href="memberGithub[currentMember]">
-        <img class="icon" src="../githubLogo.png" />
+        <img class="icon" src="/src/assets/imgs/githubLogo.png" />
       </a>
       <a :href="memberLinkedIn[currentMember]">
-        <img class="icon" src="../linkedInLogo.png" />
+        <img class="icon" src="/src/assets/imgs/linkedInLogo.png" />
       </a>
     </div>
     <button class="prev" @click="prevMember">Previous</button>
@@ -33,7 +33,7 @@ let memberGithub = ["https://github.com/danielowenscs", "https://github.com/etha
 let memberLinkedIn = ["https://www.linkedin.com/in/danielowenscs/", "https://www.linkedin.com/in/ETHAN", "https://www.linkedin.com/in/MAICHELLE", "https://www.linkedin.com/in/jeff-l-winograd/", "https://www.linkedin.com/in/paulignagni/", "https://www.linkedin.com/in/andrewbalderas", "https://www.linkedin.com/in/maconnell-balderas/"];
 
 const useImage = () => {
-  return new URL(`../${memberImages[currentMember.value]}`, import.meta.url).href;
+  return new URL(`/assets/imgs/${memberImages[currentMember.value]}`, import.meta.url).href;
 }
 
 const copyURL = () => {

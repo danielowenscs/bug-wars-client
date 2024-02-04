@@ -3,8 +3,8 @@ import { shallowMount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 
 describe('AboutView.vue', () => {
-  it('renders text', () => {
+  it('renders header', () => {
     const wrapper = shallowMount(AboutView);
-    expect(wrapper.find('h1').text()).toBe('This is an about page');
+    expect(wrapper.find('.header').text()).toBe('Meet The Team!');
   });
 });
