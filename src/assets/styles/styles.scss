@@ -1,0 +1,35 @@
+/* global colors */
+$Primary: #71F79F;
+$White: #FFFFFF;
+$Gray: #8B8B8B;
+$Dark-Gray: #181818;
+$Black: #000000;
+$Danger: #CE5050;
+
+/* global fonts */ 
+@import 'https://fonts.googleapis.com/css?family=Press+Start+2P';
+.Large-Headline-Text {
+    font-family: 'Press Start 2P';
+    color: $White;
+    font-size : 24px;
+}
+.Headline-Text {
+    font-family: 'Press Start 2P';
+    color: $White;
+    font-size : 16px;
+}
+.Body-Text{
+    font-family: 'Press Start 2P';
+    color: $White;
+    font-size : 12px;
+}
+.Small-Body-Text{
+    font-family: 'Press Start 2P';
+    color: $White;
+    font-size : 8px;
+}
+
+/* add global css classes below */
+.global-test-class {
+    color: red;
+}

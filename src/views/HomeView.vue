@@ -10,11 +10,28 @@
         <button @click="$router.push('/about')">About Us</button>
       </nav>
     </div>
+    <div class="global-test-class">
+      this is a global class
+    </div>
+    <div class="test-global-color">
+      this is a global color
+    </div>
+    <div>
+      <h1 class="Large-Headline-Text">Large Heading</h1>
+      <h2 class="Headline-Text">Headline</h2>
+      <div class="Body-Text">Body</div>
+      <div class="Small-Body-Text">Small Body</div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts"></script>
-<style scoped>
+<style lang ="scss" scoped>
+@import '@/assets/styles/styles.scss';
+.test-global-color {
+  color: $Primary;
+}
+
 .title {
   margin: auto;
   text-align: center;
