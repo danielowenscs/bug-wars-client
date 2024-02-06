@@ -1,0 +1,28 @@
+<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_484_664)">
+<mask id="mask0_484_664" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
+<path d="M0 0.5H24V24.5H0V0.5Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_484_664)">
+<path d="M15 3.5H18V6.5H15V3.5Z" fill="white"/>
+<path d="M12 6.5H15V9.5H12V6.5Z" fill="white"/>
+<path d="M9 6.5H12V9.5H9V6.5Z" fill="white"/>
+<path d="M12 21.5H15V24.5H12V21.5Z" fill="white"/>
+<path d="M12 18.5H15V21.5H12V18.5Z" fill="white"/>
+<path d="M9 18.5H12V21.5H9V18.5Z" fill="white"/>
+<path d="M9 15.5H12V18.5H9V15.5Z" fill="white"/>
+<path d="M15 21.5H18V24.5H15V21.5Z" fill="white"/>
+<path d="M6 9.5H9V12.5H6V9.5Z" fill="white"/>
+<path d="M3 12.5H6V15.5H3V12.5Z" fill="white"/>
+<path d="M6 12.5H9V15.5H6V12.5Z" fill="white"/>
+<path d="M6 15.5H9V18.5H6V15.5Z" fill="white"/>
+<path d="M9 9.5H12V12.5H9V9.5Z" fill="white"/>
+<path d="M12 3.5H15V6.5H12V3.5Z" fill="white"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_484_664">
+<rect width="24" height="24" fill="white" transform="matrix(-1 0 0 -1 24 24.5)"/>
+</clipPath>
+</defs>
+</svg>
