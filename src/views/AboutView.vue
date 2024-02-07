@@ -25,7 +25,7 @@
 import { ref } from 'vue';
 // All on one page then info it
 let currentMember = ref(0);
-let memberNames = ["Daniel Owens", "Ethan Reynolds", "Maichelle Reynolds", "Jeff Winograd", "Parker Ignagni", "Andrew Balderas", "Maconnell Balderas"];
+let memberNames = ["Daniel Owens", "Ethan Reynolds", "Maichelle Reynolds", "Jeff Winograd", "Paul Ignagni", "Andrew Balderas", "Maconnell Balderas"];
 let memberImages = ["joeDirt.jpg", "johnConner.jpg", "ellenRipley.jpg", "johnConner.jpg", "joeDirt.jpg", "Andrew.png", "johnConner.jpg"];
 let memberDescription = ["Description", "Description", "Description", "Description", "Description", "Description", "Experienced Senior Full Stack Developer with a fervent dedication to crafting enterprise and web applications within the gaming and 5G sectors, employing Agile methodologies. Possesses robust analytical prowess, adept troubleshooting abilities, and a keen eye for debugging, all underscored by a steadfast commitment to code excellence and optimal application performance. Proficient in data structures, design patterns, microservices, continuous delivery, and continuous integration, adept at swiftly grasping and implementing new technologies within dynamic, multicultural settings."];
 let memberGmail = ["danielowenscs@gmail.com", "ebud6805@gmail.com", "maichellereynolds2@gmail.com", "jwinograd1@gmail.com", "paulpignagni@gmail.com", "balderas.3@osu.edu", "maconnell.balderas@gmail.com"];
