@@ -39,6 +39,11 @@ const goToLogin = () => {
 <style lang="scss" scoped>
 @import '@/assets/styles/styles.scss';
 .wrapper {
+  height: 60px; /* Adjust as needed */
+  /* Position the header at the top of the viewport */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   padding: 0.75rem 0.5rem;
   display: flex;
   flex-direction: row;

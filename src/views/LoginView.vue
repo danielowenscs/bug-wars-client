@@ -64,6 +64,7 @@ const login = () => {
   margin: auto;
   width: 100%;
   text-align: center;
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 .login-form {
