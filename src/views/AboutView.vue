@@ -20,6 +20,28 @@
     <button class="prev" @click="prevMember">Previous</button>
     <button class="next" @click="nextMember">Next</button>
   </div>
+  <div class="global-test-class">
+      this is a global class
+    </div>
+    <div class="test-global-color">
+      this is a global color
+    </div>
+    <div>
+      <h1 class="Large-Headline-Text">Large Heading</h1>
+      <h2 class="Headline-Text">Headline</h2>
+      <div class="Body-Text">Body</div>
+      <div class="Small-Body-Text">Small Body</div>
+    </div>
+    <div class="container">
+  <button class="primary-button">Primary Button</button>
+  
+
+<div class= "input-container">
+    <input type="text" id="inputField" placeholder="placeholder" class="input">
+ <label class="input-label">INPUT FIELD</label>
+  </div>
+</div>
+
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
@@ -57,7 +79,12 @@ const prevMember = () => {
 }
 </script>
 
-<style scoped>
+<style lang ="scss" scoped>
+@import '@/assets/styles/styles.scss';
+.container {
+  width: 500px;
+}
+
 .next {
   bottom: 10px;
   right: 10px;

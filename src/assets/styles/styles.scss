@@ -11,7 +11,7 @@ $Danger: #CE5050;
 .Large-Headline-Text {
     font-family: 'Press Start 2P';
     color: $White;
-    font-size : 24px;
+    font-size : 32px;
 }
 .Headline-Text {
     font-family: 'Press Start 2P';
@@ -33,3 +33,60 @@ $Danger: #CE5050;
 .global-test-class {
     color: red;
 }
+/* primary button */
+.primary-button {
+    height: 64px;
+    width: 100%;
+    color: $Primary;
+    border: 1px solid $Primary;
+    background-color: $Black;
+    font-family: 'Press Start 2P';
+    font-size : 12px;
+  }
+  .primary-button:hover {
+    background-color: $Primary;
+    color: $Black;
+  }
+  .primary-button:active {
+    color: $Primary;
+    background-color: $Black;
+  }
+  
+  /* input */
+  .input-container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
+  .input-label {
+     display:block;
+    color: $White;
+    font-family: 'Press Start 2P';
+    font-size : 12px;
+    margin-bottom: 8px;
+    
+  }
+  .input {
+    font-family: 'Press Start 2P';
+    font-size : 12px;
+    display:block;
+    color: $White;
+    height: 48px;
+    margin: 0px;
+    border: 0px;
+    width: 100% -16px;
+    background-color: $Dark-Gray;
+    border: 1px solid $Gray;
+    padding: 8px;
+    
+  }
+  .input:focus {
+    outline: none !important;
+    display:block;
+    border: 1px solid $Primary;
+
+  }
+  input:focus + label {
+    color: $Primary;
+  }
+  
