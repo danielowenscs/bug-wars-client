@@ -1,39 +1,97 @@
 <template>
   <div class="about">
     <h1 class="header">Meet The Team!</h1>
-    <h2>{{ memberNames[currentMember] }}</h2>
-    <div>
-      <img class="image" :src="useImage()" />
+
+    <div class="images">
+      
+      <div class="user-container">
+        <h2 class="name">{{ memberNames[currentMember] }}</h2>
+        <img class="image" :src="useImage('Daniel Owens')" />
+      </div>
+
+      <div class="user-container">
+        <h2 class="name">{{ memberNames[currentMember] }}</h2>
+        <img class="image" :src="useImage('Ethan Reynolds')" />
+      </div>
+
+      <!-- <h2 class="name">{{ memberNames[currentMember] }}</h2> -->
+      <img class="image" :src="useImage('Maichelle Reynolds')" />
+      <!-- <h2 class="name">{{ memberNames[currentMember] }}</h2> -->
+      <img class="image" :src="useImage('Jeff Winograd')" />
+      <!-- <h2 class="name">{{ memberNames[currentMember] }}</h2> -->
+      <img class="image" :src="useImage('Paul Ignagni')" />
+      <!-- <h2 class="name">{{ memberNames[currentMember] }}</h2> -->
+      <img class="image" :src="useImage('Andrew Balderas')" />
+      <!-- <h2 class="name">{{ memberNames[currentMember] }}</h2> -->
+      <img class="image" :src="useImage('Maconnell Balderas')" />
+
     </div>
-    <p class="description">{{ memberDescription[currentMember] }}</p>
-    <div class="icons">
-      <a @click="copyURL">
-        <img class="icon" src="/src/assets/imgs/gmailLogo.png" />
-      </a>
-      <a :href="memberGithub[currentMember]">
-        <img class="icon" src="/src/assets/imgs/githubLogo.png" />
-      </a>
-      <a :href="memberLinkedIn[currentMember]">
-        <img class="icon" src="/src/assets/imgs/linkedInLogo.png" />
-      </a>
-    </div>
-    <button class="prev" @click="prevMember">Previous</button>
-    <button class="next" @click="nextMember">Next</button>
   </div>
 </template>
 <script setup lang="ts">
+
 import { ref } from 'vue';
+import user from "../../Developer.json";
+
 // All on one page then info it
 let currentMember = ref(0);
-let memberNames = ["Daniel Owens", "Ethan Reynolds", "Maichelle Reynolds", "Jeff Winograd", "Parker Ignagni", "Andrew Balderas", "Maconnell Balderas"];
-let memberImages = ["joeDirt.jpg", "johnConner.jpg", "ellenRipley.jpg", "johnConner.jpg", "joeDirt.jpg", "Andrew.png", "johnConner.jpg"];
-let memberDescription = ["Description", "Description", "Description", "Description", "Description", "Description", "Experienced Senior Full Stack Developer with a fervent dedication to crafting enterprise and web applications within the gaming and 5G sectors, employing Agile methodologies. Possesses robust analytical prowess, adept troubleshooting abilities, and a keen eye for debugging, all underscored by a steadfast commitment to code excellence and optimal application performance. Proficient in data structures, design patterns, microservices, continuous delivery, and continuous integration, adept at swiftly grasping and implementing new technologies within dynamic, multicultural settings."];
-let memberGmail = ["danielowenscs@gmail.com", "ebud6805@gmail.com", "maichellereynolds2@gmail.com", "jwinograd1@gmail.com", "paulpignagni@gmail.com", "balderas.3@osu.edu", "maconnell.balderas@gmail.com"];
-let memberGithub = ["https://github.com/danielowenscs", "https://github.com/ethanrey19", "https://github.com/MaichelleR", "https://github.com/jeffelwino", "https://github.com/Paul-Ignagni", "https://github.com/balderax", "https://github.com/MaconnellBalderas"];
-let memberLinkedIn = ["https://www.linkedin.com/in/danielowenscs/", "https://www.linkedin.com/in/ETHAN", "https://www.linkedin.com/in/MAICHELLE", "https://www.linkedin.com/in/jeff-l-winograd/", "https://www.linkedin.com/in/paulignagni/", "https://www.linkedin.com/in/andrewbalderas", "https://www.linkedin.com/in/maconnell-balderas/"];
+let memberNames = [ 
+  "Daniel Owens", 
+  "Ethan Reynolds", 
+  "Maichelle Reynolds", 
+  "Jeff Winograd", 
+  "Paul Ignagni", 
+  "Andrew Balderas", 
+  "Maconnell Balderas"
+];
+let memberImages = [ 
+  user["Daniel Owens"]["image"], 
+  user["Ethan Reynolds"]["image"], 
+  user["Maichelle Reynolds"]["image"], 
+  user["Jeff Winograd"]["image"], 
+  user["Paul Ignagni"]["image"], 
+  user["Andrew Balderas"]["image"], 
+  user["Maconnell Balderas"]["image"]
+];
+let memberDescription = [ 
+  user["Daniel Owens"]["description"], 
+  user["Ethan Reynolds"]["description"], 
+  user["Maichelle Reynolds"]["description"], 
+  user["Jeff Winograd"]["description"], 
+  user["Paul Ignagni"]["description"], 
+  user["Andrew Balderas"]["description"], 
+  user["Maconnell Balderas"]["description"]
+];
+let memberGmail = [ 
+  user["Daniel Owens"]["gmail"], 
+  user["Ethan Reynolds"]["gmail"], 
+  user["Maichelle Reynolds"]["gmail"], 
+  user["Jeff Winograd"]["gmail"], 
+  user["Paul Ignagni"]["gmail"], 
+  user["Andrew Balderas"]["gmail"], 
+  user["Maconnell Balderas"]["gmail"]
+];
+let memberGithub = [ 
+  user["Daniel Owens"]["github"], 
+  user["Ethan Reynolds"]["github"], 
+  user["Maichelle Reynolds"]["github"], 
+  user["Jeff Winograd"]["github"], 
+  user["Paul Ignagni"]["github"], 
+  user["Andrew Balderas"]["github"], 
+  user["Maconnell Balderas"]["github"]
+];
+let memberLinkedIn = [ 
+  user["Daniel Owens"]["linkedIn"], 
+  user["Ethan Reynolds"]["linkedIn"], 
+  user["Maichelle Reynolds"]["linkedIn"], 
+  user["Jeff Winograd"]["linkedIn"], 
+  user["Paul Ignagni"]["linkedIn"], 
+  user["Andrew Balderas"]["linkedIn"], 
+  user["Maconnell Balderas"]["linkedIn"]
+];
 
-const useImage = () => {
-  return new URL(`/assets/imgs/${memberImages[currentMember.value]}`, import.meta.url).href;
+const useImage = (name: String) => {
+  return new URL(`/src/assets/imgs/${name}.jpg`, import.meta.url).href;
 }
 
 const copyURL = () => {
@@ -58,17 +116,8 @@ const prevMember = () => {
 </script>
 
 <style scoped>
-.next {
-  bottom: 10px;
-  right: 10px;
-  width: 120px;
-  position: fixed;
-}
-.prev {
-  bottom: 10px;
-  left: 10px;
-  width: 120px;
-  position: fixed;
+.description {
+  color: white;
 }
 .counters {
   display: flex;
@@ -87,11 +136,30 @@ const prevMember = () => {
 }
 .header {
   font-size: 40px;
+  color: white;
+}
+.name {
+  color: white;
+  font-size: 100%;
+}
+.images {
+  float: left;
+  width: 100%;
+}
+.user-container {
+  background-color: red;
+  border-color: white;
+  border-radius: 10%;
+  width: 50%;
+  border-width: 1px;
+  gap: 10px;
+  margin: 10px;
 }
 img {
+  margin: 10%;
   border-radius: 50%;
-  height: 50%;
-  width: 50%;
+  height: 20%;
+  width: 20%;
 }
 .icon {
   height: 50px;
