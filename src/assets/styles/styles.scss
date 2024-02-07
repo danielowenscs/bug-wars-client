@@ -54,7 +54,7 @@ $Danger: #CE5050;
 
   /*login-logout-button */
   .login-logout-button {
-    height: 47%;
+    height: 3.5vh;
     width: fit-content;
     padding: 1% 2%;
     text-align: center;
@@ -63,8 +63,7 @@ $Danger: #CE5050;
     background-color: $Black;
     font-family: 'Press Start 2P';
     font-size : 12px;
-    overflow:hidden;
-    white-space: nowrap;
+   
   }
   .login-logout-button:hover {
     background-color: $White;

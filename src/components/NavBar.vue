@@ -3,13 +3,18 @@
     <nav class="navbar">
       <span class="Headline-Text nav-item">BUG WARS</span>
       <span class="spacer"></span>
-      <button class="login-logout-button" v-if="token == ''" type="button" @click="goToLogin">
+      <button
+        class="login-logout-button nav-item"
+        v-if="token == ''"
+        type="button"
+        @click="goToLogin"
+      >
         LOGIN
       </button>
       <LogoutButton v-if="token != ''" class="nav-item" />
       <span class="small-spacer"></span>
       <div class="nav-item">
-        <button><img src="./assets/icons/hamburger-menu.svg" /></button>
+        <button id="hamburger-button"><img src="../assets/icons/hamburger-menu.svg" /></button>
       </div>
     </nav>
   </header>
@@ -39,14 +44,13 @@ const goToLogin = () => {
   flex-direction: row;
   justify-content: center; /* This centers the navbar horizontally */
   align-items: center; /* This centers the navbar vertically */
-  height: 100%; /* Take full height of the parent */
   border-bottom: solid $White 1px;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between; /* This centers the items horizontally */
-  width: 905%;
+  width: 100%;
   //   margin-inline: 5px;
 }
 
@@ -55,9 +59,9 @@ const goToLogin = () => {
 }
 .nav-item:first-child {
   margin-left: 0;
-  padding-top: 0.2rem;
+  padding-top: 0.4rem;
 }
-.nav-item:first-child {
+.nav-item:last-child {
   margin-right: 0;
 }
 .spacer {
@@ -65,5 +69,9 @@ const goToLogin = () => {
 }
 .small-spacer {
   width: 10px;
+}
+#hamburger-button {
+  background-color: $Black;
+  border-color: $Black;
 }
 </style>
