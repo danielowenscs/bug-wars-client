@@ -51,6 +51,29 @@ $Danger: #CE5050;
     color: $Primary;
     background-color: $Black;
   }
+
+  /*login-logout-button */
+  .login-logout-button {
+    height: 47%;
+    width: fit-content;
+    padding: 1% 2%;
+    text-align: center;
+    color: $White;
+    border: 1px solid $White;
+    background-color: $Black;
+    font-family: 'Press Start 2P';
+    font-size : 12px;
+    overflow:hidden;
+    white-space: nowrap;
+  }
+  .login-logout-button:hover {
+    background-color: $White;
+    color: $Black;
+  }
+  .login-logout-button:active {
+    color: $White;
+    background-color: $Black;
+  }
   
   /* input */
   .input-container {
