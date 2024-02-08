@@ -6,6 +6,10 @@ $Dark-Gray: #181818;
 $Black: #000000;
 $Danger: #CE5050;
 
+/* global horizontal padding */
+$MobileEdgeInset: 0.5rem;
+
+
 /* global fonts */ 
 @import 'https://fonts.googleapis.com/css?family=Press+Start+2P';
 .Large-Headline-Text {
@@ -54,7 +58,7 @@ $Danger: #CE5050;
 
   /*login-logout-button */
   .login-logout-button {
-    height: 3.5vh;
+    height: 28px;
     width: fit-content;
     padding: 1% 2%;
     text-align: center;

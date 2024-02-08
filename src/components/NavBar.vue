@@ -1,21 +1,22 @@
 <template>
   <header class="wrapper">
     <nav class="navbar">
-      <span class="Headline-Text nav-item">BUG WARS</span>
+      <span @click="router.push('/')" class="Headline-Text nav-item">BUG WARS</span>
       <span class="spacer"></span>
       <button
         class="login-logout-button nav-item"
         v-if="token == ''"
         type="button"
-        @click="goToLogin"
+        @click="router.push('/login')"
       >
         LOGIN
       </button>
       <LogoutButton v-if="token != ''" class="nav-item" />
       <span class="small-spacer"></span>
-      <div class="nav-item">
-        <button id="hamburger-button"><img src="../assets/icons/hamburger-menu.svg" /></button>
-      </div>
+
+      <button id="hamburger-button" class="nav-item">
+        <img src="../assets/icons/hamburger-menu.svg" />
+      </button>
     </nav>
   </header>
 </template>
@@ -31,52 +32,60 @@ const userStore = useAuthStore();
 
 const { token } = storeToRefs(userStore);
 
-const goToLogin = () => {
-  router.push('/login');
-};
+const goToLogin = () => {};
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/styles/styles.scss';
 .wrapper {
-  height: 60px; /* Adjust as needed */
-  /* Position the header at the top of the viewport */
+  height: 45.7px;
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 0.75rem 0.5rem;
+  padding: $MobileEdgeInset;
+  padding-bottom: 0.3rem;
   display: flex;
   flex-direction: row;
-  justify-content: center; /* This centers the navbar horizontally */
-  align-items: center; /* This centers the navbar vertically */
+  justify-content: center;
+  align-items: center;
   border-bottom: solid $White 1px;
 }
 
 .navbar {
   display: flex;
-  justify-content: space-between; /* This centers the items horizontally */
+  justify-content: space-between;
   width: 100%;
-  //   margin-inline: 5px;
 }
 
 .nav-item {
   margin-right: 10px;
+}
+.nav-item:hover {
+  cursor: pointer;
 }
 .nav-item:first-child {
   margin-left: 0;
   padding-top: 0.4rem;
 }
 .nav-item:last-child {
-  margin-right: 0;
+  margin-right: 15px;
 }
+
 .spacer {
   flex-grow: 1;
 }
 .small-spacer {
-  width: 10px;
+  width: 8px;
 }
 #hamburger-button {
+  height: 28px;
+  width: 28px;
   background-color: $Black;
   border-color: $Black;
+  padding: 0;
+  /* Center the image using flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
