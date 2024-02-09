@@ -1,27 +1,31 @@
 <template>
-  <Carousel @slide-start="setCurrentMap" id="map-carousel" :wrap-around="true">
-    <Slide v-for="(map, index) in maps" :key="index">
-      <div class="carousel__item">
-        <span class="map"
-          >{{ map.name }}
-          <pre id="map-body">{{ map.body }}</pre>
-        </span>
-      </div>
-    </Slide>
+  <div class="grid-container">
+    <nav>
+      <button class="nav-button">
+        <img class="icon" src="../assets/icons/left-chevron.svg" />
+      </button>
+    </nav>
 
-    <template #addons> <Navigation /> <Pagination /> </template>
-  </Carousel>
+    <div class="map-container">
+      <img class="map-image" src="../assets/images/map-foggy-pass.jpg" />
+    </div>
+    <nav>
+      <button class="nav-button">
+        <img class="icon" src="../assets/icons/right-chevron.svg" />
+      </button>
+    </nav>
+  </div>
+  <div class="Body-Text">{{  }}</div>
 </template>
 
 <script setup lang="ts">
-import { Carousel, Navigation, Slide, Pagination } from 'vue3-carousel';
-import 'vue3-carousel/dist/carousel.css';
 import { useGameMapStore } from '@/stores/GameMapStore';
 import { computed, onMounted } from 'vue';
 
 const mapStore = useGameMapStore();
 
 const maps = computed(() => {
+  console.log('computed');
   return mapStore.maps;
 });
 
@@ -33,43 +37,49 @@ const setCurrentMap = (data: { currentSlideIndex: any }) => {
 
 onMounted(() => {
   mapStore.init();
+
 });
 </script>
 
-<style scoped>
-#map-carousel {
-  max-width: 100%;
+<style lang ="scss" scoped>
+@import '@/assets/styles/styles.scss';
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0 $MobileEdgeInset;
+  margin-bottom: 8px;
 }
-.carousel__item {
-  height: 25vh;
-  width: 80%;
-  color: black;
-  font-size: 20px;
-  border-radius: 8px;
-  border: 1px black solid;
+.map-container {
+  grid-column: span 2;
+  position: relative;
+  width: 100%;
+}
+
+nav{
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.map {
-  height: 100%;
-  width: 80%;
-  background-color: green;
-  padding-top: 3rem;
-}
-#map-body {
-  margin-top: 0px;
-  font-size: 14px;
-  resize: both;
-  overflow: auto;
-}
 
-.carousel__slide {
-  padding: 10px;
+button {
+  background-color: $Black;
+  border-color: $Black;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
 }
-.carousel__prev,
-.carousel__next {
-  box-sizing: content-box;
-  border: 5px solid white;
+img > button {
+  height: 24px;
+  width:24px;
+}
+.map-image{
+  width: 100%;
+  object-fit: cover;
+}
+.aspect-ratio-container {
+  position: relative;
+  width: 100%;
 }
 </style>
