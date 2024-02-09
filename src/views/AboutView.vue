@@ -4,26 +4,40 @@
 
     <div class="images">
       
-      <div class="user-container">
-        <h2 class="name">{{ memberNames[currentMember] }}</h2>
+      <div class="user-container" @click="$router.push({path: '/user', query: { name: 'Daniel Owens', image: daniel['image'],  description: daniel['description'], gmail: daniel['gmail'], github: daniel['github'], linkedIn: daniel['linkedIn']}})">
+        <h2 class="name">Daniel Owens</h2>
         <img class="image" :src="useImage('Daniel Owens')" />
       </div>
 
-      <div class="user-container">
-        <h2 class="name">{{ memberNames[currentMember] }}</h2>
+      <div class="user-container" @click="$router.push({path: '/user', query: { name: 'Ethan Reynolds', image: ethan['image'],  description: ethan['description'], gmail: ethan['gmail'], github: ethan['github'], linkedIn: ethan['linkedIn']}})">
+        <h2 class="name">Ethan Reynolds</h2>
         <img class="image" :src="useImage('Ethan Reynolds')" />
       </div>
 
-      <!-- <h2 class="name">{{ memberNames[currentMember] }}</h2> -->
-      <img class="image" :src="useImage('Maichelle Reynolds')" />
-      <!-- <h2 class="name">{{ memberNames[currentMember] }}</h2> -->
-      <img class="image" :src="useImage('Jeff Winograd')" />
-      <!-- <h2 class="name">{{ memberNames[currentMember] }}</h2> -->
-      <img class="image" :src="useImage('Paul Ignagni')" />
-      <!-- <h2 class="name">{{ memberNames[currentMember] }}</h2> -->
-      <img class="image" :src="useImage('Andrew Balderas')" />
-      <!-- <h2 class="name">{{ memberNames[currentMember] }}</h2> -->
-      <img class="image" :src="useImage('Maconnell Balderas')" />
+      <div class="user-container" @click="$router.push({path: '/user', query: { name: 'Maichelle Reynolds', image: maichelle['image'],  description: maichelle['description'], gmail: maichelle['gmail'], github: maichelle['github'], linkedIn: maichelle['linkedIn']}})">
+        <h2 class="name">Maichelle Reynolds</h2>
+        <img class="image" :src="useImage('Maichelle Reynolds')" />
+      </div>
+
+      <div class="user-container" @click="$router.push({path: '/user', query: { name: 'Jeff Winograd', image: jeff['image'],  description: jeff['description'], gmail: jeff['gmail'], github: jeff['github'], linkedIn: jeff['linkedIn']}})">
+        <h2 class="name">Jeff Winograd</h2>
+        <img class="image" :src="useImage('Jeff Winograd')" />
+      </div>
+
+      <div class="user-container" @click="$router.push({path: '/user', query: { name: 'Paul Ignagni', image: paul['image'],  description: paul['description'], gmail: paul['gmail'], github: paul['github'], linkedIn: paul['linkedIn']}})">
+        <h2 class="name">Paul Ignagni</h2>
+        <img class="image" :src="useImage('Paul Ignagni')" />
+      </div>
+
+      <div class="user-container" @click="$router.push({path: '/user', query: { name: 'Andrew Balderas', image: andrew['image'],  description: andrew['description'], gmail: andrew['gmail'], github: andrew['github'], linkedIn: andrew['linkedIn']}})">
+        <h2 class="name">Andrew Balderas</h2>
+        <img class="image" :src="useImage('Andrew Balderas')" />
+      </div>
+
+      <div class="user-container" @click="$router.push({path: '/user', query: { name: 'Maconnell Balderas', image: maconnell['image'],  description: maconnell['description'], gmail: maconnell['gmail'], github: maconnell['github'], linkedIn: maconnell['linkedIn']}})">
+        <h2 class="name">Maconnell Balderas</h2>
+        <img class="image" :src="useImage('Maconnell Balderas')" />
+      </div>
 
     </div>
   </div>
@@ -33,86 +47,79 @@
 import { ref } from 'vue';
 import user from "../../Developer.json";
 
-// All on one page then info it
-let currentMember = ref(0);
-let memberNames = [ 
-  "Daniel Owens", 
-  "Ethan Reynolds", 
-  "Maichelle Reynolds", 
-  "Jeff Winograd", 
-  "Paul Ignagni", 
-  "Andrew Balderas", 
-  "Maconnell Balderas"
-];
-let memberImages = [ 
-  user["Daniel Owens"]["image"], 
-  user["Ethan Reynolds"]["image"], 
-  user["Maichelle Reynolds"]["image"], 
-  user["Jeff Winograd"]["image"], 
-  user["Paul Ignagni"]["image"], 
-  user["Andrew Balderas"]["image"], 
-  user["Maconnell Balderas"]["image"]
-];
-let memberDescription = [ 
-  user["Daniel Owens"]["description"], 
-  user["Ethan Reynolds"]["description"], 
-  user["Maichelle Reynolds"]["description"], 
-  user["Jeff Winograd"]["description"], 
-  user["Paul Ignagni"]["description"], 
-  user["Andrew Balderas"]["description"], 
-  user["Maconnell Balderas"]["description"]
-];
-let memberGmail = [ 
-  user["Daniel Owens"]["gmail"], 
-  user["Ethan Reynolds"]["gmail"], 
-  user["Maichelle Reynolds"]["gmail"], 
-  user["Jeff Winograd"]["gmail"], 
-  user["Paul Ignagni"]["gmail"], 
-  user["Andrew Balderas"]["gmail"], 
-  user["Maconnell Balderas"]["gmail"]
-];
-let memberGithub = [ 
-  user["Daniel Owens"]["github"], 
-  user["Ethan Reynolds"]["github"], 
-  user["Maichelle Reynolds"]["github"], 
-  user["Jeff Winograd"]["github"], 
-  user["Paul Ignagni"]["github"], 
-  user["Andrew Balderas"]["github"], 
-  user["Maconnell Balderas"]["github"]
-];
-let memberLinkedIn = [ 
-  user["Daniel Owens"]["linkedIn"], 
-  user["Ethan Reynolds"]["linkedIn"], 
-  user["Maichelle Reynolds"]["linkedIn"], 
-  user["Jeff Winograd"]["linkedIn"], 
-  user["Paul Ignagni"]["linkedIn"], 
-  user["Andrew Balderas"]["linkedIn"], 
-  user["Maconnell Balderas"]["linkedIn"]
-];
+let daniel = {
+  image: user["Daniel Owens"]["image"],
+  description: user["Daniel Owens"]["description"],
+  gmail: user["Daniel Owens"]["gmail"],
+  github: user["Daniel Owens"]["github"],
+  linkedIn: user["Daniel Owens"]["linkedIn"]
+}
+let ethan = {
+  image: user["Ethan Reynolds"]["image"],
+  description: user["Ethan Reynolds"]["description"],
+  gmail: user["Ethan Reynolds"]["gmail"],
+  github: user["Ethan Reynolds"]["github"],
+  linkedIn: user["Ethan Reynolds"]["linkedIn"]
+}
+let maichelle = {
+  image: user["Maichelle Reynolds"]["image"],
+  description: user["Maichelle Reynolds"]["description"],
+  gmail: user["Maichelle Reynolds"]["gmail"],
+  github: user["Maichelle Reynolds"]["github"],
+  linkedIn: user["Maichelle Reynolds"]["linkedIn"]
+}
+let jeff = {
+  image: user["Jeff Winograd"]["image"],
+  description: user["Jeff Winograd"]["description"],
+  gmail: user["Jeff Winograd"]["gmail"],
+  github: user["Jeff Winograd"]["github"],
+  linkedIn: user["Jeff Winograd"]["linkedIn"]
+}
+let paul = {
+  image: user["Paul Ignagni"]["image"],
+  description: user["Paul Ignagni"]["description"],
+  gmail: user["Paul Ignagni"]["gmail"],
+  github: user["Paul Ignagni"]["github"],
+  linkedIn: user["Paul Ignagni"]["linkedIn"]
+}
+let andrew = {
+  image: user["Andrew Balderas"]["image"],
+  description: user["Andrew Balderas"]["description"],
+  gmail: user["Andrew Balderas"]["gmail"],
+  github: user["Andrew Balderas"]["github"],
+  linkedIn: user["Andrew Balderas"]["linkedIn"]
+}
+let maconnell = {
+  image: user["Maconnell Balderas"]["image"],
+  description: user["Maconnell Balderas"]["description"],
+  gmail: user["Maconnell Balderas"]["gmail"],
+  github: user["Maconnell Balderas"]["github"],
+  linkedIn: user["Maconnell Balderas"]["linkedIn"]
+}
 
 const useImage = (name: String) => {
   return new URL(`/src/assets/imgs/${name}.jpg`, import.meta.url).href;
 }
 
-const copyURL = () => {
-  navigator.clipboard.writeText(memberGmail[currentMember.value])
-}
+// const copyURL = () => {
+//   navigator.clipboard.writeText(memberGmail[currentMember.value])
+// }
 
-const nextMember = () => {
-  if(currentMember.value === memberNames.length - 1) {
-    currentMember.value = 0
-  } else {
-    currentMember.value += 1;
-  }
-};
+// const nextMember = () => {
+//   if(currentMember.value === memberNames.length - 1) {
+//     currentMember.value = 0
+//   } else {
+//     currentMember.value += 1;
+//   }
+// };
 
-const prevMember = () => {
-  if(currentMember.value === 0) {
-    currentMember.value = memberNames.length - 1
-  } else {
-    currentMember.value -= 1;
-  }
-}
+// const prevMember = () => {
+//   if(currentMember.value === 0) {
+//     currentMember.value = memberNames.length - 1
+//   } else {
+//     currentMember.value -= 1;
+//   }
+// }
 </script>
 
 <style scoped>

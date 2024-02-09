@@ -6,6 +6,7 @@
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/scripts">Script Editor</RouterLink>
         <RouterLink to="/lobby">Lobby</RouterLink>
+        <RouterLink :to="{path: '/user'}" hidden>User</RouterLink>
         <LogoutButton />
       </nav>
     </div>

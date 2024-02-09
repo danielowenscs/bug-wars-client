@@ -7,6 +7,7 @@ import AllScriptsViewVue from '@/views/AllScriptsView.vue';
 import { useAuthStore } from '@/stores/AuthStore';
 import ScriptDetailView from '@/views/ScriptDetailView.vue';
 import UnderConstruction from "@/views/UnderConstruction.vue";
+import UserView from "@/views/User.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,7 +40,7 @@ const router = createRouter({
     {
       path: '/lobby',
       name: 'lobby',
-      component:LobbyView,
+      component: LobbyView,
       meta: {
         requiresAuth: false
       }
@@ -65,9 +66,14 @@ const router = createRouter({
     {
       path: '/scripts/:id',
       name: 'script-detail',
-      component: ScriptDetailView,
+      component: ScriptDetailView
     },
- 
+    {
+      path: '/user',
+      name: 'user',
+      component: UserView,
+      props: true
+    },
     {
       path: '/underconstruction',
       name: 'underConstruction',
