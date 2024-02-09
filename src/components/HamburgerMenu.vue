@@ -1,22 +1,17 @@
 <template>
-  <button id="menu-button" @click="toggleMenu" class="hamburger">
+  <button @click="toggleMenu" class="hamburger menu-button">
     <img src="../assets/icons/hamburger-menu.svg" />
   </button>
   <nav :class="{ open: isOpen }">
-    <div class="close-container">
-      <button @click="toggleMenu" class="close-btn">X</button>
-    </div>
-    <ul>
-      <!-- <li class="menu-item"><a href="#home">Home</a></li> -->
-      <li
-        class="menu-item"
-        v-for="link in navLinks"
-        :key="link.name"
-        @click="navigateTo(link.path)"
-      >
-        <router-link to="link.path">{{ link.name }}</router-link>
-      </li>
-    </ul>
+    <li class="close-container">
+      <button class="menu-button" @click="toggleMenu">
+        <img src="../assets/icons/close.svg" />
+      </button>
+    </li>
+
+    <li class="menu-item" v-for="link in navLinks" :key="link.name" @click="navigateTo(link.path)">
+      <router-link class="Headline-Text link-text" to="link.path">{{ link.name }}</router-link>
+    </li>
   </nav>
 </template>
 
@@ -32,6 +27,7 @@ const toggleMenu = () => {
 };
 const navLinks = [
   { name: 'ABOUT US', path: '/about' },
+  { name: 'LOBBY', path: '/lobby' },
   { name: 'LOGIN', path: '/login' },
   { name: 'SCRIPTS', path: '/scripts' },
 ];
@@ -45,39 +41,58 @@ const navigateTo = (route: RouteLocationRaw) => {
 <style lang="scss" scoped>
 @import '@/assets/styles/styles.scss';
 
-#menu-button {
+.menu-button {
+  height: 24px;
+  width: 24px;
   background-color: $Black;
+  color: black;
   border: 0;
   border-radius: 0;
   background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 nav {
   /* Initially hidden */
   position: fixed;
   max-height: 0;
-  width: 500px;
+  top: 0;
+  left: 13%; /* Center the nav under the hamburger button */
+  width: 87%;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  transition: 0.1s ease-out;
   background-color: $Dark-Gray;
   z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 nav.open {
   /* Shown when menu is open */
-  max-height: 200px; /* Adjust based on content size */
+  min-height: 650px;
+  transition: 0.2s ease-in;
 }
+
 .close-container {
   display: flex;
   justify-content: flex-end;
-  padding: 10px;
+  padding-top: 20px;
+  padding-right: 20px;
+  height: 24px;
+  list-style-type: none;
 }
 .menu-item {
-  /* Custom styles for the router links */
+  height: 64px;
+  line-height: 64px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  list-style-type: none;
+}
+.link-text {
   text-decoration: none;
-  font-size: 16px;
-  list-style-type: none; /* Remove bullet points */
-  //   &:hover {
-  //     color: #666;
-  //   }
 }
 </style>

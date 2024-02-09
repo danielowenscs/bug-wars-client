@@ -14,15 +14,14 @@
       <LogoutButton v-if="token != ''" class="nav-item" />
       <span class="small-spacer"></span>
 
-      <button id="hamburger-button" class="nav-item">
-        <img src="../assets/icons/hamburger-menu.svg" />
-      </button>
+      <HamburgerMenu />
     </nav>
   </header>
 </template>
 
 <script setup lang="ts">
 import LogoutButton from './LogoutButton.vue';
+import HamburgerMenu from './HamburgerMenu.vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/AuthStore';
 import { storeToRefs } from 'pinia';
@@ -49,6 +48,7 @@ const goToLogin = () => {};
   justify-content: center;
   align-items: center;
   border-bottom: solid $White 1px;
+  margin-bottom: $MobileTopMargin;
 }
 
 .navbar {
@@ -76,16 +76,5 @@ const goToLogin = () => {};
 }
 .small-spacer {
   width: 8px;
-}
-#hamburger-button {
-  height: 28px;
-  width: 28px;
-  background-color: $Black;
-  border-color: $Black;
-  padding: 0;
-  /* Center the image using flexbox */
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>
