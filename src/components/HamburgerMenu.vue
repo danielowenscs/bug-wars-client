@@ -72,7 +72,7 @@ nav {
 
 nav.open {
   /* Shown when menu is open */
-  min-height: 650px;
+  min-height: 100%;
   transition: 0.2s ease-in;
 }
 
