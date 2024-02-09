@@ -2,14 +2,14 @@
   <Carousel @slide-start="setCurrentMap" id="map-carousel" :wrap-around="true">
     <Slide v-for="(map, index) in maps" :key="index">
       <div class="carousel__item">
-        <span class="map"
-          >{{ map.name }}
+        <span class="map">
           <pre id="map-body">{{ map.body }}</pre>
         </span>
       </div>
+      <div class="Headline-Text"> {{ map.name }} </div>
     </Slide>
 
-    <template #addons> <Navigation /> <Pagination /> </template>
+    <template #addons > <Navigation /> <Pagination /> </template>
   </Carousel>
 </template>
 
@@ -36,7 +36,8 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/styles/styles.scss';
 #map-carousel {
   max-width: 100%;
 }
@@ -50,12 +51,14 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 10px;
 }
 .map {
   height: 100%;
   width: 80%;
-  background-color: green;
+  background-color: $Gray;
   padding-top: 3rem;
+  
 }
 #map-body {
   margin-top: 0px;
@@ -66,10 +69,13 @@ onMounted(() => {
 
 .carousel__slide {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
 .carousel__prev,
 .carousel__next {
   box-sizing: content-box;
   border: 5px solid white;
+	background-color: red;
 }
 </style>

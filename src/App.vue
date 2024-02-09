@@ -9,4 +9,9 @@ import { RouterView } from 'vue-router';
 import NavBar from './components/NavBar.vue';
 </script>
 
-<style scoped></style>
+<style>
+#map-carousel > button.carousel__next.navigation-button > svg > path, 
+#map-carousel > button.carousel__prev.navigation-button > svg > path {
+  color: white;
+}
+</style>

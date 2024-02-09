@@ -25,7 +25,6 @@ import PlayerScriptSelector from '@/components/PlayerScriptSelector.vue';
   text-align: center;
   display: flex;
   flex-direction: column;
-
   justify-content: center;
   gap: 20px;
 }
