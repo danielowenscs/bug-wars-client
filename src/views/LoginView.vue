@@ -64,6 +64,8 @@ const login = () => {
   margin: auto;
   width: 100%;
   text-align: center;
+  /* important to prevent zooming from occurring */
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 .login-form {
