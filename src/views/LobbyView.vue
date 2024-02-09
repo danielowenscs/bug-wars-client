@@ -1,17 +1,13 @@
 <template>
   <div class="lobby-page">
-    <h3>Lobby</h3>
+    <h3 class="Large-Headline-Text">Lobby</h3>
 
     <MapCarousel />
 
     <PlayerScriptSelector />
 
     <div class="button-section">
-      <button @click="$router.push('/scripts')" style="background-color: green">
-        View Scripts
-      </button>
-
-      <button style="background-color: red">Play</button>
+      <button class="primary-button">Play</button>
     </div>
   </div>
 </template>
@@ -21,7 +17,8 @@ import MapCarousel from '@/components/MapCarousel.vue';
 import PlayerScriptSelector from '@/components/PlayerScriptSelector.vue';
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/styles/styles.scss';
 .lobby-page {
   margin: auto;
   width: 100%;
@@ -37,7 +34,8 @@ import PlayerScriptSelector from '@/components/PlayerScriptSelector.vue';
   flex-direction: column;
   gap: 20px;
   justify-content: center;
-  width: 50vw;
-  margin-left: 25%;
+  width: 90vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
 }
 </style>

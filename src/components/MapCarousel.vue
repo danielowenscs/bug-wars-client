@@ -43,7 +43,7 @@ onMounted(() => {
 .carousel__item {
   height: 25vh;
   width: 80%;
-  color: black;
+  color: white;
   font-size: 20px;
   border-radius: 8px;
   border: 1px black solid;
