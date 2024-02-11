@@ -1,14 +1,8 @@
 <template>
-  <div
-    v-for="script in scripts"
-    :key="script.scriptId"
-    @click="navigateToPage(script)"
-    class="script-list"
-  >
-    <div>
-      <h1 class="script-name">
-        {{ script.name }}
-      </h1>
+  <div v-for="script in scripts" :key="script.scriptId" @click="navigateToPage(script)" class="script-list">
+    <div class="Headline-Text script-display">
+      <span style="float: left;">{{ script.name }}</span>
+      <span style="float: right;">></span>
     </div>
   </div>
 </template>
@@ -33,8 +27,26 @@ const navigateToPage = (script: any) => {
 };
 </script>
 
-<style scoped>
-/* .script-list {
-  color: red;
-} */
+<style lang="scss" scoped>
+@import '@/assets/styles/styles.scss';
+
+.script-display {
+  display: flex;
+  justify-content: space-between;
+  background-color: $Dark-Gray;
+  border: 2px solid $Gray;
+  padding: 2%;
+}
+
+.script-display span {
+  float: left;
+}
+
+.script-display span:last-child {
+  float: right;
+}
+
+.script-list {
+  padding: 2%;
+} 
 </style>

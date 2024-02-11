@@ -5,16 +5,14 @@
       <!-- Placeholder for logo to be replaced later -->
     </div>
 
-    <div class="title">
-      <h5>Your Scripts</h5>
+    <div class="Headline-Text title">
+      <h2>SCRIPTS</h2>
     </div>
+    <div class="new-button">
+    <NewScriptVue /></div>
+    <br>
     <AllScripts />
-    <NewScriptVue />
-    <div class="wrapper">
-      <nav class="home-button">
-        <button @click="$router.push('/')">Home</button>
-      </nav>
-    </div>
+   
   </div>
 </template>
 
@@ -23,12 +21,24 @@ import NewScriptVue from '../components/NewScript.vue';
 import AllScripts from '@/components/AllScripts.vue';
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+@import '@/assets/styles/styles.scss';
+
+
 .allscript-page {
   height: 90vh;
   margin: auto;
   width: 100%;
   text-align: center;
+  
+}
+
+.title {
+  padding-bottom: 10%;
+}
+.new-button {
+padding-bottom: 5%;
 }
 /*
 .title {

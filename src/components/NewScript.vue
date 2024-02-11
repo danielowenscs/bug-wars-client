@@ -1,5 +1,5 @@
 <template>
-  <button v-show="!showEditor" @click="toggleNewEditor">Create a New Script</button>
+  <button v-show="!showEditor" @click="toggleNewEditor" class="Headline-Text new-button">NEW +</button>
   <ScriptConsole
     v-if="showEditor"
     @toggle-editor="toggleNewEditor"
@@ -52,7 +52,21 @@ const saveEditorScript = () => {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+@import '@/assets/styles/styles.scss';
+.new-button {
+  color: $Primary;
+  border:none;
+  float: right;
+  background-color: transparent;
+  margin-right: 10px;
+  
+  
+}
+
+
+
 /* textarea {
   width: 100%;
   height: 150px;
