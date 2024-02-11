@@ -23,7 +23,7 @@
   padding-top: 60px;
   z-index: 1;
 
-  overflow: hidden; // Ensure no overflow content is visible
+  // overflow: hidden; // Ensure no overflow content is visible
 }
 
 .play-button {
