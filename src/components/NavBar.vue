@@ -51,6 +51,7 @@ const goToLogin = () => {};
   align-items: center;
   border-bottom: solid $White 1px;
   margin-bottom: $MobileTopMargin;
+  background-color: $Black;
 }
 
 .navbar {
