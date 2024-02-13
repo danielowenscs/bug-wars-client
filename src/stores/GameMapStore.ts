@@ -12,16 +12,22 @@ export const useGameMapStore = defineStore("gameMap", {
     },
     actions: {
         init(){
-          gameMapService.getAllMaps().then(response => {
+          gameMapService.getAllMaps().then(response => {  
             this.maps = response.data;
+            let i = 0;
+            for (const map of this.maps) {
+              const iAsStr : String = i.toString();
+              map.imageUrl = 'src/assets/images/map-' + iAsStr + '.jpg';
+              i++;
+            }
           }).catch(error => {
             console.error('Error fetching Game maps:', error);
           });
   
         },
 
-        setMaps(mapArray: GameMap[]){
-            this.maps = mapArray;
+        setMaps(mapArray: GameMap[]) {
+          this.maps = mapArray;
         },
         setCurrentMap(map: GameMap){
             this.currentMap = map;

@@ -30,7 +30,6 @@ import PlayerScriptSelector from '@/components/PlayerScriptSelector.vue';
   flex-direction: column;
 
   justify-content: center;
-  gap: 20px;
 }
 .button-section {
   display: flex;
