@@ -9,7 +9,7 @@
 <style lang="scss" scoped>
 @import '@/assets/styles/styles.scss';
 #hero {
-  background-image: url('../assets/images/hero-image-mobile.png');
+  background-image: url('../assets/images/hero-image-mobile.jpg');
   background-size: contain;
   background-repeat: no-repeat;
   //   background-position: center;

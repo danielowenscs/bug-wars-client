@@ -16,17 +16,15 @@
       </button>
     </nav>
   </div>
-  <div class="Body-Text">{{ currentMap.name }}</div>
+  <div class="Body-Text" id="currentMapName"></div>
 </template>
 
 <script setup lang="ts">
 import { useGameMapStore } from '@/stores/GameMapStore';
 import { computed, onMounted, ref, watch } from 'vue';
-import type { GameMap } from "@/types";
 
 const mapStore = useGameMapStore();
 const currentIndex = ref(0);
-const direction = ref('');
 
 onMounted(async () => {
   mapStore.init();
@@ -48,8 +46,9 @@ function prevMap() {
   currentIndex.value = (currentIndex.value - 1 + maps.value.length) % maps.value.length;
 }
 
-function setMapImage() {
+function setMapDetails() {
   const map = maps.value[currentIndex.value];
+
   const mapImage = document.querySelector('.map-image');
   if (typeof map.imageUrl === 'string') {
     if (mapImage instanceof HTMLImageElement) {
@@ -57,10 +56,16 @@ function setMapImage() {
       mapImage.src = map.imageUrl;
     }
   }
+  const currentMapName = document.getElementById('currentMapName');
+  if (currentMapName !== null) {
+    currentMapName.textContent = String(map.name);
+  } else {
+    console.error("Element with id 'currentMapName' not found!");
+  }
 }
 
 watch(currentMap, () => {
-  setMapImage();
+  setMapDetails();
 });
 
 </script>
