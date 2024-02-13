@@ -1,45 +1,72 @@
 <template>
   <div class="grid-container">
     <nav>
-      <button class="nav-button">
+      <button class="nav-button" @click="prevMap">
         <img class="icon" src="../assets/icons/left-chevron.svg" />
       </button>
     </nav>
 
     <div class="map-container">
-      <img class="map-image" src="../assets/images/map-foggy-pass.jpg" />
+      <img class="map-image" ref="mapImage" />
     </div>
+
     <nav>
-      <button class="nav-button">
+      <button class="nav-button" @click="nextMap">
         <img class="icon" src="../assets/icons/right-chevron.svg" />
       </button>
     </nav>
   </div>
-  <div class="Body-Text">{{  }}</div>
+  <div class="Body-Text">{{ currentMap.name }}</div>
 </template>
 
 <script setup lang="ts">
 import { useGameMapStore } from '@/stores/GameMapStore';
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
+import type { GameMap } from "@/types";
 
 const mapStore = useGameMapStore();
+const currentIndex = ref(0);
+const direction = ref('');
+
+onMounted(async () => {
+  mapStore.init();
+});
 
 const maps = computed(() => {
-  console.log('computed');
   return mapStore.maps;
 });
 
-const setCurrentMap = (data: { currentSlideIndex: any }) => {
-  mapStore.setCurrentMap(maps.value[data.currentSlideIndex]);
-
-  console.log(`CURRENT MAP: ${mapStore.currentMap.name}\n${mapStore.currentMap.body}`);
-};
-
-onMounted(() => {
-  mapStore.init();
-
+const currentMap = computed(() => {
+  return maps.value[currentIndex.value];
 });
+
+function nextMap() {
+  currentIndex.value = (currentIndex.value + 1) % maps.value.length;
+}
+
+function prevMap() {
+  currentIndex.value = (currentIndex.value - 1 + maps.value.length) % maps.value.length;
+}
+
+function setMapImage() {
+  const map = maps.value[currentIndex.value];
+  const mapImage = document.querySelector('.map-image');
+  if (typeof map.imageUrl === 'string') {
+    if (mapImage instanceof HTMLImageElement) {
+      console.log('here');
+      mapImage.src = map.imageUrl;
+    }
+  }
+}
+
+watch(currentMap, () => {
+  setMapImage();
+});
+
 </script>
+
+
+
 
 <style lang ="scss" scoped>
 @import '@/assets/styles/styles.scss';
@@ -53,6 +80,9 @@ onMounted(() => {
   grid-column: span 2;
   position: relative;
   width: 100%;
+}
+.map-image {
+  width: 200%;
 }
 
 nav{

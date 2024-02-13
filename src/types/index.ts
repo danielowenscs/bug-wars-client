@@ -16,6 +16,7 @@ export type GameMap = {
   height: Number;
   width: Number;
   body: String;
+  imageUrl: String;
 }
 export type Script = {
   scriptId: number;
