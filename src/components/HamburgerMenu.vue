@@ -28,7 +28,6 @@ const toggleMenu = () => {
 const navLinks = [
   { name: 'ABOUT US', path: '/about' },
   { name: 'LOBBY', path: '/lobby' },
-  { name: 'LOGIN', path: '/login' },
   { name: 'SCRIPTS', path: '/scripts' },
 ];
 
