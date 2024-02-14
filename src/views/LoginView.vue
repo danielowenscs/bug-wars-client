@@ -98,10 +98,8 @@ const login = () => {
 
 .Body-Text {
   grid-area: 'register-link';
-  margin-top: 12px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: auto;
+  margin-top: 32px;
+  text-align: center;
 }
 
 .error-message {
@@ -112,6 +110,7 @@ const login = () => {
 }
 
 a {
+  margin-top: 8px;
   text-decoration: none;
 }
 
