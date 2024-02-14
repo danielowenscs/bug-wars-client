@@ -77,6 +77,7 @@ const login = () => {
 .Large-Headline-Text {
   grid-area: 'headline';
   text-align: center;
+  padding-bottom: 64px;
 }
 
 .input-container {
@@ -97,8 +98,13 @@ const login = () => {
   margin-bottom: auto;
   padding-bottom: 32px;
 }
+
 a {
   text-decoration: none;
+}
+
+span {
+  padding-top: 12px;
 }
 
 </style>
