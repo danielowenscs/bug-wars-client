@@ -1,17 +1,35 @@
 <template>
   <div class="login-page">
-    <h2>Login</h2>
-    <form @submit.prevent="login" class="login-form">
-      <label for="username">Username:</label>
-      <input type="text" id="username" v-model="user.username" required />
+    <div class="Large-Headline-Text">Login</div>
+    <form @submit.prevent="login">
+      <div class="input-container">
+        <input
+          type="text"
+          class="input"
+          id="username"
+          v-model="user.username"
+          placeholder="ENTER USERNAME"
+          required
+        />
+        <label class="input-label">USERNAME</label>
+      </div>
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" v-model="user.password" required />
-
-      <button type="submit">Login</button>
+      <div class="input-container">
+        <input
+          type="password"
+          class="input"
+          id="password"
+          v-model="user.password"
+          placeholder="ENTER PASSWORD"
+          required
+        />
+        <label for="password" class="input-label">PASSWORD</label>
+      </div>
+      <button type="submit" class="primary-button">LOGIN</button>
     </form>
+
+    <a href="/bug-wars-client/register" class="Body-Text">Create an account</a>
     <span class="error-message" v-show="invalidLogin">{{ errorMessage }}</span>
-    <a href="/bug-wars-client/register" class="register-link">Create an account</a>
   </div>
 </template>
 
@@ -54,48 +72,50 @@ const login = () => {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/styles/styles.scss';
+
 .login-page {
   display: grid;
   grid-template-areas:
+    'headline'
     'login-form'
     'register-link';
-  justify-content: center;
-  margin: auto;
-  width: 100%;
+  align-items: end;
+  margin: 0px $MobileEdgeInset;
+  height: 100%;
+}
+
+.Large-Headline-Text {
+  grid-area: 'headline';
   text-align: center;
-  /* important to prevent zooming from occurring */
-  height: calc(var(--vh, 1vh) * 100);
+  padding-bottom: 64px;
 }
 
-.login-form {
+.input-container {
   grid-area: 'login-form';
-  display: inline-grid;
-  padding-top: 5px;
 }
 
-input {
-  margin-bottom: 10px;
+.Body-Text {
+  grid-area: 'register-link';
+  margin-top: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
 }
 
 .error-message {
-  display: block;
-  color: red;
-  max-width: 50%;
-  margin: auto;
-  margin-top: 1rem;
-  padding-bottom: 10px;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: auto;
+  padding-bottom: 32px;
 }
 
-button {
-  width: 50vw;
-  justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+a {
+  text-decoration: none;
 }
 
-.register-link {
-  grid-area: 'register-link';
-  font-size: 15px;
+span {
+  padding-top: 12px;
 }
 </style>

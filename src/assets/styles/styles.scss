@@ -7,7 +7,7 @@ $Black: #000000;
 $Danger: #CE5050;
 
 /* global horizontal padding */
-$MobileEdgeInset: 0.5rem;
+$MobileEdgeInset: 1rem;
 $MobileTopMargin: 5rem;
 
 /* global fonts */ 
@@ -31,6 +31,12 @@ $MobileTopMargin: 5rem;
     font-family: 'Press Start 2P';
     color: $White;
     font-size : 8px;
+}
+
+.error-message {
+  font-family: 'Press Start 2P';
+  color: $Danger;
+  font-size: 12px;
 }
 
 /* add global css classes below */
@@ -85,12 +91,11 @@ $MobileTopMargin: 5rem;
   }
   
   .input-label {
-     display:block;
+    display:block;
     color: $White;
     font-family: 'Press Start 2P';
     font-size : 12px;
     margin-bottom: 8px;
-    
   }
   .input {
     font-family: 'Press Start 2P';
@@ -98,7 +103,7 @@ $MobileTopMargin: 5rem;
     display:block;
     color: $White;
     height: 48px;
-    margin: 0px;
+    margin: 0px 0px 32px 0px;
     border: 0px;
     width: 100% -16px;
     background-color: $Dark-Gray;
@@ -114,5 +119,8 @@ $MobileTopMargin: 5rem;
   }
   input:focus + label {
     color: $Primary;
+  }
+  a {
+    text-decoration: none;
   }
   
