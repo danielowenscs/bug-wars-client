@@ -69,8 +69,6 @@ const login = () => {
     'register-link';
   align-items: end;
   margin: 0px $MobileEdgeInset;
-  /* important to prevent zooming from occurring */
-  // height: calc(var(--vh, 1vh) * 100);
   height: 100%;
 }
 
