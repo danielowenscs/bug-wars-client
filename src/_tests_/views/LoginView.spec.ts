@@ -39,7 +39,7 @@ vi.mock('vue-router', async () => {
  it('renders properly', async () => {
    wrapper = mount(LoginViewVue);
    expect(wrapper.findComponent(LoginViewVue).exists()).toBe(true);
-   expect(wrapper.text()).toContain('Login');
+   expect(wrapper.text()).toContain('LOGIN');
  })
 
  it('logs in user with correct authentication & pushes user to Lobby', async () => {
