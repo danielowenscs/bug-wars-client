@@ -4,7 +4,7 @@
   </button>
   <nav :class="{ open: isOpen }">
     <li class="close-container">
-      <button class="menu-button" @click="toggleMenu">
+      <button class="close-button" @click="toggleMenu">
         <img src="../assets/icons/close.svg" />
       </button>
     </li>
@@ -75,14 +75,6 @@ nav.open {
   transition: 0.2s ease-in;
 }
 
-.close-container {
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 20px;
-  padding-right: 20px;
-  height: 24px;
-  list-style-type: none;
-}
 .menu-item {
   height: 64px;
   line-height: 64px;

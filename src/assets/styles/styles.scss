@@ -77,6 +77,46 @@ $MobileTopMargin: 5rem;
     color: $White;
     background-color: $Black;
   }
+
+  .edit-players-button{
+    height: 64px;
+    width: 100%;
+    color: $White;
+    border: 1px solid $Black;
+    background-color: $Black;
+    font-family: 'Press Start 2P';
+    font-size : 12px;
+  }
+
+  .close-container {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+    padding-right: 20px;
+    height: 24px;
+    list-style-type: none;
+  }
+  .close-button {
+    height: 24px;
+    width: 24px;
+    background-color: $Black;
+    color: black;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .edit-players-button:hover {
+    background-color: $Black;
+    color: $White;
+  }
+  .edit-players-button:active {
+    color: $White;
+    background-color: $Black;
+  }
   
   /* input */
   .input-container {
