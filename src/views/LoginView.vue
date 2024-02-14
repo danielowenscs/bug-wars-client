@@ -1,6 +1,6 @@
 <template>
   <div class="login-page">
-    <div class="Large-Headline-Text">Login</div>
+    <div class="Large-Headline-Text">LOGIN</div>
     <form @submit.prevent="login">
       <div class="input-container">
         <input
@@ -28,7 +28,7 @@
       <button type="submit" class="primary-button">LOGIN</button>
     </form>
 
-    <a href="/bug-wars-client/register" class="Body-Text">Create an account</a>
+    <a href="/bug-wars-client/register" class="Body-Text">CREATE AN ACCOUNT</a>
     <span class="error-message" v-show="invalidLogin">{{ errorMessage }}</span>
   </div>
 </template>

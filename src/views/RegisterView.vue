@@ -1,42 +1,66 @@
 <template>
   <div class="register-page">
-    <h2>Create an Account</h2>
-    <form @submit.prevent="register" class="register-form">
-      <label for="username">Username: </label>
-      <input
-        type="text"
-        id="username"
-        minlength="3"
-        maxlength="20"
-        v-model="newUser.username"
-        required
-      />
-      <label for="email">Email Address: </label>
-      <input type="email" id="email" maxlength="50" v-model="newUser.email" required />
-      <label for="password">Password: </label>
-      <input
-        type="password"
-        id="password"
-        minlength="6"
-        maxlength="40"
-        v-model="newUser.password"
-        required
-      />
+    <div class="Large-Headline-Text">REGISTER</div>
+    <form @submit.prevent="register">
+      <div class="input-container">
+        <input
+          type="text"
+          class="input"
+          id="username"
+          minlength="3"
+          maxlength="20"
+          v-model="newUser.username"
+          placeholder="ENTER USERNAME"
+          required
+        />
+        <label for="username" class="input-label">USERNAME</label>
+      </div>
 
-      <label for="passwordDuplicate">Re-enter Password: </label>
-      <input
-        type="password"
-        id="passwordDuplicate"
-        minlength="6"
-        maxlength="40"
-        v-model="passwordDuplicate"
-        required
-      />
-      <span v-if="!passwordMatch">Passwords must be matching</span>
-      <button type="submit">Register</button>
+      <div class="input-container">
+        <input
+          type="email"
+          class="input"
+          id="email"
+          maxlength="50"
+          v-model="newUser.email"
+          placeholder="ENTER EMAIL"
+          required
+        />
+        <label for="email" class="input-label">EMAIL</label>
+      </div>
+
+      <div class="input-container">
+        <input
+          type="password"
+          class="input"
+          id="password"
+          minlength="6"
+          maxlength="40"
+          v-model="newUser.password"
+          placeholder="ENTER PASSWORD"
+          required
+        />
+        <label for="password" class="input-label">PASSWORD</label>
+      </div>
+
+      <div class="input-container">
+        <input
+          type="password"
+          class="input"
+          id="passwordDuplicate"
+          minlength="6"
+          maxlength="40"
+          v-model="passwordDuplicate"
+          placeholder="RE-ENTER PASSWORD"
+          required
+        />
+        <label for="passwordDuplicate" class="input-label">CONFIRM PASSWORD</label>
+      </div>
+      <span class="error-message" v-if="!passwordMatch">Passwords must be matching</span>
+      <button type="submit" class="primary-button">REGISTER</button>
     </form>
 
-    <a href="/bug-wars-client/login" class="login-link">Already have an account? Login here</a>
+    <a href="/bug-wars-client/login" class="Body-Text">ALREADY HAVE AN ACCOUNT? LOGIN HERE</a>
   </div>
 </template>
 
@@ -92,42 +116,58 @@ const login = () => {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/styles/styles.scss';
+
 .register-page {
   display: grid;
   grid-template-areas:
+    'headline'
     'register-form'
     'login-link';
-  justify-content: center;
-  margin: auto;
-  width: 100%;
-  text-align: center;
+  align-items: end;
+  margin: 0px $MobileEdgeInset;
+  height: 100%;
 }
 
-.register-form {
+.Large-Headline-Text {
+  grid-area: 'headline';
+  text-align: center;
+  padding-bottom: 64px;
+}
+
+.input-container {
   grid-area: 'register-form';
-  display: inline-grid;
-  padding-top: 5px;
+}
+
+.Body-Text {
+  grid-area: 'login-link';
+  margin-top: 32px;
+  text-align: center;
+  padding-bottom: 32px;
+}
+
+.error-message {
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: auto;
+  padding-bottom: 32px;
+}
+
+a {
+  margin-top: 8px;
+  text-decoration: none;
 }
 
 span {
-  padding: 10px;
-  color: red;
+  padding-top: 12px;
 }
 
-input {
-  margin-bottom: 10px;
+#passwordDuplicate {
+  margin-bottom: 0px;
 }
 
-button {
-  width: 50vw;
-  justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.login-link {
-  grid-area: 'login-link';
-  font-size: 15px;
+.primary-button { 
+  margin-top: 32px;
 }
 </style>
