@@ -67,7 +67,8 @@ const login = () => {
   align-items: end;
   margin: 0px $MobileEdgeInset;
   /* important to prevent zooming from occurring */
-  height: calc(var(--vh, 1vh) * 100);
+  // height: calc(var(--vh, 1vh) * 100);
+  height: 100%;
 }
 
 .Large-Headline-Text {
@@ -92,6 +93,9 @@ const login = () => {
   margin-top: 0px;
   margin-bottom: auto;
   padding-bottom: 32px;
+}
+a {
+  text-decoration: none;
 }
 
 </style>

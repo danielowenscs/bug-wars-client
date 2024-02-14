@@ -7,7 +7,7 @@ $Black: #000000;
 $Danger: #CE5050;
 
 /* global horizontal padding */
-$MobileEdgeInset: 0.5rem;
+$MobileEdgeInset: 1rem;
 $MobileTopMargin: 5rem;
 
 /* global fonts */ 
@@ -120,5 +120,8 @@ $MobileTopMargin: 5rem;
   }
   input:focus + label {
     color: $Primary;
+  }
+  a {
+    text-decoration: none;
   }
   

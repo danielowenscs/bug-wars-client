@@ -38,7 +38,7 @@ const goToLogin = () => {};
 @import '@/assets/styles/styles.scss';
 .wrapper {
   height: 45.7px;
-  position: fixed;
+  // position: fixed;
   top: 0;
   left: 1px;
   width: 96vw;
