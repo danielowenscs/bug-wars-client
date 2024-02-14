@@ -28,9 +28,9 @@ import PlayerScriptSelector from '@/components/PlayerScriptSelector.vue';
   text-align: center;
   display: flex;
   flex-direction: column;
-
   justify-content: center;
 }
+
 .button-section {
   display: flex;
   flex-direction: column;

@@ -10,17 +10,21 @@
       </button>
     </li>
 
-    <li class="menu-item" v-for="player in players" :key="player.name">
+    <li class="menu-item input-container" v-for="player in players" :key="player.name">
       <label class="input-label">{{ player.name }}</label>
       <select class="input" v-model="player.selection">
-        <option disabled value="">Select a script</option>
-        <option v-for="script in scripts" :key="script.scriptId">
+        <option disabled value="">
+          Select a script <img src="../assets/icons/down-chevron.svg" />
+        </option>
+        <option class="dropdown-options" v-for="script in scripts" :key="script.scriptId">
           {{ script.name }}
         </option>
       </select>
     </li>
 
-    <li class="menu-item"><button class="primary-button">SAVE</button></li>
+    <li class="menu-item">
+      <button @click="togglePlayerModal" class="primary-button">SAVE</button>
+    </li>
   </div>
 </template>
 
@@ -83,6 +87,10 @@ onMounted(async () => {
   display: flex;
   flex-direction: column;
   padding: 8px 20px;
+}
+
+.menu-item > label {
+  text-align: left;
 }
 
 li:has(.primary-button) {

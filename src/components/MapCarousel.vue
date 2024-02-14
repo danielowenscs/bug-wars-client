@@ -67,18 +67,14 @@ function setMapDetails() {
 watch(currentMap, () => {
   setMapDetails();
 });
-
 </script>
 
-
-
-
-<style lang ="scss" scoped>
+<style lang="scss" scoped>
 @import '@/assets/styles/styles.scss';
 .grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin: 0 $MobileEdgeInset;
+  margin: px $MobileEdgeInset;
   margin-bottom: 8px;
 }
 .map-container {
@@ -90,7 +86,7 @@ watch(currentMap, () => {
   width: 200%;
 }
 
-nav{
+nav {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,9 +103,9 @@ button {
 }
 img > button {
   height: 24px;
-  width:24px;
+  width: 24px;
 }
-.map-image{
+.map-image {
   width: 100%;
   object-fit: cover;
 }
