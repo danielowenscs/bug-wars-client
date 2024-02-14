@@ -2,18 +2,32 @@
   <div class="login-page">
     <div class="Large-Headline-Text">Login</div>
     <form @submit.prevent="login">
-      <div  class="input-container">
-        <input type="text" class="input" id="username" v-model="user.username" placeholder="ENTER USERNAME" required />
+      <div class="input-container">
+        <input
+          type="text"
+          class="input"
+          id="username"
+          v-model="user.username"
+          placeholder="ENTER USERNAME"
+          required
+        />
         <label class="input-label">USERNAME</label>
       </div>
-     
-      <div  class="input-container">
-        <input type="password" class="input" id="password" v-model="user.password" placeholder="ENTER PASSWORD" required />
+
+      <div class="input-container">
+        <input
+          type="password"
+          class="input"
+          id="password"
+          v-model="user.password"
+          placeholder="ENTER PASSWORD"
+          required
+        />
         <label for="password" class="input-label">PASSWORD</label>
       </div>
       <button type="submit" class="primary-button">LOGIN</button>
     </form>
-    
+
     <a href="/bug-wars-client/register" class="Body-Text">Create an account</a>
     <span class="error-message" v-show="invalidLogin">{{ errorMessage }}</span>
   </div>
@@ -104,5 +118,4 @@ a {
 span {
   padding-top: 12px;
 }
-
 </style>
