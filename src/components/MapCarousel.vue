@@ -1,5 +1,6 @@
 <template>
-  <div class="grid-container">
+  <div class="wrapper">
+    <div class="grid-container">
     <nav>
       <button class="nav-button" @click="prevMap">
         <img class="icon" src="../assets/icons/left-chevron.svg" />
@@ -17,6 +18,7 @@
     </nav>
   </div>
   <div class="Body-Text" id="currentMapName"></div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -71,6 +73,10 @@ watch(currentMap, () => {
 
 <style lang="scss" scoped>
 @import '@/assets/styles/styles.scss';
+
+.wrapper {
+  margin-bottom: 40px;
+}
 .grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -112,5 +118,8 @@ img > button {
 .aspect-ratio-container {
   position: relative;
   width: 100%;
+}
+.Body-Text {
+  text-align: center;
 }
 </style>
