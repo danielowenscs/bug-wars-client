@@ -58,8 +58,8 @@ nav {
   position: fixed;
   max-height: 0;
   top: 0;
-  left: 13%; /* Center the nav under the hamburger button */
-  width: 87%;
+  left: 20%; /* Center the nav under the hamburger button */
+  width: 80%;
   overflow: hidden;
   transition: 0.1s ease-out;
   background-color: $Dark-Gray;

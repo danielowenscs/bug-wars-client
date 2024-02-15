@@ -1,5 +1,7 @@
 <template>
-  <button id="toggle-button" @click="toggleDelete">Delete Script</button>
+  <button id="toggle-button" @click="toggleDelete" class="danger-button">
+    <img src="../assets/icons/trash.svg" />
+  </button>
   <div v-if="showDelete">
     <h1>Are you sure you want to delete this script</h1>
     <button id="yes-button" @click="handleDelete">Yes</button>
@@ -50,3 +52,11 @@ const handleDelete = async () => {
     });
 };
 </script>
+<style lang="scss" scoped>
+@import '@/assets/styles/styles.scss';
+.danger-button:hover {
+  img {
+    filter: saturate(100%) hue-rotate(0deg) brightness(0%);
+}
+}
+</style>

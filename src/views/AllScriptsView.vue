@@ -1,20 +1,11 @@
 <template>
-  <div class="allscript-page">
-    <div class="logo">
-      <span class="dot"></span>
-      <!-- Placeholder for logo to be replaced later -->
-    </div>
-
-    <div class="title">
-      <h5>Your Scripts</h5>
+  <div class="all-script-page">
+      <h2 class="Large-Headline-Text">SCRIPTS</h2>
+    <div class="new-button">
+      <NewScriptVue />
     </div>
     <AllScripts />
-    <NewScriptVue />
-    <div class="wrapper">
-      <nav class="home-button">
-        <button @click="$router.push('/')">Home</button>
-      </nav>
-    </div>
+
   </div>
 </template>
 
@@ -23,80 +14,12 @@ import NewScriptVue from '../components/NewScript.vue';
 import AllScripts from '@/components/AllScripts.vue';
 </script>
 
-<style scoped>
-.allscript-page {
-  height: 90vh;
-  margin: auto;
-  width: 100%;
+<style lang="scss" scoped>
+@import '@/assets/styles/styles.scss';
+.all-script-page {
+  margin: 0 $MobileEdgeInset;
+}
+.Large-Headline-Text {
   text-align: center;
 }
-/*
-.title {
-  margin: auto;
-  text-align: center;
-  color: white;
-}
-.wrapper {
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-.home-button {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 10px;
-}
-button {
-  background-color: purple;
-  color: white;
-  border-radius: 8px;
-  padding: 5% 5%;
-}
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-  padding: 5%;
-  text-align: center;
-}
-.dot {
-  height: 150px;
-  width: 150px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-@media (min-width: 1024px) {
-  .page {
-    display: flex;
-    flex-direction: column;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-  .home-button {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 10px;
-  }
-  .wrapper {
-    margin-left: 50%;
-    margin-right: 50%;
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-
-  .page .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-} */
 </style>

@@ -1,5 +1,8 @@
 <template>
-  <button v-show="!showEditor" @click="toggleNewEditor">Create a New Script</button>
+  <button v-show="!showEditor" @click="toggleNewEditor" class="primary-button">
+    <div class="button-title">NEW</div>
+    <img src="../assets/icons/plus.svg" />
+  </button>
   <ScriptConsole
     v-if="showEditor"
     @toggle-editor="toggleNewEditor"
@@ -52,32 +55,23 @@ const saveEditorScript = () => {
 };
 </script>
 
-<style scoped>
-/* textarea {
-  width: 100%;
-  height: 150px;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-  font-size: 14px;
-  resize: none;
+<style lang="scss" scoped>
+@import '@/assets/styles/styles.scss';
+.primary-button {
+  text-align: right;
+  border: none;
+  font-size : 16px;
+  display: flex;
+  margin: auto;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: right;
 }
-
-input {
-  padding: 10px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-  font-size: 14px;
-  resize: none;
+.primary-button:hover {
+  background-color: $Black;
+  color: $Primary;
 }
-
-button {
+img, div {
   cursor: pointer;
-} */
+}
 </style>
