@@ -1,8 +1,8 @@
 <template>
-  <div v-for="script in scripts" :key="script.scriptId" @click="navigateToPage(script)" class="script-list">
-    <div class="Headline-Text script-display">
-      <span style="float: left;">{{ script.name }}</span>
-      <span style="float: right;">></span>
+  <div v-for="script in scripts" :key="script.scriptId" @click="navigateToPage(script)">
+    <div class="script-display">
+        <div class="Headline-Text">{{ script.name }}</div>
+        <img src="../assets/icons/right-chevron.svg" />
     </div>
   </div>
 </template>
@@ -34,19 +34,14 @@ const navigateToPage = (script: any) => {
   display: flex;
   justify-content: space-between;
   background-color: $Dark-Gray;
-  border: 2px solid $Gray;
-  padding: 2%;
+  border: 1px solid $Gray;
+  height: 64px;
+  margin: auto;
+  padding: 0 16px;
+  align-items: center;
+  margin-top: 20px;
 }
-
-.script-display span {
-  float: left;
+* {
+    text-transform: uppercase;
 }
-
-.script-display span:last-child {
-  float: right;
-}
-
-.script-list {
-  padding: 2%;
-} 
 </style>
