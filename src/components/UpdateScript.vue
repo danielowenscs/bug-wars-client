@@ -1,5 +1,7 @@
 <template>
-  <button v-show="!showEdit" @click="toggleEditor">Edit Script</button>
+  <button v-show="!showEdit" @click="toggleEditor" class="primary-button">
+    <img src="../assets/icons/edit.svg" />
+  </button>
 
   <ScriptConsole
     v-if="showEdit"
@@ -62,3 +64,14 @@ const saveEditorScript = () => {
     });
 };
 </script>
+
+<style lang="scss" scoped>
+@import '@/assets/styles/styles.scss';
+
+.primary-button:hover {
+  img {
+    filter: saturate(100%) hue-rotate(0deg) brightness(0%);
+}
+}
+
+</style>

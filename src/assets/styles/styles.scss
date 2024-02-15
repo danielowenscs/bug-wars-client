@@ -46,6 +46,7 @@ $MobileTopMargin: 5rem;
     background-color: $Black;
     font-family: 'Press Start 2P';
     font-size : 12px;
+    cursor: pointer;
   }
   .primary-button:hover {
     background-color: $Primary;
@@ -116,3 +117,22 @@ $MobileTopMargin: 5rem;
     color: $Primary;
   }
   
+/* primary button */
+.danger-button {
+  height: 64px;
+  width: 100%;
+  color: $Danger;
+  border: 1px solid $Danger;
+  background-color: $Black;
+  font-family: 'Press Start 2P';
+  font-size : 12px;
+  cursor: pointer;
+}
+.danger-button:hover {
+  background-color: $Danger;
+  color: $Black;
+}
+.danger-button:active {
+  color: $Danger;
+  background-color: $Black;
+}
