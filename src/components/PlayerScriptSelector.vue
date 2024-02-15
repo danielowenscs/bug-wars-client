@@ -10,18 +10,13 @@
       </button>
     </li>
 
-    <li class="menu-item input-container" v-for="player in players" :key="player.name">
-      <label class="input-label">{{ player.name }}</label>
-      <select class="input" v-model="player.selection">
-        <option disabled value="">
-          Select a script <img src="../assets/icons/down-chevron.svg" />
-        </option>
-        <option class="dropdown-options" v-for="script in scripts" :key="script.scriptId">
-          {{ script.name }}
-        </option>
+    <li v-for="player in players" :key="player.name" class="input-container menu-item">
+      <select id="inputField" class="select-input" v-model="player.selection">
+        <option value="" disabled>SELECT SCRIPT</option>
+        <option v-for="script in scripts" :key="script.scriptId">{{ script.name }}</option>
       </select>
+      <label class="input-label">{{ player.name }}</label>
     </li>
-
     <li class="menu-item">
       <button @click="togglePlayerModal" class="primary-button">SAVE</button>
     </li>
@@ -84,9 +79,7 @@ onMounted(async () => {
   transition: 0.2s ease-in;
 }
 .menu-item {
-  display: flex;
-  flex-direction: column;
-  padding: 8px 20px;
+  padding: 8px 15px;
 }
 
 .menu-item > label {
@@ -98,5 +91,25 @@ li:has(.primary-button) {
 }
 .primary-button {
   padding: 0 20px;
+}
+
+.select-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('../assets/icons/down-chevron.svg');
+  background-repeat: no-repeat;
+  background-position: 96% center;
+  font-family: 'Press Start 2P';
+  font-size: 12px;
+  display: block;
+  color: white;
+  height: 64px;
+  margin: 0px;
+  border: 0px;
+  width: 100% -16px;
+  background-color: #181818;
+  border: 1px solid #8b8b8b;
+  padding: 8px;
 }
 </style>
