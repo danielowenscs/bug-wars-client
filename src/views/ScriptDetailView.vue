@@ -38,6 +38,8 @@ onUnmounted(() => {
 
 .Large-Headline-Text {
   text-align: center;
+  margin: 0;
+  margin-bottom: 80px;
 }
 
 .script-body-container {

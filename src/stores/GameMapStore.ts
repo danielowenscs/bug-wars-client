@@ -17,7 +17,7 @@ export const useGameMapStore = defineStore("gameMap", {
             let i = 0;
             for (const map of this.maps) {
               const iAsStr : String = i.toString();
-              map.imageUrl = 'src/assets/images/map-' + iAsStr + '.jpg';
+              map.imageUrl = 'src/assets/images/map-' + iAsStr + '.png';
               i++;
             }
           }).catch(error => {

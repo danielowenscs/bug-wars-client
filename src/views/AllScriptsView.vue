@@ -21,5 +21,7 @@ import AllScripts from '@/components/AllScripts.vue';
 }
 .Large-Headline-Text {
   text-align: center;
+  margin: 0;
+  margin-bottom: 80px;
 }
 </style>
