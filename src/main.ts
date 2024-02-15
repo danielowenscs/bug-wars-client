@@ -15,7 +15,7 @@ app.use(Toast);
 app.use(router);
 // TODO: Setup axios on backend ~Daniel
 //baseURL for deployment. Uncomment before committing.
-axios.defaults.baseURL = import.meta.env.VITE_REMOTE_API || "https://bug-wars-server-fhs0.onrender.com"
+axios.defaults.baseURL = import.meta.env.PROD == false ? import.meta.env.VITE_REMOTE_API : "https://bug-wars-server-fhs0.onrender.com"
 
 app.mount('#app');
 // Dynamically set the viewport height
