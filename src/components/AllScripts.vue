@@ -1,18 +1,11 @@
 <template>
-  <div
-    v-for="script in scripts"
-    :key="script.scriptId"
-    @click="navigateToPage(script)"
-    class="script-list"
-  >
-    <div>
-      <h1 class="script-name">
-        {{ script.name }}
-      </h1>
+  <div v-for="script in scripts" :key="script.scriptId" @click="navigateToPage(script)">
+    <div class="script-display">
+        <div class="Headline-Text">{{ script.name }}</div>
+        <img src="../assets/icons/right-chevron.svg" />
     </div>
   </div>
 </template>
-
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
@@ -33,8 +26,20 @@ const navigateToPage = (script: any) => {
 };
 </script>
 
-<style scoped>
-/* .script-list {
-  color: red;
-} */
+<style lang="scss" scoped>
+@import '@/assets/styles/styles.scss';
+.script-display {
+  display: flex;
+  justify-content: space-between;
+  background-color: $Dark-Gray;
+  border: 1px solid $Gray;
+  height: 64px;
+  margin: auto;
+  padding: 0 16px;
+  align-items: center;
+  margin-top: 20px;
+}
+* {
+    text-transform: uppercase;
+}
 </style>

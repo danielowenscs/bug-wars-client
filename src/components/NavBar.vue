@@ -41,7 +41,6 @@ const goToLogin = () => {};
   // position: fixed;
   top: 0;
   left: 1px;
-  width: 96vw;
   z-index: 1000;
   padding: $MobileEdgeInset;
   padding-bottom: 0.3rem;
